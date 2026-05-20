@@ -1,0 +1,7 @@
+- [x] 1. Create OpenSpec proposal, design, specs, and task list.
+- [x] 2. Replace broad hover rectangles with fitted link/card/button feedback.
+- [x] 3. Implement dog carousel arrow behavior and selected state.
+- [x] 4. Keep dog-card clicks opening matching detailed cards.
+- [x] 5. Implement inline FAQ expansion from plus/row clicks.
+- [x] 6. Verify all target geometry and interactions in Playwright desktop/mobile.
+- [ ] 7. Commit changes and push to a GitHub repository under `maxunris`.

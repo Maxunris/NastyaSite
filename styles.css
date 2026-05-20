@@ -4,8 +4,7 @@
   --green: #008b15;
   --focus: #1457ff;
   --overlay: rgb(0 0 0 / 0.55);
-  --hotspot: rgb(255 255 255 / 0.24);
-  --hotspot-border: rgb(255 194 77 / 0.8);
+  --accent: #ffc24d;
 }
 
 * {
@@ -59,38 +58,29 @@ a {
   cursor: pointer;
   transform: translateZ(0);
   transition:
-    background-color 180ms ease,
     box-shadow 180ms ease,
+    opacity 180ms ease,
     transform 180ms ease;
 }
 
 .hotspot::after {
   position: absolute;
-  inset: -4px;
+  inset: 0;
   border-radius: inherit;
   content: "";
   opacity: 0;
-  transform: scale(0.96);
   transition:
     opacity 180ms ease,
     transform 180ms ease;
 }
 
-.hotspot:hover,
-.hotspot:focus-visible {
-  background: var(--hotspot);
-  box-shadow: 0 0 0 2px var(--hotspot-border), 0 10px 28px rgb(0 0 0 / 0.12);
-}
-
 .hotspot:hover::after,
 .hotspot:focus-visible::after {
   opacity: 1;
-  transform: scale(1);
-  animation: hotspot-pulse 1400ms ease-in-out infinite;
 }
 
 .hotspot:active {
-  transform: scale(0.985);
+  transform: scale(0.98);
 }
 
 .hotspot:focus-visible {
@@ -103,6 +93,55 @@ a {
   top: 0.78%;
   width: 7%;
   height: 0.45%;
+}
+
+.hotspot--dogs::after,
+.hotspot--partners::after,
+.hotspot--market::after,
+.hotspot--shelter::after,
+.hotspot--faq::after,
+.hotspot--contacts::after,
+.hotspot--menu-dogs::after,
+.hotspot--menu-activities::after,
+.hotspot--menu-market::after,
+.hotspot--menu-shelter::after,
+.hotspot--menu-djs::after,
+.hotspot--menu-faq::after {
+  top: auto;
+  bottom: 4%;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--accent);
+  transform: scaleX(0.2);
+}
+
+.hotspot--dogs:hover::after,
+.hotspot--partners:hover::after,
+.hotspot--market:hover::after,
+.hotspot--shelter:hover::after,
+.hotspot--faq:hover::after,
+.hotspot--contacts:hover::after,
+.hotspot--menu-dogs:hover::after,
+.hotspot--menu-activities:hover::after,
+.hotspot--menu-market:hover::after,
+.hotspot--menu-shelter:hover::after,
+.hotspot--menu-djs:hover::after,
+.hotspot--menu-faq:hover::after,
+.hotspot--dogs:focus-visible::after,
+.hotspot--partners:focus-visible::after,
+.hotspot--market:focus-visible::after,
+.hotspot--shelter:focus-visible::after,
+.hotspot--faq:focus-visible::after,
+.hotspot--contacts:focus-visible::after,
+.hotspot--menu-dogs:focus-visible::after,
+.hotspot--menu-activities:focus-visible::after,
+.hotspot--menu-market:focus-visible::after,
+.hotspot--menu-shelter:focus-visible::after,
+.hotspot--menu-djs:focus-visible::after,
+.hotspot--menu-faq:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .hotspot--partners {
@@ -144,26 +183,43 @@ a {
 .hotspot--belka,
 .hotspot--tolik,
 .hotspot--persey {
-  top: 27.95%;
-  width: 14.2%;
+  top: 31.58%;
+  width: 18.2%;
   height: 5.05%;
-  border-radius: 20px;
+  border-radius: 30px;
 }
 
 .hotspot--klepa {
-  left: 8.6%;
+  left: 8.8%;
 }
 
 .hotspot--belka {
-  left: 29.7%;
+  left: 29.65%;
 }
 
 .hotspot--tolik {
-  left: 50.7%;
+  left: 50.35%;
 }
 
 .hotspot--persey {
-  left: 71.7%;
+  left: 71.05%;
+}
+
+.dog-card-hotspot::after {
+  inset: 0;
+  border: 4px solid var(--accent);
+  border-radius: inherit;
+  box-shadow: 0 12px 28px rgb(0 0 0 / 0.14);
+}
+
+.dog-card-hotspot:hover,
+.dog-card-hotspot:focus-visible,
+.dog-card-hotspot.is-active {
+  transform: translateY(-0.18%);
+}
+
+.dog-card-hotspot.is-active::after {
+  opacity: 1;
 }
 
 .hotspot--menu-dogs,
@@ -172,25 +228,76 @@ a {
 .hotspot--menu-shelter,
 .hotspot--menu-djs,
 .hotspot--menu-faq {
-  left: 30%;
-  width: 40%;
   height: 0.58%;
   border-radius: 999px;
 }
 
-.hotspot--menu-dogs { top: 12.75%; }
-.hotspot--menu-activities { top: 13.65%; }
-.hotspot--menu-market { top: 14.65%; }
-.hotspot--menu-shelter { top: 15.55%; }
-.hotspot--menu-djs { top: 16.55%; }
-.hotspot--menu-faq { top: 17.45%; }
+.hotspot--menu-dogs {
+  left: 33.2%;
+  top: 12.75%;
+  width: 33.6%;
+}
+
+.hotspot--menu-activities {
+  left: 24.7%;
+  top: 13.65%;
+  width: 50.7%;
+}
+
+.hotspot--menu-market {
+  left: 36.8%;
+  top: 14.65%;
+  width: 26.4%;
+}
+
+.hotspot--menu-shelter {
+  left: 33.6%;
+  top: 15.55%;
+  width: 32.8%;
+}
+
+.hotspot--menu-djs {
+  left: 41.6%;
+  top: 16.55%;
+  width: 16.8%;
+}
+
+.hotspot--menu-faq {
+  left: 37.8%;
+  top: 17.45%;
+  width: 24.4%;
+}
+
+.hotspot--menu-activities::after {
+  inset: 0;
+  width: auto;
+  height: auto;
+  border: 3px solid var(--accent);
+  border-radius: inherit;
+  background: rgb(255 255 255 / 0.08);
+  transform: none;
+}
 
 .hotspot--cards-prev,
 .hotspot--cards-next {
-  top: 29.45%;
+  top: 33.55%;
   width: 4.5%;
   height: 1.4%;
   border-radius: 50%;
+}
+
+.hotspot--cards-prev::after,
+.hotspot--cards-next::after {
+  inset: 6%;
+  border: 4px solid var(--accent);
+  border-radius: 50%;
+}
+
+.hotspot--cards-prev:hover,
+.hotspot--cards-next:hover,
+.hotspot--cards-prev:focus-visible,
+.hotspot--cards-next:focus-visible {
+  transform: scale(1.06);
 }
 
 .hotspot--cards-prev { left: 1.7%; }
@@ -226,6 +333,18 @@ a {
 .hotspot--activity-3,
 .hotspot--activity-6 { left: 71.3%; }
 
+.hotspot--activity-1::after,
+.hotspot--activity-2::after,
+.hotspot--activity-3::after,
+.hotspot--activity-4::after,
+.hotspot--activity-5::after,
+.hotspot--activity-6::after {
+  inset: 0;
+  border: 3px solid var(--accent);
+  border-radius: inherit;
+  background: rgb(255 255 255 / 0.08);
+}
+
 .hotspot--partners-row {
   left: 8%;
   top: 47%;
@@ -250,6 +369,13 @@ a {
   border-radius: 999px;
 }
 
+.hotspot--shelter-site::after {
+  inset: 0;
+  border: 3px solid var(--accent);
+  border-radius: inherit;
+  box-shadow: 0 8px 18px rgb(0 0 0 / 0.12);
+}
+
 .hotspot--faq-1,
 .hotspot--faq-2,
 .hotspot--faq-3,
@@ -262,12 +388,28 @@ a {
   border-radius: 8px;
 }
 
-.hotspot--faq-1 { top: 78.55%; }
-.hotspot--faq-2 { top: 79.42%; }
-.hotspot--faq-3 { top: 80.29%; }
-.hotspot--faq-4 { top: 81.16%; }
-.hotspot--faq-5 { top: 82.03%; }
-.hotspot--faq-6 { top: 82.9%; }
+.hotspot--faq-1 { top: 79.77%; }
+.hotspot--faq-2 { top: 80.64%; }
+.hotspot--faq-3 { top: 81.51%; }
+.hotspot--faq-4 { top: 82.38%; }
+.hotspot--faq-5 { top: 83.25%; }
+.hotspot--faq-6 { top: 84.12%; }
+
+.faq-hotspot::after {
+  left: auto;
+  right: -1.5%;
+  top: 9%;
+  width: 4.2%;
+  height: 82%;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: rgb(255 194 77 / 0.1);
+}
+
+.faq-hotspot.is-open::after {
+  opacity: 1;
+  background: rgb(255 194 77 / 0.22);
+}
 
 .hotspot--contact-1,
 .hotspot--contact-2,
@@ -283,6 +425,17 @@ a {
 .hotspot--contact-2 { left: 29.6%; }
 .hotspot--contact-3 { left: 51.5%; }
 .hotspot--contact-4 { left: 73%; }
+
+.hotspot--contact-1::after,
+.hotspot--contact-2::after,
+.hotspot--contact-3::after,
+.hotspot--contact-4::after {
+  top: auto;
+  bottom: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0.25);
+}
 
 .anchor {
   position: absolute;
@@ -321,6 +474,55 @@ a {
 
 .anchor--contacts {
   top: 94%;
+}
+
+.dog-status {
+  position: absolute;
+  left: 35%;
+  top: 34.9%;
+  width: 30%;
+  min-height: 34px;
+  border-radius: 999px;
+  background: rgb(255 194 77 / 0.94);
+  color: #000;
+  font: 800 18px/34px Arial, sans-serif;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.dog-status.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.faq-panel {
+  position: absolute;
+  left: 22%;
+  top: 0;
+  z-index: 2;
+  width: 56%;
+  min-height: 74px;
+  border-bottom: 1px solid #111;
+  padding: 11px 8% 12px 0;
+  background: #fff;
+  color: #111;
+  font: 700 16px/1.35 Arial, sans-serif;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.faq-panel.is-open {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .dog-modal {
@@ -416,17 +618,6 @@ a {
 .info-modal__close:active,
 .dog-modal__close:active {
   transform: scale(0.96);
-}
-
-@keyframes hotspot-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgb(255 194 77 / 0.35);
-  }
-
-  50% {
-    box-shadow: 0 0 0 8px rgb(255 194 77 / 0);
-  }
 }
 
 @keyframes modal-pop {

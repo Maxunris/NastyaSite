@@ -27,10 +27,10 @@
           <a class="hotspot hotspot--contacts" href="#contacts">Контакты</a>
         </nav>
 
-        <button class="hotspot hotspot--klepa" type="button" data-dog="klepa">Открыть карточку Клепы</button>
-        <button class="hotspot hotspot--belka" type="button" data-dog="belka">Открыть карточку Белки</button>
-        <button class="hotspot hotspot--tolik" type="button" data-dog="tolik">Открыть карточку Толика</button>
-        <button class="hotspot hotspot--persey" type="button" data-dog="persey">Открыть карточку Персея</button>
+        <button class="hotspot dog-card-hotspot hotspot--klepa" type="button" data-dog="klepa">Открыть карточку Клепы</button>
+        <button class="hotspot dog-card-hotspot hotspot--belka" type="button" data-dog="belka">Открыть карточку Белки</button>
+        <button class="hotspot dog-card-hotspot hotspot--tolik" type="button" data-dog="tolik">Открыть карточку Толика</button>
+        <button class="hotspot dog-card-hotspot hotspot--persey" type="button" data-dog="persey">Открыть карточку Персея</button>
 
         <a class="hotspot hotspot--menu-dogs" href="#dogs">Собаки, которые ищут дом</a>
         <a class="hotspot hotspot--menu-activities" href="#activities">Активности от партнеров</a>
@@ -39,8 +39,8 @@
         <a class="hotspot hotspot--menu-djs" href="#djs">Диджеи</a>
         <a class="hotspot hotspot--menu-faq" href="#faq">Частые вопросы</a>
 
-        <button class="hotspot hotspot--cards-prev" type="button" data-info="Предыдущие карточки собак пока не добавлены в выгрузку.">Предыдущие карточки собак</button>
-        <button class="hotspot hotspot--cards-next" type="button" data-info="Следующие карточки собак пока не добавлены в выгрузку.">Следующие карточки собак</button>
+        <button class="hotspot hotspot--cards-prev" type="button" data-carousel="prev">Предыдущая собака</button>
+        <button class="hotspot hotspot--cards-next" type="button" data-carousel="next">Следующая собака</button>
 
         <button class="hotspot hotspot--activity-1" type="button" data-info="Моментальная лотерея от «Хвост Ньюс».">Моментальная лотерея</button>
         <button class="hotspot hotspot--activity-2" type="button" data-info="Подарки для новых владельцев собак.">Подарки для новых владельцев</button>
@@ -53,12 +53,12 @@
         <button class="hotspot hotspot--market-logos" type="button" data-info="Маркет локальных брендов для собак.">Маркет локальных брендов</button>
         <button class="hotspot hotspot--shelter-site" type="button" data-info="Ссылка на сайт приюта не указана в переданных ассетах.">Сайт приюта</button>
 
-        <button class="hotspot hotspot--faq-1" type="button" data-info="Конечно! Наш фестиваль семейное событие, где будет интересно и взрослым, и детям.">Можно ли прийти на фестиваль с детьми?</button>
-        <button class="hotspot hotspot--faq-2" type="button" data-info="Да, вы можете прийти со своим питомцем, если он социализирован и не агрессивен к другим собакам и людям.">Я могу взять с собой свою собаку?</button>
-        <button class="hotspot hotspot--faq-3" type="button" data-info="Паспорт и небольшой рассказ о себе. Если все совпадет с животным, понадобится написать заявление питомца.">Какие документы нужны для усыновления?</button>
-        <button class="hotspot hotspot--faq-4" type="button" data-info="Да. В программе лекции от профессиональных кинологов, ветеринаров и зоопсихологов.">Будут ли на фестивале бесплатные консультации?</button>
-        <button class="hotspot hotspot--faq-5" type="button" data-info="Можно стать волонтером, сделать пожертвование или купить приятные и полезные вещи на маркете.">Как поддержать приют?</button>
-        <button class="hotspot hotspot--faq-6" type="button" data-info="Присылайте вопросы и предложения в Telegram: @anastasia_sabanina.">Как стать волонтером или партнером?</button>
+        <button class="hotspot faq-hotspot hotspot--faq-1" type="button" data-faq="0" aria-expanded="false">Можно ли прийти на фестиваль с детьми?</button>
+        <button class="hotspot faq-hotspot hotspot--faq-2" type="button" data-faq="1" aria-expanded="false">Я могу взять с собой свою собаку?</button>
+        <button class="hotspot faq-hotspot hotspot--faq-3" type="button" data-faq="2" aria-expanded="false">Какие документы нужны для усыновления?</button>
+        <button class="hotspot faq-hotspot hotspot--faq-4" type="button" data-faq="3" aria-expanded="false">Будут ли на фестивале бесплатные консультации?</button>
+        <button class="hotspot faq-hotspot hotspot--faq-5" type="button" data-faq="4" aria-expanded="false">Как поддержать приют?</button>
+        <button class="hotspot faq-hotspot hotspot--faq-6" type="button" data-faq="5" aria-expanded="false">Как стать волонтером или партнером?</button>
 
         <button class="hotspot hotspot--contact-1" type="button" data-info="Telegram-канал приюта: ссылка не указана в макете.">Telegram-канал приюта</button>
         <button class="hotspot hotspot--contact-2" type="button" data-info="Сайт приюта: ссылка не указана в макете.">Сайт приюта</button>
@@ -73,6 +73,9 @@
         <span id="faq" class="anchor anchor--faq"></span>
         <span id="djs" class="anchor anchor--djs"></span>
         <span id="contacts" class="anchor anchor--contacts"></span>
+
+        <div class="dog-status" aria-live="polite"></div>
+        <div class="faq-panel" aria-live="polite"></div>
       </div>
     </main>
 
