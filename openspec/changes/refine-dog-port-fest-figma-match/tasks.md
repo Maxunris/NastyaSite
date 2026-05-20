@@ -1,0 +1,8 @@
+- [x] 1. Inspect latest assets from `/Users/max/Downloads/Дог порт фест (2)`.
+- [x] 2. Document the role of full-page, section, dog-card, and design-map images.
+- [x] 3. Copy the latest assets into the project under `assets/images/figma-final/`.
+- [x] 4. Point the site at the latest full-page export.
+- [x] 5. Align dog-card click hotspots to the actual dog cards.
+- [x] 6. Ensure each dog opens the correct expanded exported card.
+- [x] 7. Update README to use port `8091` and describe the interaction.
+- [x] 8. Verify desktop/mobile render, no horizontal scroll, clean console, and dog-card expansion.

@@ -1,0 +1,4 @@
+.playwright-mcp/
+dog-port-*.png
+figma-*.png
+.DS_Store

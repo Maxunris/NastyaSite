@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Дог порт фест</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="festival-page" aria-label="Дог порт фест">
+      <div class="festival-page__artboard">
+        <img
+          class="festival-page__image"
+          src="assets/images/figma-final/site-full.png"
+          width="1440"
+          height="7859"
+          alt="Дог порт фест. Фестиваль-пристройство собак из приюта Догпорт, 20-21 июня с 12 до 19 на веранде Даниловского рынка."
+        />
+
+        <nav class="festival-page__hotspots" aria-label="Навигация по странице">
+          <a class="hotspot hotspot--dogs" href="#dogs">Собаки</a>
+          <a class="hotspot hotspot--partners" href="#partners">Партнеры</a>
+          <a class="hotspot hotspot--market" href="#market">Маркет</a>
+          <a class="hotspot hotspot--shelter" href="#shelter">О приюте</a>
+          <a class="hotspot hotspot--faq" href="#faq">Вопросы</a>
+          <a class="hotspot hotspot--contacts" href="#contacts">Контакты</a>
+        </nav>
+
+        <button class="hotspot hotspot--klepa" type="button" data-dog="klepa">Открыть карточку Клепы</button>
+        <button class="hotspot hotspot--belka" type="button" data-dog="belka">Открыть карточку Белки</button>
+        <button class="hotspot hotspot--tolik" type="button" data-dog="tolik">Открыть карточку Толика</button>
+        <button class="hotspot hotspot--persey" type="button" data-dog="persey">Открыть карточку Персея</button>
+
+        <a class="hotspot hotspot--menu-dogs" href="#dogs">Собаки, которые ищут дом</a>
+        <a class="hotspot hotspot--menu-activities" href="#activities">Активности от партнеров</a>
+        <a class="hotspot hotspot--menu-market" href="#market">Маркет брендов</a>
+        <a class="hotspot hotspot--menu-shelter" href="#shelter">О приюте Догпорт</a>
+        <a class="hotspot hotspot--menu-djs" href="#djs">Диджеи</a>
+        <a class="hotspot hotspot--menu-faq" href="#faq">Частые вопросы</a>
+
+        <button class="hotspot hotspot--cards-prev" type="button" data-info="Предыдущие карточки собак пока не добавлены в выгрузку.">Предыдущие карточки собак</button>
+        <button class="hotspot hotspot--cards-next" type="button" data-info="Следующие карточки собак пока не добавлены в выгрузку.">Следующие карточки собак</button>
+
+        <button class="hotspot hotspot--activity-1" type="button" data-info="Моментальная лотерея от «Хвост Ньюс».">Моментальная лотерея</button>
+        <button class="hotspot hotspot--activity-2" type="button" data-info="Подарки для новых владельцев собак.">Подарки для новых владельцев</button>
+        <button class="hotspot hotspot--activity-3" type="button" data-info="Лекция от эксперта «Хвост Ньюс».">Лекция от эксперта</button>
+        <button class="hotspot hotspot--activity-4" type="button" data-info="Бесплатные консультации с кинологом.">Консультации с кинологом</button>
+        <button class="hotspot hotspot--activity-5" type="button" data-info="Фотозона фестиваля.">Фотозона</button>
+        <button class="hotspot hotspot--activity-6" type="button" data-info="Айс-бар с паштетом в игрушках Mr.Kranch для собак.">Айс-бар для собак</button>
+
+        <button class="hotspot hotspot--partners-row" type="button" data-info="Партнеры фестиваля: Award, Mr.Kranch, Мнямс, Iv San Bernard и Craftia.">Партнеры фестиваля</button>
+        <button class="hotspot hotspot--market-logos" type="button" data-info="Маркет локальных брендов для собак.">Маркет локальных брендов</button>
+        <button class="hotspot hotspot--shelter-site" type="button" data-info="Ссылка на сайт приюта не указана в переданных ассетах.">Сайт приюта</button>
+
+        <button class="hotspot hotspot--faq-1" type="button" data-info="Конечно! Наш фестиваль семейное событие, где будет интересно и взрослым, и детям.">Можно ли прийти на фестиваль с детьми?</button>
+        <button class="hotspot hotspot--faq-2" type="button" data-info="Да, вы можете прийти со своим питомцем, если он социализирован и не агрессивен к другим собакам и людям.">Я могу взять с собой свою собаку?</button>
+        <button class="hotspot hotspot--faq-3" type="button" data-info="Паспорт и небольшой рассказ о себе. Если все совпадет с животным, понадобится написать заявление питомца.">Какие документы нужны для усыновления?</button>
+        <button class="hotspot hotspot--faq-4" type="button" data-info="Да. В программе лекции от профессиональных кинологов, ветеринаров и зоопсихологов.">Будут ли на фестивале бесплатные консультации?</button>
+        <button class="hotspot hotspot--faq-5" type="button" data-info="Можно стать волонтером, сделать пожертвование или купить приятные и полезные вещи на маркете.">Как поддержать приют?</button>
+        <button class="hotspot hotspot--faq-6" type="button" data-info="Присылайте вопросы и предложения в Telegram: @anastasia_sabanina.">Как стать волонтером или партнером?</button>
+
+        <button class="hotspot hotspot--contact-1" type="button" data-info="Telegram-канал приюта: ссылка не указана в макете.">Telegram-канал приюта</button>
+        <button class="hotspot hotspot--contact-2" type="button" data-info="Сайт приюта: ссылка не указана в макете.">Сайт приюта</button>
+        <button class="hotspot hotspot--contact-3" type="button" data-info="Telegram-канал рынка: ссылка не указана в макете.">Telegram-канал рынка</button>
+        <button class="hotspot hotspot--contact-4" type="button" data-info="Telegram-канал Хвост Ньюс: ссылка не указана в макете.">Telegram-канал Хвост Ньюс</button>
+
+        <span id="dogs" class="anchor anchor--dogs"></span>
+        <span id="activities" class="anchor anchor--activities"></span>
+        <span id="partners" class="anchor anchor--partners"></span>
+        <span id="market" class="anchor anchor--market"></span>
+        <span id="shelter" class="anchor anchor--shelter"></span>
+        <span id="faq" class="anchor anchor--faq"></span>
+        <span id="djs" class="anchor anchor--djs"></span>
+        <span id="contacts" class="anchor anchor--contacts"></span>
+      </div>
+    </main>
+
+    <dialog class="dog-modal" aria-label="Информация о собаке">
+      <button class="dog-modal__close" type="button" aria-label="Закрыть">×</button>
+      <img class="dog-modal__image" alt="" />
+    </dialog>
+
+    <dialog class="info-modal" aria-label="Информация">
+      <button class="info-modal__close" type="button" aria-label="Закрыть">×</button>
+      <p class="info-modal__text"></p>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
