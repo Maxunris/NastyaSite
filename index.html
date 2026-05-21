@@ -43,7 +43,12 @@
         <button class="hotspot hotspot--cards-prev" type="button" data-carousel="prev">Предыдущая собака</button>
         <button class="hotspot hotspot--cards-next" type="button" data-carousel="next">Следующая собака</button>
 
-        <button class="hotspot hotspot--partners-row" type="button" data-info="Партнеры фестиваля: Award, Mr.Kranch, Мнямс, Iv San Bernard и Craftia.">Партнеры фестиваля</button>
+        <a class="hotspot partner-link hotspot--partner-award" href="https://vk.ru/award" target="_blank" rel="noopener noreferrer">Award</a>
+        <a class="hotspot partner-link hotspot--partner-mrkranch" href="https://vk.com/mrkranch" target="_blank" rel="noopener noreferrer">Mr.Kranch</a>
+        <a class="hotspot partner-link hotspot--partner-mnyams" href="https://vk.com/mnyams" target="_blank" rel="noopener noreferrer">Мнямс</a>
+        <a class="hotspot partner-link hotspot--partner-ivsanbernard" href="https://vk.com/ivsanbernardrus_official" target="_blank" rel="noopener noreferrer">Iv San Bernard</a>
+        <a class="hotspot partner-link hotspot--partner-craftia" href="https://vk.com/craftia" target="_blank" rel="noopener noreferrer">Craftia</a>
+        <a class="hotspot partner-link hotspot--hvost-logo" href="https://t.me/hvost_news" target="_blank" rel="noopener noreferrer">Хвост Ньюс</a>
         <button class="hotspot hotspot--market-logos" type="button" data-info="Маркет локальных брендов для собак.">Маркет локальных брендов</button>
         <a class="hotspot hotspot--shelter-site" href="https://dogport.ru/" target="_blank" rel="noopener noreferrer">Сайт приюта</a>
 
@@ -117,7 +122,7 @@
         <button class="hotspot hotspot--contact-1" type="button" data-info="Telegram-канал приюта: ссылка не указана в макете.">Telegram-канал приюта</button>
         <a class="hotspot hotspot--contact-2" href="https://dogport.ru/" target="_blank" rel="noopener noreferrer">Сайт приюта</a>
         <button class="hotspot hotspot--contact-3" type="button" data-info="Telegram-канал рынка: ссылка не указана в макете.">Telegram-канал рынка</button>
-        <button class="hotspot hotspot--contact-4" type="button" data-info="Telegram-канал Хвост Ньюс: ссылка не указана в макете.">Telegram-канал Хвост Ньюс</button>
+        <a class="hotspot hotspot--contact-4" href="https://t.me/hvost_news" target="_blank" rel="noopener noreferrer">Telegram-канал Хвост Ньюс</a>
 
         <span id="dogs" class="anchor anchor--dogs"></span>
         <span id="activities" class="anchor anchor--activities"></span>
@@ -170,5 +175,16 @@
     </dialog>
 
     <script src="script.js?v=faq-rework-1"></script>
+    <!-- Cloudflare Web Analytics -->
+    <script>
+      if (["dogportfest.ru", "www.dogportfest.ru"].includes(window.location.hostname)) {
+        const analytics = document.createElement("script");
+        analytics.defer = true;
+        analytics.src = "https://static.cloudflareinsights.com/beacon.min.js";
+        analytics.dataset.cfBeacon = '{"token":"aeb0472244f34e89af4e23414a997a1c"}';
+        document.head.appendChild(analytics);
+      }
+    </script>
+    <!-- End Cloudflare Web Analytics -->
   </body>
 </html>

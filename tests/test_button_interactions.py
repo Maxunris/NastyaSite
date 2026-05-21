@@ -36,7 +36,12 @@ CONTROL_TARGETS = {
     ".hotspot--persey": (245, 280, 375, 420),
     ".hotspot--cards-prev": (75, 85, 58, 68),
     ".hotspot--cards-next": (75, 85, 58, 68),
-    ".hotspot--partners-row": (1180, 1260, 110, 135),
+    ".hotspot--partner-award": (190, 205, 80, 90),
+    ".hotspot--partner-mrkranch": (165, 180, 110, 120),
+    ".hotspot--partner-mnyams": (185, 200, 135, 145),
+    ".hotspot--partner-ivsanbernard": (240, 255, 70, 80),
+    ".hotspot--partner-craftia": (245, 260, 95, 105),
+    ".hotspot--hvost-logo": (320, 335, 180, 190),
     ".hotspot--market-logos": (920, 955, 300, 330),
     ".hotspot--shelter-site": (240, 300, 40, 70),
 }
@@ -55,7 +60,12 @@ POSITION_TARGETS = {
     ".hotspot--menu-shelter": (488, 492, 1204, 1212),
     ".hotspot--menu-djs": (623, 627, 1283, 1291),
     ".hotspot--menu-faq": (522, 526, 1354, 1362),
-    ".hotspot--partners-row": (110, 120, 4145, 4165),
+    ".hotspot--partner-award": (120, 130, 4148, 4168),
+    ".hotspot--partner-mrkranch": (410, 420, 4130, 4150),
+    ".hotspot--partner-mnyams": (635, 645, 4110, 4130),
+    ".hotspot--partner-ivsanbernard": (860, 870, 4150, 4170),
+    ".hotspot--partner-craftia": (1125, 1135, 4140, 4160),
+    ".hotspot--hvost-logo": (555, 565, 3425, 3445),
     ".hotspot--market-logos": (250, 260, 4695, 4710),
     ".hotspot--shelter-site": (575, 585, 5695, 5705),
 }
@@ -249,11 +259,9 @@ def test_every_hotspot_click_behavior_and_dialog_motion(browser):
         page.wait_for_function("!document.querySelector('.dog-modal').open", timeout=1000)
 
     for selector in [
-        ".hotspot--partners-row",
         ".hotspot--market-logos",
         ".hotspot--contact-1",
         ".hotspot--contact-3",
-        ".hotspot--contact-4",
     ]:
         page.locator(selector).click()
         page.wait_for_selector(".info-modal[open]")
@@ -264,10 +272,28 @@ def test_every_hotspot_click_behavior_and_dialog_motion(browser):
         page.locator(".info-modal__close").click()
         page.wait_for_function("!document.querySelector('.info-modal').open", timeout=1000)
 
-    for selector in [".hotspot--shelter-site", ".hotspot--contact-2"]:
-        assert page.locator(selector).get_attribute("href") == "https://dogport.ru/"
+    external_links = {
+        ".hotspot--partner-award": "https://vk.ru/award",
+        ".hotspot--partner-mrkranch": "https://vk.com/mrkranch",
+        ".hotspot--partner-mnyams": "https://vk.com/mnyams",
+        ".hotspot--partner-ivsanbernard": "https://vk.com/ivsanbernardrus_official",
+        ".hotspot--partner-craftia": "https://vk.com/craftia",
+        ".hotspot--hvost-logo": "https://t.me/hvost_news",
+        ".hotspot--shelter-site": "https://dogport.ru/",
+        ".hotspot--contact-2": "https://dogport.ru/",
+        ".hotspot--contact-4": "https://t.me/hvost_news",
+    }
+
+    for selector, href in external_links.items():
+        assert page.locator(selector).get_attribute("href") == href
         assert page.locator(selector).get_attribute("target") == "_blank"
         assert "noopener" in page.locator(selector).get_attribute("rel")
+
+    for selector in external_links:
+        page.locator(selector).hover()
+        page.wait_for_timeout(280)
+        after = pseudo_after(page, selector)
+        assert after["opacity"] >= 0.9, f"{selector} does not reveal link hover feedback"
 
     for index, selector in enumerate([
         ".faq-item:nth-child(1) .faq-item__button",
@@ -284,7 +310,7 @@ def test_every_hotspot_click_behavior_and_dialog_motion(browser):
         page.locator(selector).click()
         assert page.locator(selector).get_attribute("aria-expanded") == "false"
 
-    page.locator(".hotspot--partners-row").click()
+    page.locator(".hotspot--market-logos").click()
     page.wait_for_selector(".info-modal[open]")
     page.keyboard.press("Escape")
     page.wait_for_function("!document.querySelector('.info-modal').open", timeout=1000)
