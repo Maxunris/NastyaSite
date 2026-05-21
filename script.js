@@ -44,6 +44,7 @@ const faqAnswers = [
 ];
 let activeDogIndex = 0;
 let openFaqIndex = null;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 Object.values(dogCards).forEach((dog) => {
   const image = new Image();
@@ -77,9 +78,43 @@ function openDogCard(dogKey) {
 
   modalImage.src = dog.src;
   modalImage.alt = dog.alt;
+  modal.classList.remove('is-closing');
   return modalImage.decode().catch(() => {}).then(() => {
     modal.showModal();
   });
+}
+
+function closeDialog(dialog) {
+  if (!dialog?.open) {
+    return;
+  }
+
+  if (prefersReducedMotion.matches) {
+    dialog.close();
+    return;
+  }
+
+  if (dialog.classList.contains('is-closing')) {
+    return;
+  }
+
+  let didClose = false;
+  const finish = () => {
+    if (didClose) {
+      return;
+    }
+
+    didClose = true;
+    dialog.classList.remove('is-closing');
+    dialog.close();
+  };
+
+  dialog.classList.add('is-closing');
+  const fallback = window.setTimeout(finish, 260);
+  dialog.addEventListener('animationend', () => {
+    window.clearTimeout(fallback);
+    finish();
+  }, { once: true });
 }
 
 dogButtons.forEach((button) => {
@@ -104,6 +139,7 @@ document.querySelectorAll('[data-info]').forEach((button) => {
     }
 
     infoText.textContent = button.dataset.info || '';
+    infoModal.classList.remove('is-closing');
     infoModal.showModal();
   });
 });
@@ -148,23 +184,33 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 });
 
 closeButton?.addEventListener('click', () => {
-  modal?.close();
+  closeDialog(modal);
 });
 
 infoCloseButton?.addEventListener('click', () => {
-  infoModal?.close();
+  closeDialog(infoModal);
 });
 
 modal?.addEventListener('click', (event) => {
   if (event.target === modal) {
-    modal.close();
+    closeDialog(modal);
   }
 });
 
 infoModal?.addEventListener('click', (event) => {
   if (event.target === infoModal) {
-    infoModal.close();
+    closeDialog(infoModal);
   }
+});
+
+modal?.addEventListener('cancel', (event) => {
+  event.preventDefault();
+  closeDialog(modal);
+});
+
+infoModal?.addEventListener('cancel', (event) => {
+  event.preventDefault();
+  closeDialog(infoModal);
 });
 
 setActiveDog(0, false);

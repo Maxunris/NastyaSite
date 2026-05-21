@@ -16,7 +16,8 @@ python3 -m http.server 8092
 
 - [index.html](/Users/max/MyProjects/NastyaSite/index.html) — страница с точным Figma-экспортом и интерактивными зонами
 - [styles.css](/Users/max/MyProjects/NastyaSite/styles.css) — адаптивное масштабирование без внешних библиотек
-- [script.js](/Users/max/MyProjects/NastyaSite/script.js) — раскрытие карточек собак при клике по собаке в ряду
+- [script.js](/Users/max/MyProjects/NastyaSite/script.js) — карточки собак, FAQ, информационные модалки и плавное закрытие диалогов
+- `tests/test_button_interactions.py` — browser QA для всех hotspot-кнопок, hover/focus/click-состояний и точности зон
 - `assets/images/figma-final/` — последняя выгрузка из `Дог порт фест (2)`
 - `assets/images/figma-final/site-full.png` — основной полный экспорт сайта `1440x7859`
 - `assets/images/figma-final/design-map.png` — широкий Figma-холст с подсказками состояний и раскрытых карточек
@@ -35,7 +36,16 @@ python3 -m http.server 8092
 - [x] Стрелки в блоке собак переключают активную карточку.
 - [x] Плюсы в FAQ раскрывают ответы прямо в блоке FAQ.
 - [x] Hover/focus-анимации подогнаны под видимые элементы: меню получает underline, кнопки/карточки получают контур по форме.
+- [x] Автотест проверяет каждую hotspot-кнопку на desktop/mobile, включая геометрию зоны, hover/focus, click behavior, модалки, FAQ и reduced motion.
 - [x] В проект добавлены все изображения из zip, папки `Дог порт фест (1)` и папки `Дог порт фест (2)`.
+
+## QA
+
+При запущенном локальном сервере на `http://localhost:8092`:
+
+```bash
+python3 -m pytest tests/test_button_interactions.py -q
+```
 
 ## Примечание
 
