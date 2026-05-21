@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Дог порт фест</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=faq-rework-1" />
   </head>
   <body>
     <main class="festival-page" aria-label="Дог порт фест">
@@ -53,12 +53,72 @@
         <button class="hotspot hotspot--market-logos" type="button" data-info="Маркет локальных брендов для собак.">Маркет локальных брендов</button>
         <button class="hotspot hotspot--shelter-site" type="button" data-info="Ссылка на сайт приюта не указана в переданных ассетах.">Сайт приюта</button>
 
-        <button class="hotspot faq-hotspot hotspot--faq-1" type="button" data-faq="0" aria-expanded="false">Можно ли прийти на фестиваль с детьми?</button>
-        <button class="hotspot faq-hotspot hotspot--faq-2" type="button" data-faq="1" aria-expanded="false">Я могу взять с собой свою собаку?</button>
-        <button class="hotspot faq-hotspot hotspot--faq-3" type="button" data-faq="2" aria-expanded="false">Какие документы нужны для усыновления?</button>
-        <button class="hotspot faq-hotspot hotspot--faq-4" type="button" data-faq="3" aria-expanded="false">Будут ли на фестивале бесплатные консультации?</button>
-        <button class="hotspot faq-hotspot hotspot--faq-5" type="button" data-faq="4" aria-expanded="false">Как поддержать приют?</button>
-        <button class="hotspot faq-hotspot hotspot--faq-6" type="button" data-faq="5" aria-expanded="false">Как стать волонтером или партнером?</button>
+        <section class="faq-section" aria-labelledby="faq-title">
+          <img class="faq-section__flower" src="assets/images/figma-final/Layer_1.png" alt="" aria-hidden="true" />
+          <h2 class="faq-section__title" id="faq-title">Частые вопросы</h2>
+
+          <div class="faq-list">
+            <article class="faq-item">
+              <button class="faq-item__button" type="button" data-faq aria-expanded="false" aria-controls="faq-answer-1">
+                <span>Можно ли прийти на фестиваль с детьми?</span>
+                <span class="faq-item__mark" aria-hidden="true"></span>
+              </button>
+              <div class="faq-item__answer" id="faq-answer-1">
+                <p>Конечно! Наш фестиваль - семейное событие, где будет интересно и взрослым, и детям.</p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-item__button" type="button" data-faq aria-expanded="false" aria-controls="faq-answer-2">
+                <span>Я могу взять с собой свою собаку?</span>
+                <span class="faq-item__mark" aria-hidden="true"></span>
+              </button>
+              <div class="faq-item__answer" id="faq-answer-2">
+                <p>Да, вы можете прийти со своим питомцем, если он социализирован и не агрессивен к другим собакам и людям :)</p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-item__button" type="button" data-faq aria-expanded="false" aria-controls="faq-answer-3">
+                <span>Какие документы нужны для усыновления?</span>
+                <span class="faq-item__mark" aria-hidden="true"></span>
+              </button>
+              <div class="faq-item__answer" id="faq-answer-3">
+                <p>Паспорт и небольшой рассказ о себе - где вы живёте, есть ли опыт с животными, кого ожидаете найти. Мы ответим на все вопросы и поможем подобрать идеального питомца.</p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-item__button" type="button" data-faq aria-expanded="false" aria-controls="faq-answer-4">
+                <span>Будут ли на фестивале бесплатные консультации?</span>
+                <span class="faq-item__mark" aria-hidden="true"></span>
+              </button>
+              <div class="faq-item__answer" id="faq-answer-4">
+                <p>Да! В программе лекции от профессиональных кинологов, ветеринаров и зооэкспертов. Оба дня на площадке будет кинолог - вы сможете задать ему любые вопросы.</p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-item__button" type="button" data-faq aria-expanded="false" aria-controls="faq-answer-5">
+                <span>Как поддержать приют, если я сейчас не готов усыновить?</span>
+                <span class="faq-item__mark" aria-hidden="true"></span>
+              </button>
+              <div class="faq-item__answer" id="faq-answer-5">
+                <p>Можно стать волонтёром, сделать пожертвование или купить приятные и полезные вещи на маркете - часть выручки идёт на помощь животным!</p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-item__button" type="button" data-faq aria-expanded="false" aria-controls="faq-answer-6">
+                <span>Что если я хочу стать волонтером/партнером фестиваля?</span>
+                <span class="faq-item__mark" aria-hidden="true"></span>
+              </button>
+              <div class="faq-item__answer" id="faq-answer-6">
+                <p>Отлично! Присылайте свои вопросы и предложения в тг @anastasia_sabanina :)</p>
+              </div>
+            </article>
+          </div>
+        </section>
 
         <button class="hotspot hotspot--contact-1" type="button" data-info="Telegram-канал приюта: ссылка не указана в макете.">Telegram-канал приюта</button>
         <button class="hotspot hotspot--contact-2" type="button" data-info="Сайт приюта: ссылка не указана в макете.">Сайт приюта</button>
@@ -75,7 +135,6 @@
         <span id="contacts" class="anchor anchor--contacts"></span>
 
         <div class="dog-status" aria-live="polite"></div>
-        <div class="faq-panel" aria-live="polite"></div>
       </div>
     </main>
 
@@ -89,6 +148,6 @@
       <p class="info-modal__text"></p>
     </dialog>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=faq-rework-1"></script>
   </body>
 </html>

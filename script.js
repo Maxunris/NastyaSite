@@ -25,7 +25,6 @@ const infoText = document.querySelector('.info-modal__text');
 const infoCloseButton = document.querySelector('.info-modal__close');
 const dogButtons = [...document.querySelectorAll('[data-dog]')];
 const dogStatus = document.querySelector('.dog-status');
-const faqPanel = document.querySelector('.faq-panel');
 const faqButtons = [...document.querySelectorAll('[data-faq]')];
 const dogOrder = ['klepa', 'belka', 'tolik', 'persey'];
 const dogNames = {
@@ -34,16 +33,7 @@ const dogNames = {
   tolik: 'Толик',
   persey: 'Персей',
 };
-const faqAnswers = [
-  'Конечно! Наш фестиваль семейное событие, где будет интересно и взрослым, и детям.',
-  'Да, вы можете прийти со своим питомцем, если он социализирован и не агрессивен к другим собакам и людям.',
-  'Паспорт и небольшой рассказ о себе. Если вы забираете питомца, понадобится написать заявление.',
-  'Да. В программе лекции от профессиональных кинологов, ветеринаров и зоопсихологов.',
-  'Можно стать волонтером, сделать пожертвование или купить приятные и полезные вещи на маркете.',
-  'Отлично! Присылайте вопросы и предложения в Telegram: @anastasia_sabanina.',
-];
 let activeDogIndex = 0;
-let openFaqIndex = null;
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 Object.values(dogCards).forEach((dog) => {
@@ -146,27 +136,9 @@ document.querySelectorAll('[data-info]').forEach((button) => {
 
 faqButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    const index = Number(button.dataset.faq);
-    const isOpen = openFaqIndex === index;
-
-    faqButtons.forEach((faqButton) => {
-      faqButton.classList.remove('is-open');
-      faqButton.setAttribute('aria-expanded', 'false');
-    });
-
-    if (!faqPanel || isOpen) {
-      openFaqIndex = null;
-      faqPanel?.classList.remove('is-open');
-      return;
-    }
-
-    const top = button.offsetTop + button.offsetHeight + 6;
-    openFaqIndex = index;
-    button.classList.add('is-open');
-    button.setAttribute('aria-expanded', 'true');
-    faqPanel.textContent = faqAnswers[index] || '';
-    faqPanel.style.top = `${top}px`;
-    faqPanel.classList.add('is-open');
+    const item = button.closest('.faq-item');
+    const isOpen = item?.classList.toggle('is-open') || false;
+    button.setAttribute('aria-expanded', String(isOpen));
   });
 });
 

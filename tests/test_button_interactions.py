@@ -45,12 +45,6 @@ CONTROL_TARGETS = {
     ".hotspot--partners-row": (1180, 1260, 110, 135),
     ".hotspot--market-logos": (920, 955, 300, 330),
     ".hotspot--shelter-site": (240, 300, 40, 70),
-    ".hotspot--faq-1": (780, 835, 30, 48),
-    ".hotspot--faq-2": (780, 835, 30, 48),
-    ".hotspot--faq-3": (780, 835, 30, 48),
-    ".hotspot--faq-4": (780, 835, 30, 48),
-    ".hotspot--faq-5": (780, 835, 30, 48),
-    ".hotspot--faq-6": (780, 835, 30, 48),
 }
 
 
@@ -289,17 +283,18 @@ def test_every_hotspot_click_behavior_and_dialog_motion(browser):
         page.locator(".info-modal__close").click()
         page.wait_for_function("!document.querySelector('.info-modal').open", timeout=1000)
 
-    for selector in [
-        ".hotspot--faq-1",
-        ".hotspot--faq-2",
-        ".hotspot--faq-3",
-        ".hotspot--faq-4",
-        ".hotspot--faq-5",
-        ".hotspot--faq-6",
-    ]:
+    for index, selector in enumerate([
+        ".faq-item:nth-child(1) .faq-item__button",
+        ".faq-item:nth-child(2) .faq-item__button",
+        ".faq-item:nth-child(3) .faq-item__button",
+        ".faq-item:nth-child(4) .faq-item__button",
+        ".faq-item:nth-child(5) .faq-item__button",
+        ".faq-item:nth-child(6) .faq-item__button",
+    ], start=1):
         page.locator(selector).click()
         assert page.locator(selector).get_attribute("aria-expanded") == "true"
-        assert page.locator(".faq-panel.is-open").is_visible()
+        page.wait_for_timeout(320)
+        assert page.locator(f".faq-item:nth-child({index}).is-open .faq-item__answer").is_visible()
         page.locator(selector).click()
         assert page.locator(selector).get_attribute("aria-expanded") == "false"
 
@@ -308,6 +303,32 @@ def test_every_hotspot_click_behavior_and_dialog_motion(browser):
     page.keyboard.press("Escape")
     page.wait_for_function("!document.querySelector('.info-modal').open", timeout=1000)
 
+    assert not errors
+    page.close()
+
+
+def test_faq_accordion_matches_collapsed_and_expanded_behavior(browser):
+    page, errors = new_page(browser)
+
+    assert page.locator(".faq-section").is_visible()
+    assert page.locator(".faq-item").count() == 6
+    assert page.locator(".faq-panel").count() == 0
+
+    for button in page.locator(".faq-item__button").all():
+        assert button.get_attribute("aria-expanded") == "false"
+
+    page.locator(".faq-item__button").first.hover()
+    mark_color = page.locator(".faq-item__mark").first.evaluate(
+        "el => getComputedStyle(el, '::before').backgroundColor"
+    )
+    assert mark_color == "rgb(0, 139, 21)"
+
+    for button in page.locator(".faq-item__button").all():
+        button.click()
+        assert button.get_attribute("aria-expanded") == "true"
+
+    assert page.locator(".faq-item.is-open").count() == 6
+    assert page.locator(".faq-item.is-open .faq-item__answer p").count() == 6
     assert not errors
     page.close()
 
