@@ -36,12 +36,6 @@ CONTROL_TARGETS = {
     ".hotspot--persey": (245, 280, 375, 420),
     ".hotspot--cards-prev": (50, 80, 90, 125),
     ".hotspot--cards-next": (50, 80, 90, 125),
-    ".hotspot--activity-1": (380, 420, 190, 215),
-    ".hotspot--activity-2": (380, 420, 190, 215),
-    ".hotspot--activity-3": (380, 420, 190, 215),
-    ".hotspot--activity-4": (380, 420, 190, 215),
-    ".hotspot--activity-5": (380, 420, 190, 215),
-    ".hotspot--activity-6": (380, 420, 190, 215),
     ".hotspot--partners-row": (1180, 1260, 110, 135),
     ".hotspot--market-logos": (920, 955, 300, 330),
     ".hotspot--shelter-site": (240, 300, 40, 70),
@@ -61,12 +55,6 @@ POSITION_TARGETS = {
     ".hotspot--menu-shelter": (488, 492, 1218, 1226),
     ".hotspot--menu-djs": (623, 627, 1298, 1304),
     ".hotspot--menu-faq": (522, 526, 1368, 1376),
-    ".hotspot--activity-1": (80, 95, 3650, 3670),
-    ".hotspot--activity-2": (515, 530, 3650, 3670),
-    ".hotspot--activity-3": (950, 965, 3650, 3670),
-    ".hotspot--activity-4": (80, 95, 3870, 3890),
-    ".hotspot--activity-5": (515, 530, 3870, 3890),
-    ".hotspot--activity-6": (950, 965, 3870, 3890),
     ".hotspot--partners-row": (110, 120, 4145, 4165),
     ".hotspot--market-logos": (250, 260, 4695, 4710),
     ".hotspot--shelter-site": (575, 585, 5695, 5705),
@@ -260,17 +248,9 @@ def test_every_hotspot_click_behavior_and_dialog_motion(browser):
         page.wait_for_function("!document.querySelector('.dog-modal').open", timeout=1000)
 
     for selector in [
-        ".hotspot--activity-1",
-        ".hotspot--activity-2",
-        ".hotspot--activity-3",
-        ".hotspot--activity-4",
-        ".hotspot--activity-5",
-        ".hotspot--activity-6",
         ".hotspot--partners-row",
         ".hotspot--market-logos",
-        ".hotspot--shelter-site",
         ".hotspot--contact-1",
-        ".hotspot--contact-2",
         ".hotspot--contact-3",
         ".hotspot--contact-4",
     ]:
@@ -282,6 +262,11 @@ def test_every_hotspot_click_behavior_and_dialog_motion(browser):
         assert close_focus["outlineStyle"] != "none"
         page.locator(".info-modal__close").click()
         page.wait_for_function("!document.querySelector('.info-modal').open", timeout=1000)
+
+    for selector in [".hotspot--shelter-site", ".hotspot--contact-2"]:
+        assert page.locator(selector).get_attribute("href") == "https://dogport.ru/"
+        assert page.locator(selector).get_attribute("target") == "_blank"
+        assert "noopener" in page.locator(selector).get_attribute("rel")
 
     for index, selector in enumerate([
         ".faq-item:nth-child(1) .faq-item__button",
@@ -298,7 +283,7 @@ def test_every_hotspot_click_behavior_and_dialog_motion(browser):
         page.locator(selector).click()
         assert page.locator(selector).get_attribute("aria-expanded") == "false"
 
-    page.locator(".hotspot--activity-1").click()
+    page.locator(".hotspot--partners-row").click()
     page.wait_for_selector(".info-modal[open]")
     page.keyboard.press("Escape")
     page.wait_for_function("!document.querySelector('.info-modal').open", timeout=1000)
