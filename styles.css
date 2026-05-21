@@ -267,54 +267,80 @@ a {
   transform: scale(1);
 }
 
+.menu-overlay-bg {
+  position: absolute;
+  z-index: 1;
+  left: 20%;
+  top: 12.15%;
+  width: 60%;
+  height: 6.25%;
+  background: #fff;
+  pointer-events: none;
+}
+
 .hotspot--menu-dogs,
 .hotspot--menu-activities,
 .hotspot--menu-market,
 .hotspot--menu-shelter,
 .hotspot--menu-djs,
 .hotspot--menu-faq {
-  --ambient-opacity: 0.45;
-  --ambient-inset: -12px;
-  --hover-transform: translate3d(0, -2px, 0);
+  --ambient-opacity: 0;
+  --menu-pill-x: 0px;
+  --hover-transform: translateZ(0);
   --active-transform: translate3d(0, 0, 0) scale(0.99);
   --feedback-hover-transform: scale(1);
-  height: 0.58%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 0.94%;
   border-radius: 999px;
+  color: var(--green);
+  font: 900 clamp(15px, 3vw, 43px) / 1 Arial, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  isolation: isolate;
 }
 
 .hotspot--menu-dogs {
   left: 25.83%;
-  top: 12.75%;
+  top: 12.57%;
   width: 48.4%;
 }
 
 .hotspot--menu-activities {
   left: 24.58%;
-  top: 13.65%;
+  top: 13.47%;
   width: 51.12%;
 }
 
 .hotspot--menu-market {
+  --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 36.88%;
-  top: 14.65%;
+  top: 14.47%;
   width: 26.4%;
 }
 
 .hotspot--menu-shelter {
+  --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 33.89%;
-  top: 15.55%;
+  top: 15.37%;
   width: 32.1%;
 }
 
 .hotspot--menu-djs {
+  --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 43.4%;
-  top: 16.55%;
+  top: 16.37%;
   width: 13.13%;
 }
 
 .hotspot--menu-faq {
+  --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 36.25%;
-  top: 17.45%;
+  top: 17.27%;
   width: 27.3%;
 }
 
@@ -324,16 +350,30 @@ a {
 .hotspot--menu-shelter::after,
 .hotspot--menu-djs::after,
 .hotspot--menu-faq::after {
-  inset: -3px -10px;
+  z-index: -1;
+  inset: var(--menu-mask-top, 0) calc(-1 * var(--menu-pill-x)) 0;
   width: auto;
   height: auto;
-  border: 3px solid #0b940e;
+  border: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgb(11 148 14 / 0.14), rgb(11 148 14 / 0.04));
-  box-shadow:
-    0 10px 22px rgb(11 148 14 / 0.22),
-    inset 0 1px 0 rgb(255 255 255 / 0.28);
-  transform: scale(0.985);
+  background: var(--green);
+  box-shadow: none;
+  transform: scaleX(0.92);
+}
+
+.hotspot--menu-dogs:hover,
+.hotspot--menu-activities:hover,
+.hotspot--menu-market:hover,
+.hotspot--menu-shelter:hover,
+.hotspot--menu-djs:hover,
+.hotspot--menu-faq:hover,
+.hotspot--menu-dogs:focus-visible,
+.hotspot--menu-activities:focus-visible,
+.hotspot--menu-market:focus-visible,
+.hotspot--menu-shelter:focus-visible,
+.hotspot--menu-djs:focus-visible,
+.hotspot--menu-faq:focus-visible {
+  color: #fff;
 }
 
 .hotspot--cards-prev,

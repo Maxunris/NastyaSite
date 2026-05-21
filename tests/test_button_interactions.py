@@ -49,12 +49,12 @@ POSITION_TARGETS = {
     ".hotspot--shelter": (822, 826, 60, 64),
     ".hotspot--faq": (965, 969, 60, 64),
     ".hotspot--contacts": (1105, 1109, 60, 64),
-    ".hotspot--menu-dogs": (370, 374, 998, 1006),
-    ".hotspot--menu-activities": (352, 356, 1068, 1076),
-    ".hotspot--menu-market": (529, 533, 1146, 1154),
-    ".hotspot--menu-shelter": (488, 492, 1218, 1226),
-    ".hotspot--menu-djs": (623, 627, 1298, 1304),
-    ".hotspot--menu-faq": (522, 526, 1368, 1376),
+    ".hotspot--menu-dogs": (370, 374, 984, 992),
+    ".hotspot--menu-activities": (352, 356, 1054, 1062),
+    ".hotspot--menu-market": (529, 533, 1132, 1140),
+    ".hotspot--menu-shelter": (488, 492, 1204, 1212),
+    ".hotspot--menu-djs": (623, 627, 1283, 1291),
+    ".hotspot--menu-faq": (522, 526, 1354, 1362),
     ".hotspot--partners-row": (110, 120, 4145, 4165),
     ".hotspot--market-logos": (250, 260, 4695, 4710),
     ".hotspot--shelter-site": (575, 585, 5695, 5705),
@@ -177,7 +177,8 @@ def test_every_hotspot_has_precise_geometry_and_hover_feedback(browser):
     for selector, (min_width, max_width) in TEXT_TARGETS.items():
         rect = normalized_rect(page, selector)
         assert_range(rect["width"], min_width, max_width, f"{selector} width")
-        assert rect["height"] <= 52, f"{selector} text target is too tall: {rect['height']:.1f}"
+        max_height = 82 if "menu" in selector else 52
+        assert rect["height"] <= max_height, f"{selector} text target is too tall: {rect['height']:.1f}"
 
     for selector, (min_width, max_width, min_height, max_height) in CONTROL_TARGETS.items():
         rect = normalized_rect(page, selector)
