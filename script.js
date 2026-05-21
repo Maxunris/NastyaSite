@@ -26,6 +26,7 @@ const infoCloseButton = document.querySelector('.info-modal__close');
 const dogButtons = [...document.querySelectorAll('[data-dog]')];
 const dogStatus = document.querySelector('.dog-status');
 const faqButtons = [...document.querySelectorAll('[data-faq]')];
+const scrollTopButton = document.querySelector('.scroll-top');
 const dogOrder = ['klepa', 'belka', 'tolik', 'persey'];
 const dogNames = {
   klepa: 'Клепа',
@@ -184,5 +185,19 @@ infoModal?.addEventListener('cancel', (event) => {
   event.preventDefault();
   closeDialog(infoModal);
 });
+
+function updateScrollTopButton() {
+  scrollTopButton?.classList.toggle('is-visible', window.scrollY > 650);
+}
+
+scrollTopButton?.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: prefersReducedMotion.matches ? 'auto' : 'smooth',
+  });
+});
+
+window.addEventListener('scroll', updateScrollTopButton, { passive: true });
+updateScrollTopButton();
 
 setActiveDog(0, false);

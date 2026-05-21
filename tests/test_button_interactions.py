@@ -36,12 +36,12 @@ CONTROL_TARGETS = {
     ".hotspot--persey": (245, 280, 375, 420),
     ".hotspot--cards-prev": (75, 85, 58, 68),
     ".hotspot--cards-next": (75, 85, 58, 68),
-    ".hotspot--partner-award": (190, 205, 80, 90),
-    ".hotspot--partner-mrkranch": (165, 180, 110, 120),
-    ".hotspot--partner-mnyams": (185, 200, 135, 145),
-    ".hotspot--partner-ivsanbernard": (240, 255, 70, 80),
-    ".hotspot--partner-craftia": (245, 260, 95, 105),
-    ".hotspot--hvost-logo": (320, 335, 180, 190),
+    ".hotspot--partner-award": (185, 200, 60, 72),
+    ".hotspot--partner-mrkranch": (170, 182, 95, 106),
+    ".hotspot--partner-mnyams": (172, 184, 118, 128),
+    ".hotspot--partner-ivsanbernard": (240, 255, 52, 64),
+    ".hotspot--partner-craftia": (245, 258, 88, 100),
+    ".hotspot--hvost-logo": (345, 355, 218, 230),
     ".hotspot--market-logos": (920, 955, 300, 330),
     ".hotspot--shelter-site": (240, 300, 40, 70),
 }
@@ -60,12 +60,12 @@ POSITION_TARGETS = {
     ".hotspot--menu-shelter": (488, 492, 1204, 1212),
     ".hotspot--menu-djs": (623, 627, 1283, 1291),
     ".hotspot--menu-faq": (522, 526, 1354, 1362),
-    ".hotspot--partner-award": (120, 130, 4148, 4168),
-    ".hotspot--partner-mrkranch": (410, 420, 4130, 4150),
-    ".hotspot--partner-mnyams": (635, 645, 4110, 4130),
-    ".hotspot--partner-ivsanbernard": (860, 870, 4150, 4170),
-    ".hotspot--partner-craftia": (1125, 1135, 4140, 4160),
-    ".hotspot--hvost-logo": (555, 565, 3425, 3445),
+    ".hotspot--partner-award": (122, 132, 4165, 4180),
+    ".hotspot--partner-mrkranch": (403, 413, 4145, 4160),
+    ".hotspot--partner-mnyams": (638, 648, 4118, 4132),
+    ".hotspot--partner-ivsanbernard": (856, 866, 4168, 4182),
+    ".hotspot--partner-craftia": (1126, 1136, 4145, 4160),
+    ".hotspot--hvost-logo": (540, 550, 3383, 3396),
     ".hotspot--market-logos": (250, 260, 4695, 4710),
     ".hotspot--shelter-site": (575, 585, 5695, 5705),
 }
@@ -376,6 +376,40 @@ def test_reduced_motion_keeps_dialog_controls_immediate_and_usable(browser):
         "el => getComputedStyle(el, '::after').transitionDuration"
     )
     assert duration in ("0.001s", "1ms")
+
+    assert not errors
+
+
+def test_scroll_top_button_follows_page_and_returns_to_top(browser):
+    page, errors = new_page(browser)
+
+    assert page.locator(".scroll-top").evaluate("el => !el.classList.contains('is-visible')")
+
+    page.evaluate("window.scrollTo(0, 1800)")
+    page.wait_for_function("document.querySelector('.scroll-top').classList.contains('is-visible')")
+    assert page.locator(".scroll-top img").get_attribute("src") == "assets/images/figma-final/scroll-top-arrow.png"
+
+    page.locator(".scroll-top").hover()
+    button = page.locator(".scroll-top").evaluate(
+        """el => {
+            const r = el.getBoundingClientRect();
+            return {
+                position: getComputedStyle(el).position,
+                width: r.width,
+                height: r.height,
+                rightGap: window.innerWidth - r.right,
+                bottomGap: window.innerHeight - r.bottom
+            };
+        }"""
+    )
+    assert button["position"] == "fixed"
+    assert 56 <= button["width"] <= 86
+    assert 56 <= button["height"] <= 86
+    assert 12 <= button["rightGap"] <= 52
+    assert 12 <= button["bottomGap"] <= 52
+
+    page.locator(".scroll-top").click()
+    page.wait_for_function("window.scrollY < 5", timeout=1800)
 
     assert not errors
     page.close()
