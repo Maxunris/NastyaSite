@@ -305,12 +305,14 @@ a {
 }
 
 .hotspot--menu-dogs {
+  --menu-pill-x: clamp(28px, 3.1vw, 46px);
   left: 25.83%;
   top: 12.57%;
   width: 48.4%;
 }
 
 .hotspot--menu-activities {
+  --menu-pill-x: clamp(28px, 3.1vw, 46px);
   left: 24.58%;
   top: 13.47%;
   width: 51.12%;
@@ -606,7 +608,6 @@ a {
   right: 8.6%;
   width: 13.1%;
   height: auto;
-  filter: hue-rotate(78deg) saturate(2.4) brightness(0.68);
   pointer-events: none;
 }
 
