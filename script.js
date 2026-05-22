@@ -17,6 +17,25 @@ const dogCards = {
   },
 };
 
+const brandCards = {
+  'derzhis-menya': {
+    src: 'assets/images/figma-final/brand-cards/derzhis-menya.png',
+    alt: 'Карточка бренда Держись меня.',
+  },
+  sobakin: {
+    src: 'assets/images/figma-final/brand-cards/sobakin.png',
+    alt: 'Карточка бренда Собакин.',
+  },
+  'shaggy-dog': {
+    src: 'assets/images/figma-final/brand-cards/shaggy-dog.png',
+    alt: 'Карточка бренда Shaggy Dog.',
+  },
+  'hug-me-dog': {
+    src: 'assets/images/figma-final/brand-cards/hug-me-dog.png',
+    alt: 'Карточка бренда Hug Me Dog.',
+  },
+};
+
 const modal = document.querySelector('.dog-modal');
 const modalImage = document.querySelector('.dog-modal__image');
 const closeButton = document.querySelector('.dog-modal__close');
@@ -24,6 +43,7 @@ const infoModal = document.querySelector('.info-modal');
 const infoText = document.querySelector('.info-modal__text');
 const infoCloseButton = document.querySelector('.info-modal__close');
 const dogButtons = [...document.querySelectorAll('[data-dog]')];
+const brandButtons = [...document.querySelectorAll('[data-brand]')];
 const dogStatus = document.querySelector('.dog-status');
 const faqButtons = [...document.querySelectorAll('[data-faq]')];
 const scrollTopButton = document.querySelector('.scroll-top');
@@ -37,9 +57,9 @@ const dogNames = {
 let activeDogIndex = 0;
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-Object.values(dogCards).forEach((dog) => {
+Object.values({ ...dogCards, ...brandCards }).forEach((card) => {
   const image = new Image();
-  image.src = dog.src;
+  image.src = card.src;
 });
 
 function setActiveDog(index, shouldAnnounce = true) {
@@ -60,19 +80,25 @@ function setActiveDog(index, shouldAnnounce = true) {
   }
 }
 
-function openDogCard(dogKey) {
-  const dog = dogCards[dogKey];
-
-  if (!dog || !modal || !modalImage) {
+function openImageCard(card) {
+  if (!card || !modal || !modalImage) {
     return Promise.resolve();
   }
 
-  modalImage.src = dog.src;
-  modalImage.alt = dog.alt;
+  modalImage.src = card.src;
+  modalImage.alt = card.alt;
   modal.classList.remove('is-closing');
   return modalImage.decode().catch(() => {}).then(() => {
     modal.showModal();
   });
+}
+
+function openDogCard(dogKey) {
+  return openImageCard(dogCards[dogKey]);
+}
+
+function openBrandCard(brandKey) {
+  return openImageCard(brandCards[brandKey]);
 }
 
 function closeDialog(dialog) {
@@ -113,6 +139,12 @@ dogButtons.forEach((button) => {
     const dogIndex = dogOrder.indexOf(button.dataset.dog);
     setActiveDog(dogIndex, false);
     await openDogCard(button.dataset.dog);
+  });
+});
+
+brandButtons.forEach((button) => {
+  button.addEventListener('click', async () => {
+    await openBrandCard(button.dataset.brand);
   });
 });
 

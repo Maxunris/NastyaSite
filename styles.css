@@ -1,6 +1,6 @@
 :root {
   --page-width: 1440px;
-  --page-height: 7859px;
+  --page-height: 8576px;
   --green: #008b15;
   --focus: #1457ff;
   --overlay: rgb(0 0 0 / 0.55);
@@ -53,100 +53,6 @@ a {
   width: 100%;
   height: auto;
   margin: 0;
-  border: 0;
-}
-
-.map-section {
-  background: #fff;
-  padding: clamp(48px, 6vw, 84px) clamp(20px, 6vw, 86px);
-}
-
-.map-section__inner {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(24px, 3vw, 38px);
-  width: min(1180px, 100%);
-  margin: 0 auto;
-}
-
-.map-section__copy {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(20px, 4vw, 54px);
-  align-items: end;
-  color: #000;
-  font-family: Arial, sans-serif;
-}
-
-.map-section__eyebrow {
-  margin: 0 0 12px;
-  color: var(--green);
-  font-size: clamp(16px, 1.5vw, 22px);
-  font-weight: 900;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.map-section__title {
-  margin: 0;
-  color: #000;
-  font-size: clamp(40px, 5.8vw, 84px);
-  font-weight: 900;
-  line-height: 0.95;
-  text-transform: uppercase;
-}
-
-.map-section__address {
-  margin: clamp(14px, 1.4vw, 20px) 0 0;
-  max-width: none;
-  color: #111;
-  font-size: clamp(20px, 2vw, 28px);
-  font-weight: 800;
-  line-height: 1.22;
-}
-
-.map-section__link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 56px;
-  margin-bottom: 6px;
-  margin-top: 0;
-  border-radius: 999px;
-  padding: 0 30px;
-  background: var(--green);
-  color: #fff;
-  font: 900 18px/1 Arial, sans-serif;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition:
-    background-color var(--motion-fast) ease,
-    transform var(--motion-medium) var(--motion-ease);
-}
-
-.map-section__link:hover,
-.map-section__link:focus-visible {
-  background: #007513;
-  transform: translateY(-2px);
-}
-
-.map-section__link:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 4px;
-}
-
-.map-section__frame {
-  overflow: hidden;
-  min-height: clamp(420px, 38vw, 560px);
-  border: 6px solid var(--green);
-  border-radius: clamp(24px, 3vw, 42px);
-  background: #f2f2f2;
-}
-
-.map-section__frame iframe {
-  display: block;
-  width: 100%;
-  height: clamp(420px, 38vw, 560px);
   border: 0;
 }
 
@@ -288,7 +194,7 @@ a {
 
 .hotspot--dogs {
   left: 29.79%;
-  top: 0.78%;
+  top: 0.7%;
   width: 4.1%;
   height: 0.45%;
 }
@@ -326,35 +232,35 @@ a {
 
 .hotspot--partners {
   left: 38.61%;
-  top: 0.78%;
+  top: 0.7%;
   width: 5.35%;
   height: 0.45%;
 }
 
 .hotspot--market {
   left: 48.68%;
-  top: 0.78%;
+  top: 0.7%;
   width: 3.96%;
   height: 0.45%;
 }
 
 .hotspot--shelter {
   left: 57.22%;
-  top: 0.78%;
+  top: 0.7%;
   width: 5.28%;
   height: 0.45%;
 }
 
 .hotspot--faq {
   left: 67.15%;
-  top: 0.78%;
+  top: 0.7%;
   width: 5%;
   height: 0.45%;
 }
 
 .hotspot--contacts {
   left: 76.88%;
-  top: 0.78%;
+  top: 0.7%;
   width: 5.35%;
   height: 0.45%;
 }
@@ -363,9 +269,9 @@ a {
 .hotspot--belka,
 .hotspot--tolik,
 .hotspot--persey {
-  top: 31.58%;
+  top: 31.4832%;
   width: 18.2%;
-  height: 5.05%;
+  height: 4.75%;
   border-radius: 30px;
 }
 
@@ -400,8 +306,8 @@ a {
 .dog-card-hotspot {
   --ambient-opacity: 0;
   --ambient-inset: -14px;
-  --hover-transform: translate3d(0, -6px, 0);
-  --active-transform: translate3d(0, -2px, 0) scale(0.99);
+  --hover-transform: translateZ(0) scale(1.025);
+  --active-transform: translateZ(0) scale(0.99);
   --feedback-hover-transform: scale(1);
 }
 
@@ -438,7 +344,7 @@ a {
   justify-content: center;
   height: 0.94%;
   border-radius: 999px;
-  color: var(--green);
+  color: transparent;
   font: 900 clamp(15px, 3vw, 43px) / 1 Arial, sans-serif;
   text-align: center;
   text-decoration: none;
@@ -450,42 +356,48 @@ a {
 .hotspot--menu-dogs {
   --menu-pill-x: clamp(28px, 3.1vw, 46px);
   left: 25.83%;
-  top: 12.57%;
+  top: 11.4739%;
   width: 48.4%;
+}
+
+.hotspot--menu-dogs::after,
+.hotspot--menu-dogs:hover::after,
+.hotspot--menu-dogs:focus-visible::after {
+  opacity: 0;
 }
 
 .hotspot--menu-activities {
   --menu-pill-x: clamp(28px, 3.1vw, 46px);
   left: 24.58%;
-  top: 13.47%;
+  top: 12.291%;
   width: 51.12%;
 }
 
 .hotspot--menu-market {
   --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 36.88%;
-  top: 14.47%;
+  top: 13.2005%;
   width: 26.4%;
 }
 
 .hotspot--menu-shelter {
   --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 33.89%;
-  top: 15.37%;
+  top: 14.04%;
   width: 32.1%;
 }
 
 .hotspot--menu-djs {
   --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 43.4%;
-  top: 16.37%;
+  top: 14.961%;
   width: 13.13%;
 }
 
 .hotspot--menu-faq {
   --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 36.25%;
-  top: 17.27%;
+  top: 15.789%;
   width: 27.3%;
 }
 
@@ -521,6 +433,12 @@ a {
   color: #fff;
 }
 
+.hotspot--menu-dogs,
+.hotspot--menu-dogs:hover,
+.hotspot--menu-dogs:focus-visible {
+  color: transparent;
+}
+
 .hotspot--cards-prev,
 .hotspot--cards-next {
   --ambient-opacity: 0.22;
@@ -528,7 +446,7 @@ a {
   --hover-transform: translate3d(var(--arrow-shift), 0, 0) scale(1.02);
   --active-transform: translate3d(calc(var(--arrow-shift) * 0.45), 0, 0) scale(0.98);
   --feedback-hover-transform: translate3d(var(--arrow-shift), 0, 0) scaleX(1);
-  top: 33.52%;
+  top: 33.5354%;
   width: 5.5%;
   height: 0.78%;
   border-radius: 999px;
@@ -562,19 +480,19 @@ a {
 
 .partner-link {
   --partner-logo: none;
-  --partner-logo-scale: 1.14;
-  --ambient-opacity: 1;
+  --partner-logo-scale: 1.12;
+  --ambient-opacity: 0;
   --ambient-inset: -14px;
   --hover-transform: translateZ(0);
   --active-transform: translateZ(0) scale(0.99);
-  --feedback-hover-transform: translate3d(0, -2px, 0) scale(var(--partner-logo-scale));
+  --feedback-hover-transform: scale(var(--partner-logo-scale));
   border-radius: 20px;
 }
 
 .partner-link::before {
   inset: var(--ambient-inset);
   border-radius: 0;
-  background: #fff;
+  background: transparent;
   box-shadow: none;
   filter: none;
   opacity: 0;
@@ -588,16 +506,17 @@ a {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  filter:
-    drop-shadow(0 10px 16px rgb(0 0 0 / 0.1))
-    drop-shadow(0 12px 18px rgb(255 178 41 / 0.16));
+  filter: none;
   opacity: 0;
   transform: translate3d(0, 0, 0) scale(1);
+  transition:
+    opacity var(--motion-medium) ease,
+    transform var(--motion-slow) var(--motion-ease);
 }
 
 .partner-link:hover::before,
 .partner-link:focus-visible::before {
-  opacity: 1;
+  opacity: 0;
   transform: scale(1);
 }
 
@@ -608,86 +527,143 @@ a {
 
 .hotspot--partner-award {
   --partner-logo: url("assets/images/figma-final/partner-overlays/award.png");
-  --partner-logo-scale: 1.16;
   --ambient-inset: -18px -18px -18px -18px;
-  left: 8.8%;
-  top: 53.08%;
-  width: 13.3%;
-  height: 0.84%;
+  left: 8.4028%;
+  top: 54.6409%;
+  width: 14.4444%;
+  height: 0.9212%;
 }
 
 .hotspot--partner-mrkranch {
   --partner-logo: url("assets/images/figma-final/partner-overlays/mrkranch.png");
-  --partner-logo-scale: 1.15;
   --ambient-inset: -18px -20px -20px -20px;
-  left: 28.35%;
-  top: 52.84%;
-  width: 12.2%;
-  height: 1.28%;
+  left: 26.9444%;
+  top: 54.3727%;
+  width: 13.75%;
+  height: 1.3526%;
 }
 
 .hotspot--partner-mnyams {
   --partner-logo: url("assets/images/figma-final/partner-overlays/mnyams.png");
-  --partner-logo-scale: 1.16;
   --ambient-inset: -22px -22px -38px -22px;
-  left: 44.6%;
-  top: 52.48%;
-  width: 12.3%;
-  height: 1.56%;
+  left: 43.4722%;
+  top: 54.1511%;
+  width: 13.1944%;
+  height: 1.8307%;
   border-radius: 34px;
 }
 
 .hotspot--partner-ivsanbernard {
   --partner-logo: url("assets/images/figma-final/partner-overlays/iv-san-bernard.png");
-  --partner-logo-scale: 1.16;
   --ambient-inset: -18px -20px -18px -20px;
-  left: 59.8%;
-  top: 53.12%;
-  width: 17.2%;
-  height: 0.74%;
+  left: 58.75%;
+  top: 54.6642%;
+  width: 18.125%;
+  height: 0.688%;
 }
 
 .hotspot--partner-craftia {
   --partner-logo: url("assets/images/figma-final/partner-overlays/craftia.png");
-  --partner-logo-scale: 1.14;
   --ambient-inset: -18px -18px -24px -20px;
-  left: 78.55%;
-  top: 52.84%;
-  width: 17.4%;
-  height: 1.18%;
+  left: 77.0139%;
+  top: 54.326%;
+  width: 17.5%;
+  height: 1.3293%;
 }
 
 .hotspot--hvost-logo {
   --partner-logo: url("assets/images/figma-final/partner-overlays/hvost-news.png");
-  --partner-logo-scale: 1.12;
   --ambient-inset: -18px;
-  left: 37.9%;
-  top: 43.13%;
+  left: 36.8056%;
+  top: 39.7971%;
   width: 24.3%;
-  height: 2.85%;
+  height: 2.4953%;
 }
 
-.hotspot--market-logos {
-  --ambient-opacity: 0.46;
-  --ambient-inset: -14px;
-  --hover-transform: translate3d(0, -3px, 0);
-  --active-transform: translate3d(0, -1px, 0) scale(0.995);
-  --feedback-hover-transform: scale(1);
-  left: 17.5%;
-  top: 59.85%;
-  width: 65%;
-  height: 4%;
-  border-radius: 24px;
+.brand-card-hotspot {
+  --brand-logo: none;
+  --brand-logo-scale: 1.12;
+  --ambient-opacity: 0;
+  --ambient-inset: -12px;
+  --hover-transform: translateZ(0);
+  --active-transform: translateZ(0) scale(0.99);
+  --feedback-hover-transform: scale(var(--brand-logo-scale));
+  border-radius: 22px;
+}
+
+.brand-card-hotspot::before {
+  inset: var(--ambient-inset);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  filter: none;
+  opacity: 0;
+  transform: scale(1);
+}
+
+.brand-card-hotspot::after {
+  inset: 0;
+  border-radius: 0;
+  background-image: var(--brand-logo);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: none;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition:
+    opacity var(--motion-medium) ease,
+    transform var(--motion-slow) var(--motion-ease);
+}
+
+.brand-card-hotspot:hover::before,
+.brand-card-hotspot:focus-visible::before {
+  opacity: 0;
+  transform: scale(1);
+}
+
+.hotspot--brand-derzhis-menya {
+  --brand-logo: url("assets/images/figma-final/brand-overlays/derzhis-menya.png");
+  left: 42.9167%;
+  top: 60.7976%;
+  width: 11.5278%;
+  height: 2.2155%;
+}
+
+.hotspot--brand-sobakin {
+  --brand-logo: url("assets/images/figma-final/brand-overlays/sobakin.png");
+  --brand-logo-scale: 1.12;
+  left: 26.1806%;
+  top: 63.0364%;
+  width: 19.1667%;
+  height: 1.1777%;
+}
+
+.hotspot--brand-shaggy-dog {
+  --brand-logo: url("assets/images/figma-final/brand-overlays/shaggy-dog.png");
+  --brand-logo-scale: 1.12;
+  left: 16.1111%;
+  top: 61.6021%;
+  width: 16.875%;
+  height: 0.7346%;
+}
+
+.hotspot--brand-hug-me-dog {
+  --brand-logo: url("assets/images/figma-final/brand-overlays/hug-me-dog.png");
+  --brand-logo-scale: 1.12;
+  left: 67.5694%;
+  top: 61.4855%;
+  width: 17.4306%;
+  height: 0.9911%;
 }
 
 .hotspot--shelter-site {
   --ambient-opacity: 0.58;
   --ambient-inset: -10px;
-  --hover-transform: translate3d(0, -3px, 0);
-  --active-transform: translate3d(0, -1px, 0) scale(0.99);
+  --hover-transform: translateZ(0) scale(1.025);
+  --active-transform: translateZ(0) scale(0.99);
   --feedback-hover-transform: scale(1);
   left: 40.2%;
-  top: 72.52%;
+  top: 66.4646%;
   width: 17.2%;
   height: 0.55%;
   border-radius: 999px;
@@ -705,19 +681,6 @@ a {
   transform: scale(0.985);
 }
 
-.hotspot--market-logos::after {
-  inset: 0;
-  border: 3px solid var(--accent-strong);
-  border-radius: inherit;
-  background:
-    linear-gradient(135deg, rgb(255 255 255 / 0.18), rgb(255 194 77 / 0.06) 42%, transparent 78%);
-  box-shadow:
-    0 16px 34px rgb(0 0 0 / 0.12),
-    0 16px 34px rgb(255 178 41 / 0.18),
-    inset 0 1px 0 rgb(255 255 255 / 0.5);
-  transform: scale(0.99);
-}
-
 .hotspot--contact-1,
 .hotspot--contact-2,
 .hotspot--contact-3,
@@ -726,7 +689,7 @@ a {
   --ambient-inset: -4px;
   --hover-transform: translate3d(0, -2px, 0);
   --active-transform: translate3d(0, 0, 0) scale(0.985);
-  top: 98.35%;
+  top: 98.2976%;
   height: 0.45%;
   border-radius: 999px;
 }
@@ -756,9 +719,24 @@ a {
 .hotspot--contact-3::after,
 .hotspot--contact-4::after {
   top: auto;
-  bottom: 0;
+  bottom: -52%;
+  left: 0;
+  width: 100%;
   height: 4px;
-  background: var(--accent);
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), #ffe07a 52%, var(--accent-strong));
+  box-shadow: 0 6px 14px rgb(255 178 41 / 0.34);
+}
+
+.hotspot--contact-1:hover::after,
+.hotspot--contact-2:hover::after,
+.hotspot--contact-3:hover::after,
+.hotspot--contact-4:hover::after,
+.hotspot--contact-1:focus-visible::after,
+.hotspot--contact-2:focus-visible::after,
+.hotspot--contact-3:focus-visible::after,
+.hotspot--contact-4:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .anchor {
@@ -769,19 +747,19 @@ a {
 }
 
 .anchor--dogs {
-  top: 21.8%;
+  top: 21.805%;
 }
 
 .anchor--activities {
-  top: 36.2%;
+  top: 36.1474%;
 }
 
 .anchor--partners {
-  top: 35%;
+  top: 34.9813%;
 }
 
 .anchor--market {
-  top: 48.5%;
+  top: 48.5075%;
 }
 
 .anchor--shelter {
@@ -789,7 +767,7 @@ a {
 }
 
 .anchor--faq {
-  top: 74.6%;
+  top: 74.6269%;
 }
 
 .anchor--djs {
@@ -797,7 +775,7 @@ a {
 }
 
 .anchor--contacts {
-  top: 94%;
+  top: 93.9832%;
 }
 
 .dog-status {
@@ -827,7 +805,7 @@ a {
 .faq-section {
   position: absolute;
   left: 0;
-  top: 74.6%;
+  top: 74.6269%;
   z-index: 3;
   width: 100%;
   min-height: 12%;
@@ -989,6 +967,7 @@ a {
   max-height: 92vh;
   object-fit: contain;
   border-radius: 28px;
+  background: #fff;
 }
 
 .dog-modal__close {
@@ -1141,29 +1120,6 @@ a {
 }
 
 @media (max-width: 700px) {
-  .map-section {
-    padding: 44px 18px;
-  }
-
-  .map-section__inner {
-    grid-template-columns: 1fr;
-  }
-
-  .map-section__copy {
-    grid-template-columns: 1fr;
-  }
-
-  .map-section__link {
-    width: 100%;
-    margin-bottom: 0;
-  }
-
-  .map-section__frame,
-  .map-section__frame iframe {
-    min-height: 320px;
-    height: 320px;
-  }
-
   .dog-modal {
     width: 96vw;
   }
