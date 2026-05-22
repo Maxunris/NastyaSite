@@ -378,10 +378,7 @@ def test_every_hotspot_has_precise_geometry_and_hover_feedback(browser):
         page.locator(selector).hover()
         page.wait_for_timeout(280)
         after = pseudo_after(page, selector)
-        if selector == ".hotspot--menu-dogs":
-            assert after["opacity"] == 0, f"{selector} should preserve the static section heading"
-        else:
-            assert after["opacity"] >= 0.9, f"{selector} does not reveal hover feedback"
+        assert after["opacity"] >= 0.9, f"{selector} does not reveal hover feedback"
 
         focus = focus_style(page, selector)
         assert focus["outlineStyle"] != "none", f"{selector} lacks focus outline"
@@ -391,30 +388,11 @@ def test_every_hotspot_has_precise_geometry_and_hover_feedback(browser):
     page.close()
 
 
-def test_menu_buttons_do_not_duplicate_background_text(browser):
+def test_menu_buttons_match_visible_github_menu(browser):
     page, errors = new_page(browser)
 
-    idle = page.locator(".hotspot--menu-dogs").evaluate(
-        """el => ({
-            color: getComputedStyle(el).color,
-            afterOpacity: getComputedStyle(el, '::after').opacity
-        })"""
-    )
-    assert idle["color"] == "rgba(0, 0, 0, 0)"
-    assert idle["afterOpacity"] == "0"
-
-    page.locator(".hotspot--menu-dogs").hover()
-    page.wait_for_timeout(280)
-    hover = page.locator(".hotspot--menu-dogs").evaluate(
-        """el => ({
-            color: getComputedStyle(el).color,
-            afterOpacity: getComputedStyle(el, '::after').opacity
-        })"""
-    )
-    assert hover["color"] == "rgba(0, 0, 0, 0)"
-    assert hover["afterOpacity"] == "0"
-
     for selector in [
+        ".hotspot--menu-dogs",
         ".hotspot--menu-activities",
         ".hotspot--menu-market",
         ".hotspot--menu-shelter",
@@ -427,7 +405,7 @@ def test_menu_buttons_do_not_duplicate_background_text(browser):
                 afterOpacity: getComputedStyle(el, '::after').opacity
             })"""
         )
-        assert idle["color"] == "rgba(0, 0, 0, 0)", f"{selector} duplicates the Figma text at rest"
+        assert idle["color"] == "rgb(0, 139, 21)", f"{selector} should be visible green text at rest"
         assert idle["afterOpacity"] == "0", f"{selector} shows its button background at rest"
 
         page.locator(selector).hover()

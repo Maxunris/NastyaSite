@@ -320,7 +320,7 @@ a {
   position: absolute;
   z-index: 1;
   left: 20%;
-  top: 12.15%;
+  top: 10.95%;
   width: 60%;
   height: 6.25%;
   background: #fff;
@@ -344,7 +344,7 @@ a {
   justify-content: center;
   height: 0.94%;
   border-radius: 999px;
-  color: transparent;
+  color: var(--green);
   font: 900 clamp(15px, 3vw, 43px) / 1 Arial, sans-serif;
   text-align: center;
   text-decoration: none;
@@ -358,12 +358,6 @@ a {
   left: 25.83%;
   top: 11.4739%;
   width: 48.4%;
-}
-
-.hotspot--menu-dogs::after,
-.hotspot--menu-dogs:hover::after,
-.hotspot--menu-dogs:focus-visible::after {
-  opacity: 0;
 }
 
 .hotspot--menu-activities {
@@ -431,12 +425,6 @@ a {
 .hotspot--menu-djs:focus-visible,
 .hotspot--menu-faq:focus-visible {
   color: #fff;
-}
-
-.hotspot--menu-dogs,
-.hotspot--menu-dogs:hover,
-.hotspot--menu-dogs:focus-visible {
-  color: transparent;
 }
 
 .hotspot--cards-prev,
