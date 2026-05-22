@@ -21,23 +21,28 @@ const brandCards = {
   'derzhis-menya': {
     src: 'assets/images/figma-final/brand-cards/derzhis-menya.png',
     alt: 'Карточка бренда Держись меня.',
+    href: 'https://t.me/derzhismenya',
   },
   sobakin: {
     src: 'assets/images/figma-final/brand-cards/sobakin.png',
     alt: 'Карточка бренда Собакин.',
+    href: 'https://sobakin-shop.ru',
   },
   'shaggy-dog': {
     src: 'assets/images/figma-final/brand-cards/shaggy-dog.png',
     alt: 'Карточка бренда Shaggy Dog.',
+    href: 'https://shaggydog.ru',
   },
   'hug-me-dog': {
     src: 'assets/images/figma-final/brand-cards/hug-me-dog.png',
     alt: 'Карточка бренда Hug Me Dog.',
+    href: 'https://hugmedog.ru',
   },
 };
 
 const modal = document.querySelector('.dog-modal');
 const modalImage = document.querySelector('.dog-modal__image');
+const brandLink = document.querySelector('[data-brand-link]');
 const closeButton = document.querySelector('.dog-modal__close');
 const infoModal = document.querySelector('.info-modal');
 const infoText = document.querySelector('.info-modal__text');
@@ -80,13 +85,19 @@ function setActiveDog(index, shouldAnnounce = true) {
   }
 }
 
-function openImageCard(card) {
+function openImageCard(card, options = {}) {
   if (!card || !modal || !modalImage) {
     return Promise.resolve();
   }
 
   modalImage.src = card.src;
   modalImage.alt = card.alt;
+  if (brandLink) {
+    brandLink.classList.toggle('is-visible', Boolean(options.showBrandLink && card.href));
+    if (card.href) {
+      brandLink.setAttribute('href', card.href);
+    }
+  }
   modal.classList.remove('is-closing');
   return modalImage.decode().catch(() => {}).then(() => {
     modal.showModal();
@@ -98,7 +109,7 @@ function openDogCard(dogKey) {
 }
 
 function openBrandCard(brandKey) {
-  return openImageCard(brandCards[brandKey]);
+  return openImageCard(brandCards[brandKey], { showBrandLink: true });
 }
 
 function closeDialog(dialog) {

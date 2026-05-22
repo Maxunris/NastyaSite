@@ -269,9 +269,9 @@ a {
 .hotspot--belka,
 .hotspot--tolik,
 .hotspot--persey {
-  top: 31.4832%;
+  top: 28.95%;
   width: 18.2%;
-  height: 4.75%;
+  height: 4.35%;
   border-radius: 30px;
 }
 
@@ -577,6 +577,7 @@ a {
   --active-transform: translateZ(0) scale(0.99);
   --feedback-hover-transform: scale(var(--brand-logo-scale));
   border-radius: 22px;
+  overflow: visible;
 }
 
 .brand-card-hotspot::before {
@@ -956,6 +957,29 @@ a {
   object-fit: contain;
   border-radius: 28px;
   background: #fff;
+}
+
+.dog-modal__brand-link {
+  position: absolute;
+  z-index: 3;
+  left: 5.9%;
+  top: 78.7%;
+  display: none;
+  width: 40.1%;
+  height: 12.8%;
+  border-radius: 999px;
+  color: transparent;
+  font: 0/0 a;
+  text-decoration: none;
+}
+
+.dog-modal__brand-link.is-visible {
+  display: block;
+}
+
+.dog-modal__brand-link:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
 }
 
 .dog-modal__close {

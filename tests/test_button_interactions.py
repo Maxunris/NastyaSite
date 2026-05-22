@@ -32,10 +32,10 @@ TEXT_TARGETS = {
 
 
 CONTROL_TARGETS = {
-    ".hotspot--klepa": (245, 280, 375, 420),
-    ".hotspot--belka": (245, 280, 375, 420),
-    ".hotspot--tolik": (245, 280, 375, 420),
-    ".hotspot--persey": (245, 280, 375, 420),
+    ".hotspot--klepa": (245, 280, 365, 385),
+    ".hotspot--belka": (245, 280, 365, 385),
+    ".hotspot--tolik": (245, 280, 365, 385),
+    ".hotspot--persey": (245, 280, 365, 385),
     ".hotspot--cards-prev": (75, 85, 58, 68),
     ".hotspot--cards-next": (75, 85, 58, 68),
     ".hotspot--partner-award": (204, 212, 75, 83),
@@ -65,6 +65,10 @@ POSITION_TARGETS = {
     ".hotspot--menu-shelter": (488, 492, 1204, 1212),
     ".hotspot--menu-djs": (623, 627, 1283, 1291),
     ".hotspot--menu-faq": (522, 526, 1354, 1362),
+    ".hotspot--klepa": (126, 130, 2480, 2488),
+    ".hotspot--belka": (426, 430, 2480, 2488),
+    ".hotspot--tolik": (724, 728, 2480, 2488),
+    ".hotspot--persey": (1022, 1026, 2480, 2488),
     ".hotspot--partner-award": (116, 126, 4682, 4692),
     ".hotspot--partner-mrkranch": (383, 393, 4658, 4668),
     ".hotspot--partner-mnyams": (621, 631, 4639, 4649),
@@ -497,6 +501,7 @@ def test_every_hotspot_click_behavior_and_dialog_motion(browser):
         page.wait_for_selector(".dog-modal[open]")
         assert card in page.locator(".dog-modal__image").get_attribute("src")
         assert "Карточка бренда" in page.locator(".dog-modal__image").get_attribute("alt")
+        assert page.locator(".dog-modal__brand-link.is-visible").is_visible()
         page.locator(".dog-modal__close").hover()
         close_focus = keyboard_focus_style(page, ".dog-modal__close")
         assert close_focus["outlineStyle"] != "none"
@@ -521,6 +526,22 @@ def test_every_hotspot_click_behavior_and_dialog_motion(browser):
         ".hotspot--contact-2": "https://dogport.ru/",
         ".hotspot--contact-4": "https://t.me/hvost_news",
     }
+
+    brand_card_links = {
+        ".hotspot--brand-hug-me-dog": "https://hugmedog.ru",
+        ".hotspot--brand-shaggy-dog": "https://shaggydog.ru",
+        ".hotspot--brand-derzhis-menya": "https://t.me/derzhismenya",
+        ".hotspot--brand-sobakin": "https://sobakin-shop.ru",
+    }
+
+    for selector, href in brand_card_links.items():
+        page.locator(selector).click()
+        page.wait_for_selector(".dog-modal[open]")
+        assert page.locator(".dog-modal__brand-link").get_attribute("href") == href
+        assert page.locator(".dog-modal__brand-link").get_attribute("target") == "_blank"
+        assert "noopener" in page.locator(".dog-modal__brand-link").get_attribute("rel")
+        page.locator(".dog-modal__close").click()
+        page.wait_for_function("!document.querySelector('.dog-modal').open", timeout=1000)
 
     for selector, href in external_links.items():
         assert page.locator(selector).get_attribute("href") == href
