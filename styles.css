@@ -652,9 +652,9 @@ a {
   --active-transform: translateZ(0) scale(0.99);
   --feedback-hover-transform: scale(1);
   left: 40.2%;
-  top: 66.4646%;
-  width: 17.2%;
-  height: 0.55%;
+  top: 72.71%;
+  width: 17.4%;
+  height: 0.58%;
   border-radius: 999px;
 }
 
@@ -678,7 +678,7 @@ a {
   --ambient-inset: -4px;
   --hover-transform: translate3d(0, -2px, 0);
   --active-transform: translate3d(0, 0, 0) scale(0.985);
-  top: 98.2976%;
+  top: 98.52%;
   height: 0.45%;
   border-radius: 999px;
 }

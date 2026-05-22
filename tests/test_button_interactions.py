@@ -48,7 +48,7 @@ CONTROL_TARGETS = {
     ".hotspot--brand-sobakin": (272, 280, 97, 105),
     ".hotspot--brand-shaggy-dog": (239, 247, 59, 67),
     ".hotspot--brand-hug-me-dog": (247, 255, 81, 89),
-    ".hotspot--shelter-site": (240, 300, 40, 70),
+    ".hotspot--shelter-site": (245, 255, 45, 55),
 }
 
 
@@ -79,7 +79,11 @@ POSITION_TARGETS = {
     ".hotspot--brand-sobakin": (372, 382, 5401, 5411),
     ".hotspot--brand-shaggy-dog": (227, 237, 5278, 5288),
     ".hotspot--brand-hug-me-dog": (968, 978, 5268, 5278),
-    ".hotspot--shelter-site": (575, 585, 5695, 5705),
+    ".hotspot--shelter-site": (577, 581, 6234, 6242),
+    ".hotspot--contact-1": (138, 142, 8446, 8454),
+    ".hotspot--contact-2": (482, 486, 8446, 8454),
+    ".hotspot--contact-3": (780, 784, 8446, 8454),
+    ".hotspot--contact-4": (1087, 1091, 8446, 8454),
 }
 
 
@@ -508,13 +512,6 @@ def test_every_hotspot_click_behavior_and_dialog_motion(browser):
         page.locator(".dog-modal__close").click()
         page.wait_for_function("!document.querySelector('.dog-modal').open", timeout=1000)
 
-    for selector in [".hotspot--contact-1", ".hotspot--contact-3"]:
-        page.locator(selector).click()
-        page.wait_for_selector(".info-modal[open]")
-        assert page.locator(".info-modal__text").inner_text().strip()
-        page.locator(".info-modal__close").click()
-        page.wait_for_function("!document.querySelector('.info-modal').open", timeout=1000)
-
     external_links = {
         ".hotspot--partner-award": "https://vk.ru/award",
         ".hotspot--partner-mrkranch": "https://vk.com/mrkranch",
@@ -523,7 +520,9 @@ def test_every_hotspot_click_behavior_and_dialog_motion(browser):
         ".hotspot--partner-craftia": "https://vk.com/craftia",
         ".hotspot--hvost-logo": "https://t.me/hvost_news",
         ".hotspot--shelter-site": "https://dogport.ru/",
+        ".hotspot--contact-1": "https://t.me/DogportMSK",
         ".hotspot--contact-2": "https://dogport.ru/",
+        ".hotspot--contact-3": "https://t.me/danilovskymarket",
         ".hotspot--contact-4": "https://t.me/hvost_news",
     }
 
