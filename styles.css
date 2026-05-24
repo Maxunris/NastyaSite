@@ -878,7 +878,7 @@ a {
 
 .hotspot--shelter-site::after {
   top: auto;
-  bottom: -9px;
+  bottom: -25px;
   left: 16%;
   width: 68%;
   height: 3px;
@@ -920,8 +920,8 @@ a {
 }
 
 .hotspot--contact-4 {
-  left: 76%;
-  width: 17.2%;
+  left: 73.45%;
+  width: 16.9%;
 }
 
 .hotspot--contact-5 {
@@ -976,8 +976,8 @@ a {
 }
 
 .hotspot--contact-4::after {
-  left: 4%;
-  width: 76%;
+  left: 0;
+  width: 100%;
 }
 
 .hotspot--contact-1:hover::after,
