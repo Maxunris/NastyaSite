@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Дог порт фест</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="styles.css?v=menu-hover-1" />
+    <link rel="stylesheet" href="styles.css?v=figma-2026-22" />
   </head>
   <body>
     <main class="festival-page" aria-label="Дог порт фест">
       <div class="festival-page__artboard">
         <img
           class="festival-page__image"
-          src="assets/images/figma-final/site-full.png"
+          src="assets/images/figma-2026/site-full.png"
           width="1440"
-          height="8576"
+          height="9556"
           alt="Дог порт фест. Фестиваль-пристройство собак из приюта Догпорт, 20-21 июня с 12 до 19 на веранде Даниловского рынка."
         />
 
@@ -27,10 +27,12 @@
           <a class="hotspot hotspot--contacts" href="#contacts">Контакты</a>
         </nav>
 
-        <button class="hotspot dog-card-hotspot hotspot--klepa" type="button" data-dog="klepa">Открыть карточку Клепы</button>
-        <button class="hotspot dog-card-hotspot hotspot--belka" type="button" data-dog="belka">Открыть карточку Белки</button>
-        <button class="hotspot dog-card-hotspot hotspot--tolik" type="button" data-dog="tolik">Открыть карточку Толика</button>
-        <button class="hotspot dog-card-hotspot hotspot--persey" type="button" data-dog="persey">Открыть карточку Персея</button>
+        <section class="dog-carousel" aria-label="Собаки из приюта, которые ищут дом">
+          <div class="dog-carousel__viewport">
+            <div class="dog-carousel__track" data-dog-track></div>
+          </div>
+          <div class="dog-carousel__pager" aria-label="Страницы карусели собак" data-dog-pager></div>
+        </section>
 
         <div class="menu-overlay-bg" aria-hidden="true"></div>
         <a class="hotspot hotspot--menu-dogs" href="#dogs">Собаки, которые ищут дом ♥</a>
@@ -49,14 +51,17 @@
         <a class="hotspot partner-link hotspot--partner-ivsanbernard" href="https://vk.com/ivsanbernardrus_official" target="_blank" rel="noopener noreferrer">Iv San Bernard</a>
         <a class="hotspot partner-link hotspot--partner-craftia" href="https://vk.com/craftia" target="_blank" rel="noopener noreferrer">Craftia</a>
         <a class="hotspot partner-link hotspot--hvost-logo" href="https://t.me/hvost_news" target="_blank" rel="noopener noreferrer">Хвост Ньюс</a>
-        <button class="hotspot brand-card-hotspot hotspot--brand-derzhis-menya" type="button" data-brand="derzhis-menya">Открыть карточку бренда Держись меня</button>
+        <button class="hotspot brand-card-hotspot hotspot--brand-petvkus" type="button" data-brand="petvkus">Открыть карточку бренда Petvkus</button>
+        <button class="hotspot brand-card-hotspot hotspot--brand-sobakamama" type="button" data-brand="sobakamama">Открыть карточку бренда Собака Мама</button>
         <button class="hotspot brand-card-hotspot hotspot--brand-sobakin" type="button" data-brand="sobakin">Открыть карточку бренда Собакин</button>
         <button class="hotspot brand-card-hotspot hotspot--brand-shaggy-dog" type="button" data-brand="shaggy-dog">Открыть карточку бренда Shaggy Dog</button>
+        <button class="hotspot brand-card-hotspot hotspot--brand-derzhis-menya" type="button" data-brand="derzhis-menya">Открыть карточку бренда Держись меня</button>
         <button class="hotspot brand-card-hotspot hotspot--brand-hug-me-dog" type="button" data-brand="hug-me-dog">Открыть карточку бренда Hug Me Dog</button>
         <a class="hotspot hotspot--shelter-site" href="https://dogport.ru/" target="_blank" rel="noopener noreferrer">Сайт приюта</a>
+        <a class="hotspot hotspot--artist-channel" href="https://t.me/artemisialisa" target="_blank" rel="noopener noreferrer">тг-канал художницы</a>
 
         <section class="faq-section" aria-labelledby="faq-title">
-          <img class="faq-section__flower" src="assets/images/figma-final/Layer_1.png" alt="" aria-hidden="true" />
+          <img class="faq-section__flower" src="assets/images/figma-2026/faq-flower.png" alt="" aria-hidden="true" />
           <h2 class="faq-section__title" id="faq-title">Частые вопросы</h2>
 
           <div class="faq-list">
@@ -126,6 +131,7 @@
         <a class="hotspot hotspot--contact-2" href="https://dogport.ru/" target="_blank" rel="noopener noreferrer">Сайт приюта</a>
         <a class="hotspot hotspot--contact-3" href="https://t.me/danilovskymarket" target="_blank" rel="noopener noreferrer">Telegram-канал рынка</a>
         <a class="hotspot hotspot--contact-4" href="https://t.me/hvost_news" target="_blank" rel="noopener noreferrer">Telegram-канал Хвост Ньюс</a>
+        <a class="hotspot hotspot--contact-5" href="https://t.me/anastasia_sabanina" target="_blank" rel="noopener noreferrer">По всем вопросам</a>
 
         <span id="dogs" class="anchor anchor--dogs"></span>
         <span id="activities" class="anchor anchor--activities"></span>
@@ -155,7 +161,7 @@
       <p class="info-modal__text"></p>
     </dialog>
 
-    <script src="script.js?v=faq-rework-1"></script>
+    <script src="script.js?v=figma-2026-5"></script>
     <!-- Cloudflare Web Analytics -->
     <script>
       if (["dogportfest.ru", "www.dogportfest.ru"].includes(window.location.hostname)) {
