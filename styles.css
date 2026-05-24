@@ -282,6 +282,39 @@ a {
   height: 0.45%;
 }
 
+.header-logo-link {
+  --hover-transform: translateZ(0);
+  --active-transform: translateZ(0);
+  z-index: 32;
+  border-radius: 0;
+}
+
+.header-logo-link::before,
+.header-logo-link::after {
+  content: none;
+}
+
+.header-logo-link--danilovsky {
+  left: 3.3%;
+  top: 0.54%;
+  width: 6.6%;
+  height: 1.05%;
+}
+
+.header-logo-link--dogport {
+  left: 13.7%;
+  top: 0.66%;
+  width: 11.5%;
+  height: 0.47%;
+}
+
+.header-logo-link--hvost-news {
+  left: 87.1%;
+  top: 0.56%;
+  width: 9.7%;
+  height: 0.95%;
+}
+
 .dog-carousel {
   position: absolute;
   left: 9.55%;
@@ -336,7 +369,7 @@ a {
 .dog-frame-button::after {
   position: absolute;
   inset: 4px;
-  border: 3px solid var(--green);
+  border: 3px solid #fff;
   border-radius: inherit;
   box-shadow:
     var(--shadow-lift),
@@ -603,6 +636,43 @@ a {
   --arrow-shift: 6px;
   --arrow-image: url("assets/images/figma-2026/ui/carousel-arrow-left.png");
   left: 92.1%;
+}
+
+.hotspot--dogs-contact-shelter {
+  --ambient-opacity: 0.26;
+  --ambient-inset: -6px;
+  --hover-transform: translate3d(0, -2px, 0);
+  --active-transform: translate3d(0, 0, 0) scale(0.985);
+  --feedback-hover-transform: scaleX(1);
+  left: 33%;
+  top: 31.7%;
+  z-index: 6;
+  width: 34%;
+  height: 0.52%;
+  border-radius: 999px;
+  background: linear-gradient(105deg, #0ea52d 0%, #008b1c 100%);
+  color: #fff;
+  font: 900 clamp(18px, 2.05vw, 36px) / 1 Arial, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hotspot--dogs-contact-shelter::after {
+  top: auto;
+  bottom: -9px;
+  left: 8%;
+  width: 84%;
+  height: 3px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), #ffe07a 52%, var(--accent-strong));
+  box-shadow: 0 6px 14px rgb(255 178 41 / 0.34);
+  transform: scaleX(0.22);
 }
 
 .partner-link {
@@ -889,6 +959,67 @@ a {
   transform: scaleX(0.22);
 }
 
+.djs-section-art {
+  position: absolute;
+  z-index: 2;
+  left: 3.03%;
+  top: 79.95%;
+  width: 93.96%;
+  height: auto;
+  pointer-events: none;
+}
+
+.djs-hole-fix {
+  position: absolute;
+  z-index: 3;
+  left: 23.55%;
+  top: 85.25%;
+  width: 0.62%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: #f69652;
+  pointer-events: none;
+}
+
+.dj-card-hotspot {
+  --ambient-opacity: 0;
+  --ambient-inset: -6px;
+  --hover-transform: translate3d(0, -2px, 0);
+  --active-transform: translate3d(0, 0, 0) scale(0.985);
+  --feedback-hover-transform: scaleX(1);
+  z-index: 31;
+  height: 0.98%;
+  border-radius: 999px;
+}
+
+.dj-card-hotspot::after {
+  top: auto;
+  bottom: -8px;
+  left: 18%;
+  width: 64%;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), #ffe07a 52%, var(--accent-strong));
+  box-shadow: 0 6px 14px rgb(255 178 41 / 0.34);
+}
+
+.dj-card-hotspot:hover::after,
+.dj-card-hotspot:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.dj-card-hotspot--maksim {
+  left: 32.1%;
+  top: 84.14%;
+  width: 14.9%;
+}
+
+.dj-card-hotspot--stepan {
+  left: 51.65%;
+  top: 84.14%;
+  width: 14.9%;
+}
+
 .hotspot--contact-1,
 .hotspot--contact-2,
 .hotspot--contact-3,
@@ -912,6 +1043,14 @@ a {
 .hotspot--contact-2 {
   left: 31.15%;
   width: 16.7%;
+  height: auto;
+  aspect-ratio: 6 / 1;
+  border: 0;
+  background:
+    url("assets/images/figma-2026/contact-buttons/group-102.png") center / contain no-repeat,
+    linear-gradient(105deg, #0e9b0b 0%, #008c14 100%);
+  color: transparent;
+  font: 0/0 a;
 }
 
 .hotspot--contact-3 {
@@ -1224,8 +1363,12 @@ a {
   height: auto;
   max-height: 92vh;
   object-fit: contain;
-  border-radius: 28px;
-  background: #fff;
+  border-radius: 44px;
+  background: transparent;
+}
+
+.dog-modal--brand .dog-modal__image {
+  border-radius: 48px;
 }
 
 .dog-modal__brand-link {
@@ -1268,6 +1411,19 @@ a {
 
 .dog-modal__brand-link.is-visible {
   display: block;
+}
+
+.dog-modal--dj .dog-modal__brand-link {
+  left: 45.1%;
+  top: 82.8%;
+  width: 10%;
+  height: 11.5%;
+}
+
+.dog-modal--dj .dog-modal__brand-link::after {
+  left: 8%;
+  width: 84%;
+  bottom: -8px;
 }
 
 .dog-modal__brand-link:focus-visible {

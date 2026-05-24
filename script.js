@@ -121,6 +121,19 @@ const brandCards = {
   },
 };
 
+const djCards = {
+  maksim: {
+    src: 'assets/images/figma-2026/djs/maksim-myself.png',
+    alt: 'Карточка диджея Maksim Myself.',
+    href: 'https://t.me/tochnodj',
+  },
+  stepan: {
+    src: 'assets/images/figma-2026/djs/stepan-nepal.png',
+    alt: 'Карточка диджея Stepan Nepal.',
+    href: 'https://t.me/nepal_prod',
+  },
+};
+
 const dogTrack = document.querySelector('[data-dog-track]');
 const dogPager = document.querySelector('[data-dog-pager]');
 
@@ -159,6 +172,7 @@ const infoCloseButton = document.querySelector('.info-modal__close');
 const dogButtons = [...document.querySelectorAll('[data-dog]')];
 const dogPageButtons = [];
 const brandButtons = [...document.querySelectorAll('[data-brand]')];
+const djButtons = [...document.querySelectorAll('[data-dj]')];
 const dogStatus = document.querySelector('.dog-status');
 const faqButtons = [...document.querySelectorAll('[data-faq]')];
 const scrollTopButton = document.querySelector('.scroll-top');
@@ -166,7 +180,7 @@ let activeDogIndex = 0;
 let activeDogPage = 0;
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-Object.values({ ...dogCards, ...brandCards }).forEach((card) => {
+Object.values({ ...dogCards, ...brandCards, ...djCards }).forEach((card) => {
   const image = new Image();
   image.src = card.src;
   if (card.frame) {
@@ -254,6 +268,8 @@ function openImageCard(card, options = {}) {
       brandLink.setAttribute('href', card.href);
     }
   }
+  modal.classList.toggle('dog-modal--brand', options.modalMode === 'brand');
+  modal.classList.toggle('dog-modal--dj', options.modalMode === 'dj');
   modal.classList.remove('is-closing');
   return modalImage.decode().catch(() => {}).then(() => {
     modal.showModal();
@@ -265,7 +281,11 @@ function openDogCard(dogKey) {
 }
 
 function openBrandCard(brandKey) {
-  return openImageCard(brandCards[brandKey], { showBrandLink: true });
+  return openImageCard(brandCards[brandKey], { showBrandLink: true, modalMode: 'brand' });
+}
+
+function openDjCard(djKey) {
+  return openImageCard(djCards[djKey], { showBrandLink: true, modalMode: 'dj' });
 }
 
 function closeDialog(dialog) {
@@ -310,6 +330,12 @@ dogButtons.forEach((button) => {
 brandButtons.forEach((button) => {
   button.addEventListener('click', async () => {
     await openBrandCard(button.dataset.brand);
+  });
+});
+
+djButtons.forEach((button) => {
+  button.addEventListener('click', async () => {
+    await openDjCard(button.dataset.dj);
   });
 });
 

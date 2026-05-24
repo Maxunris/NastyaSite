@@ -41,6 +41,19 @@ CONTACT_LINKS = {
     ".hotspot--contact-5": "https://t.me/anastasia_sabanina",
 }
 
+DJ_LINKS = {
+    "maksim": "https://t.me/tochnodj",
+    "stepan": "https://t.me/nepal_prod",
+}
+
+DOGS_CONTACT_LINK = "https://t.me/marina_dogport"
+
+HEADER_LOGO_LINKS = {
+    ".header-logo-link--danilovsky": "https://t.me/danilovskymarket",
+    ".header-logo-link--dogport": "https://dogport.ru/",
+    ".header-logo-link--hvost-news": "https://t.me/hvost_news",
+}
+
 BRAND_RECTS = {
     "shaggy-dog": (270, 310, 6415, 6465),
     "derzhis-menya": (630, 690, 6350, 6405),
@@ -153,10 +166,41 @@ def test_page_uses_new_full_artwork_without_flattening_live_layers(browser):
     page.close()
 
 
+def test_header_logos_are_plain_links_without_hover_animation(browser):
+    page, errors = new_page(browser)
+
+    for selector, href in HEADER_LOGO_LINKS.items():
+        link = page.locator(selector)
+        assert link.get_attribute("href") == href
+        assert link.get_attribute("target") == "_blank"
+        assert "noopener" in link.get_attribute("rel")
+        link.hover()
+        page.wait_for_timeout(180)
+        state = link.evaluate(
+            """el => ({
+                before: getComputedStyle(el, '::before').content,
+                after: getComputedStyle(el, '::after').content,
+                transform: getComputedStyle(el).transform
+            })"""
+        )
+        assert state["before"] == "none"
+        assert state["after"] == "none"
+        assert state["transform"] in ("none", "matrix(1, 0, 0, 1, 0, 0)")
+
+    assert not errors
+    page.close()
+
+
 def test_dog_carousel_arrows_move_track_and_each_dog_opens_matching_card(browser):
     page, errors = new_page(browser)
 
     page.locator(".dog-carousel").scroll_into_view_if_needed()
+    shelter_contact = page.locator(".hotspot--dogs-contact-shelter")
+    assert shelter_contact.get_attribute("href") == DOGS_CONTACT_LINK
+    shelter_contact.hover()
+    page.wait_for_timeout(220)
+    assert pseudo_after(page, ".hotspot--dogs-contact-shelter")["opacity"] >= 0.9
+
     before = page.locator(".dog-carousel__track").evaluate("el => getComputedStyle(el).transform")
     page.locator(".hotspot--cards-next").click()
     page.wait_for_timeout(520)
@@ -185,6 +229,12 @@ def test_dog_carousel_arrows_move_track_and_each_dog_opens_matching_card(browser
     assert visible[-1]["right"] <= rects["viewport"]["right"] + 1
 
     page_two_transform = page.locator(".dog-carousel__track").evaluate("el => getComputedStyle(el).transform")
+    page.locator("[data-dog='yasha']").hover()
+    page.wait_for_timeout(120)
+    hover_border = page.locator("[data-dog='yasha']").evaluate(
+        "el => getComputedStyle(el, '::after').borderColor"
+    )
+    assert hover_border == "rgb(255, 255, 255)"
     page.locator("[data-dog='yasha']").click()
     page.wait_for_selector(".dog-modal[open]")
     assert page.locator(".dog-carousel__track").evaluate("el => getComputedStyle(el).transform") == page_two_transform
@@ -242,6 +292,11 @@ def test_brand_cards_use_six_updated_partners_and_preserve_hover_motion(browser)
         page.locator(selector).click()
         page.wait_for_selector(".dog-modal[open]")
         assert "brand-cards/" in page.locator(".dog-modal__image").get_attribute("src")
+        assert page.locator(".dog-modal").evaluate("el => el.classList.contains('dog-modal--brand')")
+        assert page.locator(".dog-modal__image").evaluate("el => getComputedStyle(el).borderRadius") in (
+            "48px",
+            "48px 48px 48px 48px",
+        )
         assert page.locator(".dog-modal__brand-link.is-visible").is_visible()
         assert page.locator(".dog-modal__brand-link").get_attribute("href") == href
         close_modal(page)
@@ -313,6 +368,33 @@ def test_faq_stays_live_after_dj_section_and_contacts_include_all_questions_link
         page.wait_for_timeout(280)
         assert pseudo_after(page, selector)["opacity"] >= 0.9
 
+    contact_shelter = page.locator(".hotspot--contact-2").evaluate(
+        """el => ({
+            text: el.textContent,
+            borderRadius: getComputedStyle(el).borderRadius
+        })"""
+    )
+    assert contact_shelter["text"] == "Сайт приюта"
+    assert contact_shelter["borderRadius"] in {"999px", "9999px"}
+
+    assert not errors
+    page.close()
+
+
+def test_dj_hotspots_open_new_cards_and_tg_links(browser):
+    page, errors = new_page(browser)
+
+    assert page.locator(".djs-section-art").count() == 1
+    assert page.locator(".dj-card-hotspot").count() == 2
+
+    for dj, href in DJ_LINKS.items():
+        page.locator(f"[data-dj='{dj}']").click()
+        page.wait_for_selector(".dog-modal[open]")
+        assert "/djs/" in page.locator(".dog-modal__image").get_attribute("src")
+        assert page.locator(".dog-modal").evaluate("el => el.classList.contains('dog-modal--dj')")
+        assert page.locator(".dog-modal__brand-link").get_attribute("href") == href
+        close_modal(page)
+
     assert not errors
     page.close()
 
@@ -332,6 +414,7 @@ def test_layout_has_no_horizontal_scroll_and_live_targets_are_clickable(browser,
         ".hotspot--contacts",
         ".hotspot--cards-prev",
         ".hotspot--cards-next",
+        ".hotspot--dogs-contact-shelter",
         ".hotspot--artist-channel",
         ".dog-frame-button",
         ".brand-card-hotspot",
