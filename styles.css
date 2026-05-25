@@ -644,15 +644,17 @@ a {
   --hover-transform: translate3d(0, -2px, 0);
   --active-transform: translate3d(0, 0, 0) scale(0.985);
   --feedback-hover-transform: scaleX(1);
-  left: 33%;
-  top: 31.7%;
+  left: 29.15%;
+  top: 30.86%;
   z-index: 6;
-  width: 34%;
-  height: 0.52%;
+  width: 41.7%;
+  height: 0.63%;
   border-radius: 999px;
-  background: linear-gradient(105deg, #0ea52d 0%, #008b1c 100%);
-  color: #fff;
-  font: 900 clamp(18px, 2.05vw, 36px) / 1 Arial, sans-serif;
+  background:
+    url("assets/images/figma-2026/dogs/contact-shelter-button.png") center / 91.75% auto no-repeat,
+    url("assets/images/figma-2026/dogs/rectangle-62.png") center / 100% 100% no-repeat;
+  color: transparent;
+  font: 0/0 a;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -959,6 +961,16 @@ a {
   transform: scaleX(0.22);
 }
 
+.schedule-photozone-fix {
+  position: absolute;
+  z-index: 2;
+  left: 13.61%;
+  top: 46.13%;
+  width: 73.19%;
+  height: auto;
+  pointer-events: none;
+}
+
 .djs-section-art {
   position: absolute;
   z-index: 2;
@@ -972,12 +984,12 @@ a {
 .djs-hole-fix {
   position: absolute;
   z-index: 3;
-  left: 23.55%;
-  top: 85.25%;
-  width: 0.62%;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background: #f69652;
+  left: 18.28%;
+  top: 84.98%;
+  width: 1.02%;
+  height: 0.16%;
+  border-radius: 2px;
+  background: #ff9853;
   pointer-events: none;
 }
 
@@ -1045,12 +1057,15 @@ a {
   width: 16.7%;
   height: auto;
   aspect-ratio: 6 / 1;
-  border: 0;
-  background:
-    url("assets/images/figma-2026/contact-buttons/group-102.png") center / contain no-repeat,
-    linear-gradient(105deg, #0e9b0b 0%, #008c14 100%);
-  color: transparent;
-  font: 0/0 a;
+  border: 2px solid #fff;
+  background: linear-gradient(105deg, #0e9b0b 0%, #008c14 100%);
+  color: #fff;
+  font: 900 clamp(11px, 1.05vw, 16px) / 1 Arial, sans-serif;
+  text-decoration: none;
+  text-transform: lowercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hotspot--contact-3 {
