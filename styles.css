@@ -581,27 +581,33 @@ a {
 .hotspot--cards-next::before {
   left: 50%;
   top: 50%;
-  width: 142%;
-  height: 150%;
-  border: 0;
-  border-radius: 0;
-  background: #fff;
-  filter: none;
+  width: 86%;
+  height: 86%;
+  border: 2px solid rgb(0 0 0 / 0.16);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.95);
+  filter: drop-shadow(0 4px 10px rgb(0 0 0 / 0.15));
   opacity: 1;
-  box-shadow: none;
   transform: translate(-50%, -50%);
+  transition:
+    transform var(--motion-medium) var(--motion-ease),
+    background-color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease;
 }
 
 .hotspot--cards-prev::after,
 .hotspot--cards-next::after {
   left: 50%;
   top: 50%;
-  width: 66%;
-  height: 46%;
+  width: 42%;
+  height: 42%;
   border-radius: 0;
   background: var(--arrow-image) center / contain no-repeat;
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
+  transition:
+    transform var(--motion-medium) var(--motion-ease),
+    filter var(--motion-fast) ease;
 }
 
 .hotspot--cards-prev:hover::before,
@@ -609,8 +615,9 @@ a {
 .hotspot--cards-prev:focus-visible::before,
 .hotspot--cards-next:focus-visible::before {
   background: #fff;
+  border-color: rgb(0 0 0 / 0.26);
   opacity: 1;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1.06);
 }
 
 .hotspot--cards-prev:hover::after,
@@ -618,7 +625,8 @@ a {
 .hotspot--cards-prev:focus-visible::after,
 .hotspot--cards-next:focus-visible::after {
   opacity: 1;
-  transform: translate(-50%, -50%) translateX(var(--arrow-shift)) scale(1.08);
+  transform: translate(-50%, -50%) translateX(var(--arrow-shift)) scale(1.14);
+  filter: drop-shadow(0 2px 4px rgb(0 0 0 / 0.24));
 }
 
 .hotspot--cards-prev:hover::after,
@@ -627,13 +635,13 @@ a {
 }
 
 .hotspot--cards-prev {
-  --arrow-shift: -6px;
+  --arrow-shift: -4px;
   --arrow-image: url("assets/images/figma-2026/ui/carousel-arrow-right.png");
   left: 2.35%;
 }
 
 .hotspot--cards-next {
-  --arrow-shift: 6px;
+  --arrow-shift: 4px;
   --arrow-image: url("assets/images/figma-2026/ui/carousel-arrow-left.png");
   left: 92.1%;
 }
@@ -1594,38 +1602,515 @@ a {
 }
 
 @media (max-width: 700px) {
+  :root {
+    --page-width: 430px;
+  }
+
+  .festival-page__artboard {
+    width: min(100%, var(--page-width));
+  }
+
+  .festival-page__artboard::before {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    left: 21%;
+    top: 24.08%;
+    width: 58%;
+    height: 0.42%;
+    background: #ececec;
+    pointer-events: none;
+  }
+
+  .festival-page__artboard::after,
+  .menu-overlay-bg,
+  .schedule-photozone-fix {
+    display: none;
+  }
+
+  .header-logo-link--danilovsky {
+    left: 34%;
+    top: 1.05%;
+    width: 11.8%;
+    height: 0.55%;
+  }
+
+  .header-logo-link--dogport {
+    left: 51.2%;
+    top: 1.16%;
+    width: 23.8%;
+    height: 0.46%;
+  }
+
+  .header-logo-link--hvost-news {
+    left: 28.65%;
+    top: 29.21%;
+    width: 43.33%;
+    height: 1.01%;
+  }
+
+  .hotspot--dogs {
+    left: 12.58%;
+    top: 10.3%;
+    width: 74.77%;
+    height: 0.37%;
+  }
+
+  .hotspot--partners,
+  .hotspot--menu-activities {
+    left: 9.09%;
+    top: 10.79%;
+    width: 81.06%;
+    height: 0.37%;
+  }
+
+  .hotspot--market {
+    left: 27.25%;
+    top: 11.32%;
+    width: 45.42%;
+    height: 0.31%;
+  }
+
+  .hotspot--shelter {
+    left: 23.76%;
+    top: 11.81%;
+    width: 53.81%;
+    height: 0.31%;
+  }
+
+  .hotspot--menu-djs {
+    left: 36.34%;
+    top: 12.3%;
+    width: 27.25%;
+    height: 0.28%;
+  }
+
+  .hotspot--faq {
+    left: 27.95%;
+    top: 12.76%;
+    width: 45.42%;
+    height: 0.28%;
+  }
+
+  .hotspot--contacts {
+    left: 23%;
+    top: 92.65%;
+    width: 54%;
+    height: 0.8%;
+  }
+
+  .hotspot--dogs,
+  .hotspot--partners,
+  .hotspot--market,
+  .hotspot--shelter,
+  .hotspot--faq,
+  .hotspot--contacts {
+    z-index: 6;
+  }
+
+  .hotspot--menu-dogs,
+  .hotspot--menu-activities,
+  .hotspot--menu-market,
+  .hotspot--menu-shelter,
+  .hotspot--menu-faq {
+    color: transparent;
+    font: 0/0 a;
+    pointer-events: none;
+  }
+
+  .hotspot--menu-djs {
+    color: transparent;
+    font: 0/0 a;
+  }
+
+  .hotspot--menu-dogs::before,
+  .hotspot--menu-dogs::after,
+  .hotspot--menu-activities::before,
+  .hotspot--menu-activities::after,
+  .hotspot--menu-market::before,
+  .hotspot--menu-market::after,
+  .hotspot--menu-shelter::before,
+  .hotspot--menu-shelter::after,
+  .hotspot--menu-djs::before,
+  .hotspot--menu-djs::after,
+  .hotspot--menu-faq::before,
+  .hotspot--menu-faq::after {
+    display: none;
+  }
+
+  .hotspot--dogs::after,
+  .hotspot--partners::after,
+  .hotspot--market::after,
+  .hotspot--shelter::after,
+  .hotspot--faq::after,
+  .hotspot--contacts::after,
+  .hotspot--menu-dogs::after,
+  .hotspot--menu-activities::after,
+  .hotspot--menu-market::after,
+  .hotspot--menu-shelter::after,
+  .hotspot--menu-djs::after,
+  .hotspot--menu-faq::after {
+    height: 2px;
+    bottom: -6px;
+  }
+
+  .dog-carousel {
+    z-index: 5;
+    left: 13.96%;
+    top: 19.82%;
+    width: 72.08%;
+    height: 4.36%;
+    overflow: hidden;
+    background: transparent;
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  .dog-carousel__track {
+    gap: 0;
+    padding-top: 0;
+    height: 100%;
+  }
+
+  .dog-frame-button {
+    flex: 0 0 100%;
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+  }
+
+  .dog-frame-button::after {
+    inset: 3px;
+    border-width: 2px;
+  }
+
+  .dog-carousel__pager {
+    display: none;
+  }
+
+  .hotspot--cards-prev,
+  .hotspot--cards-next {
+    z-index: 6;
+    top: 24.3%;
+    width: 12.6%;
+    height: 0.52%;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .hotspot--cards-prev {
+    left: 25.7%;
+  }
+
+  .hotspot--cards-next {
+    left: 61.7%;
+  }
+
+  .hotspot--cards-prev::before,
+  .hotspot--cards-next::before {
+    width: 100%;
+    height: 100%;
+    border-width: 2px;
+    background: rgb(255 255 255 / 0.96);
+  }
+
+  .hotspot--cards-prev::after,
+  .hotspot--cards-next::after {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background: none;
+    color: #111;
+    font: 500 clamp(30px, 6.8vw, 36px) / 1 Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+  }
+
+  .hotspot--cards-prev::after {
+    content: "←";
+  }
+
+  .hotspot--cards-next::after {
+    content: "→";
+  }
+
+  .hotspot--cards-prev:active::before,
+  .hotspot--cards-next:active::before {
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+
+  .hotspot--cards-prev:active::after,
+  .hotspot--cards-next:active::after {
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+
+  .hotspot--dogs-contact-shelter {
+    left: 7.44%;
+    top: 25.73%;
+    width: 85.12%;
+    height: 0.7%;
+    background:
+      url("assets/images/figma-2026/dogs/contact-shelter-button.png") center / 88% auto no-repeat,
+      #008b15;
+  }
+
+  .partner-link,
+  .brand-card-hotspot,
+  .dj-card-hotspot,
+  .hotspot--shelter-site,
+  .hotspot--artist-channel,
+  .hotspot--contact-1,
+  .hotspot--contact-2,
+  .hotspot--contact-3,
+  .hotspot--contact-4,
+  .hotspot--contact-5 {
+    background: transparent;
+    border: 0;
+    color: transparent;
+    font: 0/0 a;
+  }
+
+  .partner-link,
+  .brand-card-hotspot {
+    z-index: 6;
+  }
+
+  .partner-link::before,
+  .partner-link::after,
+  .brand-card-hotspot::before,
+  .brand-card-hotspot::after {
+    display: none;
+  }
+
+  .hotspot--partner-mrkranch {
+    left: 9.09%;
+    top: 56.64%;
+    width: 20.96%;
+    height: 0.73%;
+  }
+
+  .hotspot--partner-mnyams {
+    left: 39.13%;
+    top: 56.55%;
+    width: 23.06%;
+    height: 0.82%;
+  }
+
+  .hotspot--partner-ivsanbernard {
+    left: 60.8%;
+    top: 56.73%;
+    width: 25.16%;
+    height: 0.58%;
+  }
+
+  .hotspot--partner-award {
+    left: 24.11%;
+    top: 58.29%;
+    width: 24.46%;
+    height: 0.7%;
+  }
+
+  .hotspot--partner-craftia {
+    left: 53.11%;
+    top: 58.38%;
+    width: 26.56%;
+    height: 0.55%;
+  }
+
+  .hotspot--brand-hug-me-dog {
+    left: 14%;
+    top: 65.68%;
+    width: 72%;
+    height: 0.74%;
+  }
+
+  .hotspot--brand-shaggy-dog {
+    left: 14%;
+    top: 66.72%;
+    width: 72%;
+    height: 0.54%;
+  }
+
+  .hotspot--brand-derzhis-menya {
+    left: 14%;
+    top: 67.7%;
+    width: 72%;
+    height: 0.95%;
+  }
+
+  .hotspot--brand-sobakamama {
+    left: 14%;
+    top: 69.15%;
+    width: 72%;
+    height: 0.79%;
+  }
+
+  .hotspot--brand-sobakin {
+    left: 14%;
+    top: 70.55%;
+    width: 72%;
+    height: 0.79%;
+  }
+
+  .hotspot--brand-petvkus {
+    left: 14%;
+    top: 71.95%;
+    width: 72%;
+    height: 0.72%;
+  }
+
+  .hotspot--shelter-site {
+    left: 31.45%;
+    top: 79.35%;
+    width: 37.04%;
+    height: 0.76%;
+  }
+
+  .hotspot--artist-channel {
+    z-index: 4;
+    left: 18.5%;
+    top: 63.58%;
+    width: 63%;
+    height: 0.96%;
+  }
+
+  .djs-section-art,
+  .djs-hole-fix {
+    display: none;
+  }
+
+  .dj-card-hotspot--maksim {
+    left: 27.25%;
+    top: 84.87%;
+    width: 45.42%;
+    height: 1.16%;
+  }
+
+  .dj-card-hotspot--stepan {
+    left: 27.25%;
+    top: 86.53%;
+    width: 45.42%;
+    height: 1.16%;
+  }
+
+  .hotspot--contact-1,
+  .hotspot--contact-2,
+  .hotspot--contact-3,
+  .hotspot--contact-4,
+  .hotspot--contact-5 {
+    left: 18.87%;
+    width: 62.19%;
+    height: 1.01%;
+  }
+
+  .hotspot--contact-1 {
+    top: 96.85%;
+  }
+
+  .hotspot--contact-2 {
+    top: 97.94%;
+  }
+
+  .hotspot--contact-3 {
+    top: 99.03%;
+  }
+
+  .hotspot--contact-4 {
+    top: 100.11%;
+  }
+
+  .hotspot--contact-5 {
+    top: 101.06%;
+  }
+
+  .anchor--dogs {
+    top: 16.3%;
+  }
+
+  .anchor--activities,
+  .anchor--partners {
+    top: 27%;
+  }
+
+  .anchor--market {
+    top: 69%;
+  }
+
+  .anchor--shelter {
+    top: 76.7%;
+  }
+
+  .anchor--djs {
+    top: 83.6%;
+  }
+
   .anchor--faq,
   .faq-section {
-    top: 88.95%;
+    top: 88.9%;
+  }
+
+  .anchor--contacts {
+    top: 95.2%;
   }
 
   .faq-section {
-    min-height: auto;
-    padding: 1.1% 7.4% 0.8%;
+    left: 0;
+    z-index: 4;
+    width: 100%;
+    min-height: 6.35%;
+    border-radius: 0;
+    padding: 4.2% 8% 3.5%;
+    background: #ececec;
+    box-shadow: none;
+  }
+
+  .faq-section::before {
+    display: none;
   }
 
   .faq-section__flower {
-    top: 2.8%;
-    right: 7.2%;
-    width: 14%;
+    display: none;
   }
 
   .faq-section__title {
-    margin-bottom: 2.4%;
-    padding-top: 1%;
-    font-size: clamp(23px, 6.4vw, 28px);
+    margin-bottom: 4%;
+    padding-top: 0;
+    font-size: clamp(34px, 8vw, 40px);
+    color: #111;
+    text-align: left;
   }
 
   .faq-item__button {
-    min-height: 30px;
-    font-size: clamp(11px, 3.25vw, 13px);
-    line-height: 1.08;
+    grid-template-columns: 1fr 24px;
+    min-height: 44px;
+    font-size: clamp(13px, 3.8vw, 16px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #121212;
+  }
+
+  .faq-item {
+    border-bottom-color: rgb(40 40 40 / 0.2);
+  }
+
+  .faq-item__mark {
+    opacity: 1;
+    color: rgb(40 40 40 / 0.85);
   }
 
   .faq-item__answer > p {
-    padding-right: 8%;
-    font-size: 12px;
-    line-height: 1.24;
+    margin: 0 0 8px;
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: rgb(255 255 255 / 0.98);
+    font-size: 13px;
+    line-height: 1.32;
+    color: #111;
+    box-shadow: 0 6px 16px rgb(0 0 0 / 0.1);
   }
 
   .faq-item.is-open .faq-item__answer {
