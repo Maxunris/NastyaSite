@@ -1,75 +1,159 @@
+document.querySelectorAll('.dogs-section-clean').forEach((node) => node.remove());
+
 const dogCards = {
   klepa: {
     name: 'Клёпа',
     frame: 'assets/images/figma-2026/dog-frames/Frame 6.png',
-    src: 'assets/images/figma-2026/dog-cards/Group 70.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 70.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 108.png',
     alt: 'klepa, карточка Клёпы.',
   },
   belka: {
     name: 'Белка',
     frame: 'assets/images/figma-2026/dog-frames/Frame 7.png',
-    src: 'assets/images/figma-2026/dog-cards/Group 65.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 65.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 106.png',
     alt: 'belka, карточка Белки.',
   },
   tolik: {
     name: 'Толик',
     frame: 'assets/images/figma-2026/dog-frames/Frame 8.png',
-    src: 'assets/images/figma-2026/dog-cards/Group 69.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 69.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 107.png',
     alt: 'tolik, карточка Толика.',
   },
   persey: {
     name: 'Персей',
     frame: 'assets/images/figma-2026/dog-frames/Frame 9.png',
-    src: 'assets/images/figma-2026/dog-cards/Group 82.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 82.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 110.png',
     alt: 'persey, карточка Персея.',
   },
   alya: {
     name: 'Аля',
     frame: 'assets/images/figma-2026/dog-frames/Аля.png',
-    src: 'assets/images/figma-2026/dog-cards/Group 99.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 99.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 113.png',
     alt: 'alya, карточка Али.',
   },
   johnny: {
     name: 'Джонни',
     frame: 'assets/images/figma-2026/dog-frames/Джонни.png',
-    src: 'assets/images/figma-2026/dog-cards/Group 98.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 98.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 112.png',
     alt: 'johnny, карточка Джонни.',
   },
   kesha: {
     name: 'Кеша',
     frame: 'assets/images/figma-2026/dog-frames/Кеша.png',
-    src: 'assets/images/figma-2026/dog-cards/Group 103.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 103.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 117.png',
     alt: 'kesha, карточка Кеши.',
   },
   maylo: {
     name: 'Майло',
     frame: 'assets/images/figma-2026/dog-frames/Майло.png',
-    src: 'assets/images/figma-2026/dog-cards/Group 100.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 100.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 114.png',
     alt: 'maylo, карточка Майло.',
   },
   sky: {
     name: 'Скай',
     frame: 'assets/images/figma-2026/dog-frames/Скай.png',
-    src: 'assets/images/figma-2026/dog-cards/Group 97.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 145.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 111.png',
     alt: 'sky, карточка Ская.',
   },
   taya: {
     name: 'Тая',
     frame: 'assets/images/figma-2026/dog-frames/Тая.png',
-    src: 'assets/images/figma-2026/dog-cards/Group 104.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 104.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 118.png',
     alt: 'taya, карточка Таи.',
   },
   elis: {
     name: 'Элис',
     frame: 'assets/images/figma-2026/dog-frames/Элис.png',
-    src: 'assets/images/figma-2026/dog-cards/Group 102.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 102.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 116.png',
     alt: 'elis, карточка Элис.',
   },
   yasha: {
     name: 'Яша',
     frame: 'assets/images/figma-2026/dog-frames/Яша.png',
-    src: 'assets/images/figma-2026/dog-cards/Group 101.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 101.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 115.png',
     alt: 'yasha, карточка Яши.',
+  },
+  iva: {
+    name: 'Ива',
+    frame: 'assets/images/figma-2026/dog-frames/Ива.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 128.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 142.png',
+    alt: 'iva, карточка Ивы.',
+  },
+  lusya: {
+    name: 'Люся',
+    frame: 'assets/images/figma-2026/dog-frames/Люся.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 126.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 144.png',
+    alt: 'lusya, карточка Люси.',
+  },
+  faya: {
+    name: 'Фая',
+    frame: 'assets/images/figma-2026/dog-frames/Марс-1.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 130.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 138.png',
+    alt: 'faya, карточка Фаи.',
+  },
+  feya: {
+    name: 'Фея',
+    frame: 'assets/images/figma-2026/dog-frames/Фея.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 133.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 139.png',
+    alt: 'feya, карточка Феи.',
+  },
+  fiona: {
+    name: 'Фиона',
+    frame: 'assets/images/figma-2026/dog-frames/Фиона.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 134.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 140.png',
+    alt: 'fiona, карточка Фионы.',
+  },
+  vesi: {
+    name: 'Веси',
+    frame: 'assets/images/figma-2026/dog-frames/Веси.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 97.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 135.png',
+    alt: 'vesi, карточка Веси.',
+  },
+  ryzhik: {
+    name: 'Рыжик',
+    frame: 'assets/images/figma-2026/dog-frames/Рыжик.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 127.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 137.png',
+    alt: 'ryzhik, карточка Рыжика.',
+  },
+  mars: {
+    name: 'Марс',
+    frame: 'assets/images/figma-2026/dog-frames/Марс.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 129.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 136.png',
+    alt: 'mars, карточка Марса.',
+  },
+  pups: {
+    name: 'Пупс',
+    frame: 'assets/images/figma-2026/dog-frames/Пупс.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 131.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 143.png',
+    alt: 'pups, карточка Пупса.',
+  },
+  pirate: {
+    name: 'Пират',
+    frame: 'assets/images/figma-2026/dog-frames/Пират.png',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 132.png',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 141.png',
+    alt: 'pirate, карточка Пирата.',
   },
 };
 
@@ -86,36 +170,52 @@ const dogOrder = [
   'taya',
   'elis',
   'yasha',
+  'iva',
+  'lusya',
+  'pirate',
+  'faya',
+  'feya',
+  'fiona',
+  'vesi',
+  'ryzhik',
+  'mars',
+  'pups',
 ];
 
 const brandCards = {
   petvkus: {
-    src: 'assets/images/figma-2026/brand-cards/Group 105.png',
+    cardDesktop: 'assets/images/figma-2026/brand-cards/Group 105.png',
+    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-123-petvkus.png',
     alt: 'Карточка бренда Petvkus.',
     href: 'https://petvkus.ru',
   },
   sobakamama: {
-    src: 'assets/images/figma-2026/brand-cards/Group 96.png',
+    cardDesktop: 'assets/images/figma-2026/brand-cards/Group 96.png',
+    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-124-sobakamama.png',
     alt: 'Карточка бренда Собака Мама.',
     href: 'https://sobakamama.shop',
   },
   sobakin: {
-    src: 'assets/images/figma-2026/brand-cards/Group 83.png',
+    cardDesktop: 'assets/images/figma-2026/brand-cards/Group 83.png',
+    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-125-sobakin.png',
     alt: 'Карточка бренда Собакин.',
     href: 'https://sobakin-shop.ru',
   },
   'shaggy-dog': {
-    src: 'assets/images/figma-2026/brand-cards/Group 64.png',
+    cardDesktop: 'assets/images/figma-2026/brand-cards/Group 64.png',
+    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-121-shaggy-dog.png',
     alt: 'Карточка бренда Shaggy Dog.',
     href: 'https://shaggydog.ru',
   },
   'derzhis-menya': {
-    src: 'assets/images/figma-2026/brand-cards/Group 67.png',
+    cardDesktop: 'assets/images/figma-2026/brand-cards/Group 67.png',
+    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-122-derzhis-menya.png',
     alt: 'Карточка бренда Держись меня.',
     href: 'https://t.me/derzhismenya',
   },
   'hug-me-dog': {
-    src: 'assets/images/figma-2026/brand-cards/Group 63.png',
+    cardDesktop: 'assets/images/figma-2026/brand-cards/Group 63.png',
+    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-120-hug-me-dog.png',
     alt: 'Карточка бренда Hug Me Dog.',
     href: 'https://hugmedog.ru',
   },
@@ -136,6 +236,7 @@ const djCards = {
 
 const dogTrack = document.querySelector('[data-dog-track]');
 const dogPager = document.querySelector('[data-dog-pager]');
+const dogViewport = document.querySelector('.dog-carousel__viewport');
 
 function renderDogCarousel() {
   if (!dogTrack) {
@@ -179,15 +280,49 @@ const scrollTopButton = document.querySelector('.scroll-top');
 let activeDogIndex = 0;
 let activeDogPage = 0;
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const mobileViewport = window.matchMedia('(max-width: 700px)');
 
-Object.values({ ...dogCards, ...brandCards, ...djCards }).forEach((card) => {
-  const image = new Image();
-  image.src = card.src;
-  if (card.frame) {
-    const frame = new Image();
-    frame.src = card.frame;
-  }
-});
+function applyMobileHotspotTweaks() {
+  const isMobile = mobileViewport.matches;
+
+  document.querySelectorAll('.brand-card-hotspot').forEach((hotspot) => {
+    hotspot.style.zIndex = isMobile ? '6' : '';
+  });
+}
+
+applyMobileHotspotTweaks();
+
+function dogPageSize() {
+  return mobileViewport.matches ? 1 : 4;
+}
+
+function preloadCriticalImages() {
+  const dogsToPreload = dogOrder.slice(0, 4);
+  dogsToPreload.forEach((dogKey) => {
+    const card = dogCards[dogKey];
+    ['frame', 'cardDesktop', 'cardMobile'].forEach((field) => {
+      if (!card[field]) {
+        return;
+      }
+      const image = new Image();
+      image.src = card[field];
+    });
+  });
+
+  Object.values({ ...brandCards, ...djCards }).forEach((card) => {
+    const sources = [card.src, card.cardDesktop, card.cardMobile].filter(Boolean);
+    sources.forEach((source) => {
+      const image = new Image();
+      image.src = source;
+    });
+  });
+}
+
+if (document.readyState === 'complete') {
+  preloadCriticalImages();
+} else {
+  window.addEventListener('load', preloadCriticalImages, { once: true });
+}
 
 function updateDogTrack() {
   const activeButton = dogButtons[activeDogIndex];
@@ -210,7 +345,7 @@ function updateDogPager() {
 
 function setActiveDog(index, shouldAnnounce = true) {
   activeDogIndex = (index + dogOrder.length) % dogOrder.length;
-  activeDogPage = Math.floor(activeDogIndex / 4);
+  activeDogPage = Math.floor(activeDogIndex / dogPageSize());
   const activeDog = dogOrder[activeDogIndex];
 
   dogButtons.forEach((button) => {
@@ -231,9 +366,9 @@ function setActiveDog(index, shouldAnnounce = true) {
 }
 
 function setDogPage(page, shouldAnnounce = true) {
-  const lastPage = Math.ceil(dogOrder.length / 4) - 1;
+  const lastPage = Math.ceil(dogOrder.length / dogPageSize()) - 1;
   activeDogPage = (page + lastPage + 1) % (lastPage + 1);
-  setActiveDog(activeDogPage * 4, shouldAnnounce);
+  setActiveDog(activeDogPage * dogPageSize(), shouldAnnounce);
 }
 
 function renderDogPager() {
@@ -241,14 +376,15 @@ function renderDogPager() {
     return;
   }
 
-  const pageCount = Math.ceil(dogOrder.length / 4);
+  const pageSize = dogPageSize();
+  const pageCount = Math.ceil(dogOrder.length / pageSize);
   dogPageButtons.length = 0;
   dogPager.replaceChildren(...Array.from({ length: pageCount }, (_, index) => {
     const button = document.createElement('button');
     button.className = 'dog-carousel__page';
     button.type = 'button';
     button.dataset.dogPage = String(index);
-    button.setAttribute('aria-label', `Показать собак ${index * 4 + 1}-${Math.min((index + 1) * 4, dogOrder.length)}`);
+    button.setAttribute('aria-label', `Показать собак ${index * pageSize + 1}-${Math.min((index + 1) * pageSize, dogOrder.length)}`);
     button.addEventListener('click', () => setDogPage(index));
     dogPageButtons.push(button);
     return button;
@@ -277,11 +413,28 @@ function openImageCard(card, options = {}) {
 }
 
 function openDogCard(dogKey) {
-  return openImageCard(dogCards[dogKey]);
+  const dog = dogCards[dogKey];
+  if (!dog) {
+    return Promise.resolve();
+  }
+
+  return openImageCard({
+    src: mobileViewport.matches ? dog.cardMobile : dog.cardDesktop,
+    alt: dog.alt,
+  });
 }
 
 function openBrandCard(brandKey) {
-  return openImageCard(brandCards[brandKey], { showBrandLink: true, modalMode: 'brand' });
+  const brand = brandCards[brandKey];
+  if (!brand) {
+    return Promise.resolve();
+  }
+
+  return openImageCard({
+    src: mobileViewport.matches ? brand.cardMobile : brand.cardDesktop,
+    alt: brand.alt,
+    href: brand.href,
+  }, { showBrandLink: true, modalMode: 'brand' });
 }
 
 function openDjCard(djKey) {
@@ -345,6 +498,36 @@ document.querySelectorAll('[data-carousel]').forEach((button) => {
     setDogPage(activeDogPage + direction);
   });
 });
+
+if (dogViewport) {
+  let touchStartX = 0;
+  let touchStartY = 0;
+  const swipeThreshold = 34;
+
+  dogViewport.addEventListener('touchstart', (event) => {
+    const [touch] = event.touches;
+    if (!touch) {
+      return;
+    }
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+  }, { passive: true });
+
+  dogViewport.addEventListener('touchend', (event) => {
+    const [touch] = event.changedTouches;
+    if (!touch) {
+      return;
+    }
+
+    const deltaX = touch.clientX - touchStartX;
+    const deltaY = touch.clientY - touchStartY;
+    if (Math.abs(deltaX) < swipeThreshold || Math.abs(deltaX) <= Math.abs(deltaY)) {
+      return;
+    }
+
+    setDogPage(activeDogPage + (deltaX < 0 ? 1 : -1));
+  }, { passive: true });
+}
 
 document.querySelectorAll('[data-info]').forEach((button) => {
   button.addEventListener('click', () => {
@@ -420,7 +603,11 @@ scrollTopButton?.addEventListener('click', () => {
   });
 });
 
-window.addEventListener('resize', updateDogTrack);
+window.addEventListener('resize', () => {
+  applyMobileHotspotTweaks();
+  renderDogPager();
+  setActiveDog(activeDogIndex, false);
+});
 window.addEventListener('scroll', updateScrollTopButton, { passive: true });
 updateScrollTopButton();
 
