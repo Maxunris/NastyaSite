@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Дог порт фест</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="styles.css?v=figma-2026-34" />
+    <link rel="stylesheet" href="styles.css?v=figma-2026-43" />
   </head>
   <body>
     <main class="festival-page" aria-label="Дог порт фест">
       <div class="festival-page__artboard">
-        <img
-          class="festival-page__image"
-          src="assets/images/figma-2026/site-full.png"
-          width="1440"
-          height="9556"
-          alt="Дог порт фест. Фестиваль-пристройство собак из приюта Догпорт, 20-21 июня с 12 до 19 на веранде Даниловского рынка."
-        />
+        <picture>
+          <source media="(max-width: 700px)" srcset="assets/images/figma-2026/mobile/site-full-mobile.png" width="1431" height="32768" />
+          <img
+            class="festival-page__image"
+            src="assets/images/figma-2026/site-full.png"
+            width="1440"
+            height="9556"
+            alt="Дог порт фест. Фестиваль-пристройство собак из приюта Догпорт, 20-21 июня с 12 до 19 на веранде Даниловского рынка."
+          />
+        </picture>
 
         <nav class="festival-page__hotspots" aria-label="Навигация по странице">
           <a class="hotspot hotspot--dogs" href="#dogs">Собаки</a>
@@ -46,8 +49,8 @@
         <a class="hotspot hotspot--menu-djs" href="#djs">Диджеи</a>
         <a class="hotspot hotspot--menu-faq" href="#faq">Частые вопросы</a>
 
-        <button class="hotspot hotspot--cards-prev" type="button" data-carousel="prev">Предыдущая собака</button>
-        <button class="hotspot hotspot--cards-next" type="button" data-carousel="next">Следующая собака</button>
+        <button class="hotspot--cards-prev" type="button" data-carousel="prev" aria-label="Предыдущая собака">Предыдущая собака</button>
+        <button class="hotspot--cards-next" type="button" data-carousel="next" aria-label="Следующая собака">Следующая собака</button>
         <a class="hotspot hotspot--dogs-contact-shelter" href="https://t.me/marina_dogport" target="_blank" rel="noopener noreferrer">Связаться с волонтером приюта</a>
 
         <a class="hotspot partner-link hotspot--partner-award" href="https://vk.ru/award" target="_blank" rel="noopener noreferrer">Award</a>
@@ -171,7 +174,7 @@
       <p class="info-modal__text"></p>
     </dialog>
 
-    <script src="script.js?v=figma-2026-29"></script>
+    <script src="script.js?v=figma-2026-35"></script>
     <!-- Cloudflare Web Analytics -->
     <script>
       if (["dogportfest.ru", "www.dogportfest.ru"].includes(window.location.hostname)) {
