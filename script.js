@@ -297,10 +297,21 @@ function dogPageSize() {
 }
 
 function preloadCriticalImages() {
-  const dogsToPreload = dogOrder.slice(0, 4);
+  if (mobileViewport.matches) {
+    const firstDog = dogCards[dogOrder[0]];
+    if (!firstDog) {
+      return;
+    }
+
+    const image = new Image();
+    image.src = firstDog.frame;
+    return;
+  }
+
+  const dogsToPreload = dogOrder.slice(0, 2);
   dogsToPreload.forEach((dogKey) => {
     const card = dogCards[dogKey];
-    ['frame', 'cardDesktop', 'cardMobile'].forEach((field) => {
+    ['frame', 'cardDesktop'].forEach((field) => {
       if (!card[field]) {
         return;
       }
@@ -310,7 +321,7 @@ function preloadCriticalImages() {
   });
 
   Object.values({ ...brandCards, ...djCards }).forEach((card) => {
-    const sources = [card.src, card.cardDesktop, card.cardMobile].filter(Boolean);
+    const sources = [card.src, card.cardDesktop].filter(Boolean);
     sources.forEach((source) => {
       const image = new Image();
       image.src = source;

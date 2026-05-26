@@ -139,6 +139,7 @@ a {
   color: transparent;
   font: 0/0 a;
   cursor: pointer;
+  touch-action: pan-y;
   transform: translateZ(0);
   transform-origin: center;
   transition:
@@ -682,9 +683,7 @@ a {
   width: 41.7%;
   height: 0.63%;
   border-radius: 999px;
-  background:
-    url("assets/images/figma-2026/dogs/contact-shelter-button.png") center / 91.75% auto no-repeat,
-    url("assets/images/figma-2026/dogs/rectangle-62.png") center / 100% 100% no-repeat;
+  background: transparent;
   color: transparent;
   font: 0/0 a;
   text-align: center;
@@ -697,16 +696,7 @@ a {
 }
 
 .hotspot--dogs-contact-shelter::after {
-  top: auto;
-  bottom: -9px;
-  left: 8%;
-  width: 84%;
-  height: 3px;
-  border: 0;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--accent), #ffe07a 52%, var(--accent-strong));
-  box-shadow: 0 6px 14px rgb(255 178 41 / 0.34);
-  transform: scaleX(0.22);
+  display: none;
 }
 
 .partner-link {
@@ -1625,6 +1615,94 @@ a {
   }
 }
 
+@media (min-width: 701px) {
+  .hotspot--menu-dogs,
+  .hotspot--menu-activities,
+  .hotspot--menu-market,
+  .hotspot--menu-shelter,
+  .hotspot--menu-djs,
+  .hotspot--menu-faq {
+    --feedback-transform: scaleX(0.24);
+    --feedback-hover-transform: scaleX(1);
+    border-radius: 0;
+    background: transparent;
+    color: transparent;
+    font: 0/0 a;
+    text-indent: -9999px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .hotspot--menu-dogs {
+    left: 25.7%;
+    top: 11.02%;
+    width: 48.6%;
+    height: 0.62%;
+  }
+
+  .hotspot--menu-activities {
+    left: 22%;
+    top: 12.03%;
+    width: 56%;
+    height: 0.62%;
+  }
+
+  .hotspot--menu-market {
+    left: 33%;
+    top: 15.18%;
+    width: 34%;
+    height: 0.62%;
+  }
+
+  .hotspot--menu-shelter {
+    left: 31%;
+    top: 16.5%;
+    width: 38%;
+    height: 0.62%;
+  }
+
+  .hotspot--menu-djs {
+    left: 41.5%;
+    top: 17.9%;
+    width: 17%;
+    height: 0.6%;
+  }
+
+  .hotspot--menu-faq {
+    left: 34.2%;
+    top: 19.26%;
+    width: 31.6%;
+    height: 0.6%;
+  }
+
+  .hotspot--menu-dogs::before,
+  .hotspot--menu-activities::before,
+  .hotspot--menu-market::before,
+  .hotspot--menu-shelter::before,
+  .hotspot--menu-djs::before,
+  .hotspot--menu-faq::before {
+    display: none;
+  }
+
+  .hotspot--menu-dogs::after,
+  .hotspot--menu-activities::after,
+  .hotspot--menu-market::after,
+  .hotspot--menu-shelter::after,
+  .hotspot--menu-djs::after,
+  .hotspot--menu-faq::after {
+    top: auto;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), #ffe07a 52%, var(--accent-strong));
+    box-shadow: 0 6px 14px rgb(255 178 41 / 0.34);
+    opacity: 0;
+    transform: scaleX(0.24);
+  }
+}
+
 @media (max-width: 700px) {
   :root {
     --page-width: 430px;
@@ -1808,8 +1886,7 @@ a {
   }
 
   .dog-frame-button::after {
-    inset: 3px;
-    border-width: 2px;
+    display: none;
   }
 
   .dog-carousel__pager {
@@ -1842,9 +1919,7 @@ a {
     top: 25.73%;
     width: 85.12%;
     height: 0.7%;
-    background:
-      url("assets/images/figma-2026/dogs/contact-shelter-button.png") center / 88% auto no-repeat,
-      #008b15;
+    background: transparent;
   }
 
   .partner-link,
