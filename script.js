@@ -185,41 +185,56 @@ const dogOrder = [
 const brandCards = {
   plushki: {
     cardDesktop: 'assets/images/figma-2026/brand-cards/Group 105.png',
-    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-123-plushki.png',
+    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-123-plushki.png?v=20260527-brand-frames',
     alt: 'Карточка бренда Плюшки.',
     href: 'https://petvkus.ru',
   },
   sobakamama: {
     cardDesktop: 'assets/images/figma-2026/brand-cards/Group 96.png',
-    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-124-sobakamama.png',
+    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-124-sobakamama.png?v=20260527-brand-frames',
     alt: 'Карточка бренда Собака Мама.',
     href: 'https://sobakamama.shop',
   },
   sobakin: {
     cardDesktop: 'assets/images/figma-2026/brand-cards/Group 83.png',
-    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-125-sobakin.png',
+    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-125-sobakin.png?v=20260527-brand-frames',
     alt: 'Карточка бренда Собакин.',
     href: 'https://sobakin-shop.ru',
   },
   'shaggy-dog': {
     cardDesktop: 'assets/images/figma-2026/brand-cards/Group 64.png',
-    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-121-shaggy-dog.png',
+    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-121-shaggy-dog.png?v=20260527-brand-frames',
     alt: 'Карточка бренда Shaggy Dog.',
     href: 'https://shaggydog.ru',
   },
   'derzhis-menya': {
     cardDesktop: 'assets/images/figma-2026/brand-cards/Group 67.png',
-    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-122-derzhis-menya.png',
+    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-122-derzhis-menya.png?v=20260527-brand-frames',
     alt: 'Карточка бренда Держись меня.',
     href: 'https://t.me/derzhismenya',
   },
   'hug-me-dog': {
     cardDesktop: 'assets/images/figma-2026/brand-cards/Group 63.png',
-    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-120-hug-me-dog.png',
+    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-120-hug-me-dog.png?v=20260527-brand-frames',
     alt: 'Карточка бренда Hug Me Dog.',
     href: 'https://hugmedog.ru',
   },
 };
+
+const eventSlides = [
+  {
+    src: 'assets/images/figma-2026/events/rbTVTeycB2U8paixWNAPHVwCGOsGAzZ0FAYRZ1dPS46CNMb_u1CqoSNGbIfHcfZBBo 1.png',
+    alt: 'Стенд Mr.Kranch с игрушками и товарами для собак.',
+  },
+  {
+    src: 'assets/images/figma-2026/events/unnamed (1) (1) 1.png',
+    alt: 'Бокс Хвост Ньюс на фестивале.',
+  },
+  {
+    src: 'assets/images/figma-2026/events/unnamed (2) (1) 1.png',
+    alt: 'Товары и лакомства для собак на стенде партнеров.',
+  },
+];
 
 const djCards = {
   maksim: {
@@ -277,11 +292,14 @@ const dogButtons = [...document.querySelectorAll('[data-dog]')];
 const dogPageButtons = [];
 const brandButtons = [...document.querySelectorAll('[data-brand]')];
 const djButtons = [...document.querySelectorAll('[data-dj]')];
+const eventImage = document.querySelector('[data-event-carousel-image]');
+const eventButtons = [...document.querySelectorAll('[data-event-carousel]')];
 const dogStatus = document.querySelector('.dog-status');
 const faqButtons = [...document.querySelectorAll('[data-faq]')];
 const scrollTopButton = document.querySelector('.scroll-top');
 let activeDogIndex = 0;
 let activeDogPage = 0;
+let activeEventIndex = 0;
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const mobileViewport = window.matchMedia('(max-width: 700px)');
 
@@ -456,6 +474,18 @@ function openDjCard(djKey) {
   return openImageCard(djCards[djKey], { showBrandLink: true, modalMode: 'dj' });
 }
 
+function setActiveEventSlide(index) {
+  if (!eventImage) {
+    return;
+  }
+
+  activeEventIndex = (index + eventSlides.length) % eventSlides.length;
+  const slide = eventSlides[activeEventIndex];
+  eventImage.src = slide.src;
+  eventImage.alt = slide.alt;
+  eventImage.dataset.eventIndex = String(activeEventIndex);
+}
+
 function closeDialog(dialog) {
   if (!dialog?.open) {
     return;
@@ -511,6 +541,13 @@ document.querySelectorAll('[data-carousel]').forEach((button) => {
   button.addEventListener('click', () => {
     const direction = button.dataset.carousel === 'next' ? 1 : -1;
     setDogPage(activeDogPage + direction);
+  });
+});
+
+eventButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const direction = button.dataset.eventCarousel === 'next' ? 1 : -1;
+    setActiveEventSlide(activeEventIndex + direction);
   });
 });
 
@@ -628,3 +665,4 @@ updateScrollTopButton();
 
 renderDogPager();
 setActiveDog(0, false);
+setActiveEventSlide(0);

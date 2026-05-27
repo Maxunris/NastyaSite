@@ -51,6 +51,21 @@ BRAND_DESKTOP_FILES = {
     "hug-me-dog": "Group 63.png",
 }
 
+MOBILE_BRAND_VISUAL_POINTS = {
+    "hug-me-dog": (715, 21680),
+    "shaggy-dog": (715, 22125),
+    "derzhis-menya": (715, 22720),
+    "sobakamama": (715, 23305),
+    "sobakin": (715, 23816),
+    "plushki": (715, 24345),
+}
+
+EVENT_SLIDE_FILES = [
+    "rbTVTeycB2U8paixWNAPHVwCGOsGAzZ0FAYRZ1dPS46CNMb_u1CqoSNGbIfHcfZBBo 1.png",
+    "unnamed (1) (1) 1.png",
+    "unnamed (2) (1) 1.png",
+]
+
 CONTACT_LINKS = {
     ".hotspot--contact-1": "https://t.me/DogportMSK",
     ".hotspot--contact-2": "https://dogport.ru/",
@@ -151,6 +166,27 @@ def close_modal(page):
     if page.locator(".dog-modal[open]").count():
         page.locator(".dog-modal__close").click()
         page.wait_for_function("!document.querySelector('.dog-modal').open", timeout=1000)
+
+
+def click_mobile_artwork_point(page, natural_x, natural_y):
+    page.evaluate(
+        """([, y]) => {
+            const board = document.querySelector('.festival-page__artboard');
+            const scale = board.getBoundingClientRect().width / 1431;
+            window.scrollTo({ top: Math.max(0, y * scale - window.innerHeight / 2), behavior: 'instant' });
+        }""",
+        [natural_x, natural_y],
+    )
+    page.wait_for_timeout(80)
+    point = page.evaluate(
+        """([x, y]) => {
+            const board = document.querySelector('.festival-page__artboard').getBoundingClientRect();
+            const scale = board.width / 1431;
+            return { x: board.left + x * scale, y: board.top + y * scale };
+        }""",
+        [natural_x, natural_y],
+    )
+    page.mouse.click(point["x"], point["y"])
 
 
 def pseudo_after(page, selector):
@@ -537,13 +573,18 @@ def test_mobile_dog_carousel_does_not_paint_a_visible_live_frame(browser):
         """el => ({
             background: getComputedStyle(el).backgroundColor,
             overflow: getComputedStyle(el).overflow,
-            borderRadius: getComputedStyle(el).borderRadius
+            borderRadius: getComputedStyle(el).borderRadius,
+            boxShadow: getComputedStyle(el).boxShadow
         })"""
     )
 
-    assert state["background"] == "rgba(0, 0, 0, 0)"
+    assert state["background"] == "rgb(255, 255, 255)"
     assert state["overflow"] == "hidden"
     assert state["borderRadius"] == "0px"
+    assert "rgb(255, 255, 255) 0px -12px 0px 12px" in state["boxShadow"]
+    active_src = page.locator(".dog-frame-button.is-active img").get_attribute("src")
+    assert "dog-frames/" in active_src
+    assert "dog-frames-mobile-clean" not in active_src
 
     assert not errors
     page.close()
@@ -567,6 +608,37 @@ def test_mobile_dog_carousel_shows_only_active_frame_during_transition(browser):
     )
 
     assert visible_frames == ["belka"]
+    active_src = page.locator(".dog-frame-button.is-active img").get_attribute("src")
+    assert "dog-frames/" in active_src
+    assert "dog-frames-mobile-clean" not in active_src
+
+    assert not errors
+    page.close()
+
+
+def test_mobile_partner_photo_arrows_cycle_live_image(browser):
+    page, errors = new_page(browser, width=390, height=844)
+
+    page.locator(".event-carousel").scroll_into_view_if_needed()
+    image = page.locator(".event-carousel__image")
+    prev_button = page.locator(".event-carousel__button--prev")
+    next_button = page.locator(".event-carousel__button--next")
+
+    assert image.get_attribute("src").endswith(EVENT_SLIDE_FILES[0])
+    assert prev_button.is_visible()
+    assert next_button.is_visible()
+
+    next_button.click()
+    page.wait_for_timeout(180)
+    assert image.get_attribute("src").endswith(EVENT_SLIDE_FILES[1])
+
+    next_button.click()
+    page.wait_for_timeout(180)
+    assert image.get_attribute("src").endswith(EVENT_SLIDE_FILES[2])
+
+    prev_button.click()
+    page.wait_for_timeout(180)
+    assert image.get_attribute("src").endswith(EVENT_SLIDE_FILES[1])
 
     assert not errors
     page.close()
@@ -583,10 +655,52 @@ def test_mobile_all_brand_logos_open_their_own_cards(browser):
         src = page.locator(".dog-modal__image").get_attribute("src")
         assert "brand-cards-mobile" in src
         assert BRAND_MOBILE_FILES[brand] in src
+        assert page.locator(".dog-modal__image").evaluate("img => img.naturalWidth") == 960
         if brand == "plushki":
             assert "Плюшки" in page.locator(".dog-modal__image").get_attribute("alt")
-        assert page.locator(".dog-modal__brand-link").get_attribute("href") == href
+        brand_link = page.locator(".dog-modal__brand-link")
+        assert brand_link.get_attribute("href") == href
+        link_box = brand_link.bounding_box()
+        image_box = page.locator(".dog-modal__image").bounding_box()
+        assert link_box["width"] > image_box["width"] * 0.7
+        assert link_box["y"] > image_box["y"] + image_box["height"] * 0.84
+        assert brand_link.evaluate(
+            """link => {
+                const r = link.getBoundingClientRect();
+                const topNode = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+                return topNode === link || link.contains(topNode);
+            }"""
+        )
         close_modal(page)
+
+    assert not errors
+    page.close()
+
+
+def test_mobile_visible_brand_logos_open_matching_cards(browser):
+    page, errors = new_page(browser, width=390, height=844)
+
+    for brand, (natural_x, natural_y) in MOBILE_BRAND_VISUAL_POINTS.items():
+        click_mobile_artwork_point(page, natural_x, natural_y)
+        page.wait_for_selector(".dog-modal[open]")
+        assert BRAND_MOBILE_FILES[brand] in page.locator(".dog-modal__image").get_attribute("src")
+        assert page.locator(".dog-modal__brand-link").get_attribute("href") == BRAND_LINKS[brand]
+        close_modal(page)
+
+    assert not errors
+    page.close()
+
+
+def test_mobile_brand_modal_does_not_show_side_arrows(browser):
+    page, errors = new_page(browser, width=390, height=844)
+
+    page.locator("[data-brand='hug-me-dog']").scroll_into_view_if_needed()
+    page.locator("[data-brand='hug-me-dog']").click()
+    page.wait_for_selector(".dog-modal[open]")
+
+    assert not page.locator(".dog-modal__brand-nav--prev").is_visible()
+    assert not page.locator(".dog-modal__brand-nav--next").is_visible()
+    close_modal(page)
 
     assert not errors
     page.close()
