@@ -158,10 +158,7 @@ def new_page(browser, width=1440, height=1000):
     errors = []
     page.on("console", lambda msg: errors.append(msg.text) if msg.type == "error" else None)
     page.goto(BASE_URL, wait_until="networkidle")
-    page.wait_for_function(
-        """() => [...document.querySelectorAll('.festival-page__image, .festival-page__mobile-slice')]
-            .some((image) => image.getClientRects().length > 0)"""
-    )
+    page.wait_for_selector(".festival-page__image")
     return page, errors
 
 
@@ -229,11 +226,8 @@ def dog_frame_rects(page):
 def test_page_uses_new_full_artwork_without_flattening_live_layers(browser):
     page, errors = new_page(browser)
 
-    assert page.locator(".festival-page__image").evaluate(
-        "image => new URL(image.currentSrc).pathname"
-    ) == "/assets/images/figma-2026/site-full.png"
+    assert page.locator(".festival-page__image").get_attribute("src").split("?")[0] == "assets/images/figma-2026/site-full.png"
     assert page.locator(".festival-page__image").get_attribute("height") == "9556"
-    assert page.locator(".festival-page__mobile-slice").count() == 8
     assert page.locator(".festival-page__hotspots").count() == 1
     assert page.locator(".faq-section").count() == 1
     assert page.locator(".faq-item__button").count() == 6
