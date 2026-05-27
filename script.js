@@ -183,10 +183,10 @@ const dogOrder = [
 ];
 
 const brandCards = {
-  petvkus: {
+  plushki: {
     cardDesktop: 'assets/images/figma-2026/brand-cards/Group 105.png',
-    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-123-petvkus.png',
-    alt: 'Карточка бренда Petvkus.',
+    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-123-plushki.png',
+    alt: 'Карточка бренда Плюшки.',
     href: 'https://petvkus.ru',
   },
   sobakamama: {
@@ -243,7 +243,7 @@ function renderDogCarousel() {
     return;
   }
 
-  dogTrack.replaceChildren(...dogOrder.map((dogKey) => {
+  dogTrack.replaceChildren(...dogOrder.map((dogKey, index) => {
     const dog = dogCards[dogKey];
     const button = document.createElement('button');
     const image = document.createElement('img');
@@ -253,6 +253,9 @@ function renderDogCarousel() {
     button.dataset.dog = dogKey;
     button.setAttribute('aria-label', `Открыть карточку ${dog.name}`);
 
+    image.loading = index === 0 ? 'eager' : 'lazy';
+    image.decoding = 'async';
+    image.fetchPriority = index === 0 ? 'high' : 'low';
     image.src = dog.frame;
     image.alt = dog.name;
     button.append(image);
@@ -286,7 +289,7 @@ function applyMobileHotspotTweaks() {
   const isMobile = mobileViewport.matches;
 
   document.querySelectorAll('.brand-card-hotspot').forEach((hotspot) => {
-    hotspot.style.zIndex = isMobile ? '6' : '';
+    hotspot.style.zIndex = isMobile ? '12' : '';
   });
 }
 
@@ -297,42 +300,43 @@ function dogPageSize() {
 }
 
 function preloadCriticalImages() {
-  if (mobileViewport.matches) {
-    const firstDog = dogCards[dogOrder[0]];
-    if (!firstDog) {
-      return;
-    }
-
-    const image = new Image();
-    image.src = firstDog.frame;
+  const firstDog = dogCards[dogOrder[0]];
+  if (!firstDog) {
     return;
   }
 
-  const dogsToPreload = dogOrder.slice(0, 2);
-  dogsToPreload.forEach((dogKey) => {
-    const card = dogCards[dogKey];
-    ['frame', 'cardDesktop'].forEach((field) => {
-      if (!card[field]) {
-        return;
-      }
-      const image = new Image();
-      image.src = card[field];
-    });
-  });
+  const preload = (source) => {
+    if (!source) {
+      return;
+    }
+    const image = new Image();
+    image.src = source;
+  };
 
-  Object.values({ ...brandCards, ...djCards }).forEach((card) => {
-    const sources = [card.src, card.cardDesktop].filter(Boolean);
-    sources.forEach((source) => {
-      const image = new Image();
-      image.src = source;
-    });
-  });
+  preload(firstDog.frame);
+
+  if (!mobileViewport.matches) {
+    preload(firstDog.cardDesktop);
+  }
+}
+
+function scheduleInitialPreload() {
+  const run = () => {
+    window.setTimeout(preloadCriticalImages, 220);
+  };
+
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(run, { timeout: 1200 });
+    return;
+  }
+
+  run();
 }
 
 if (document.readyState === 'complete') {
-  preloadCriticalImages();
+  scheduleInitialPreload();
 } else {
-  window.addEventListener('load', preloadCriticalImages, { once: true });
+  window.addEventListener('load', scheduleInitialPreload, { once: true });
 }
 
 function updateDogTrack() {

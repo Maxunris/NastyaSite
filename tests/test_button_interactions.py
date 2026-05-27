@@ -25,12 +25,30 @@ DOGS = [
 ]
 
 BRAND_LINKS = {
-    "petvkus": "https://petvkus.ru",
+    "plushki": "https://petvkus.ru",
     "sobakamama": "https://sobakamama.shop",
     "sobakin": "https://sobakin-shop.ru",
     "shaggy-dog": "https://shaggydog.ru",
     "derzhis-menya": "https://t.me/derzhismenya",
     "hug-me-dog": "https://hugmedog.ru",
+}
+
+BRAND_MOBILE_FILES = {
+    "plushki": "Group-123-plushki.png",
+    "sobakamama": "Group-124-sobakamama.png",
+    "sobakin": "Group-125-sobakin.png",
+    "shaggy-dog": "Group-121-shaggy-dog.png",
+    "derzhis-menya": "Group-122-derzhis-menya.png",
+    "hug-me-dog": "Group-120-hug-me-dog.png",
+}
+
+BRAND_DESKTOP_FILES = {
+    "plushki": "Group 105.png",
+    "sobakamama": "Group 96.png",
+    "sobakin": "Group 83.png",
+    "shaggy-dog": "Group 64.png",
+    "derzhis-menya": "Group 67.png",
+    "hug-me-dog": "Group 63.png",
 }
 
 CONTACT_LINKS = {
@@ -39,6 +57,23 @@ CONTACT_LINKS = {
     ".hotspot--contact-3": "https://t.me/danilovskymarket",
     ".hotspot--contact-4": "https://t.me/hvost_news",
     ".hotspot--contact-5": "https://t.me/anastasia_sabanina",
+}
+
+CONTACT_UNDERLINES = {
+    ".hotspot--contact-1": (-9, -7, 208, 211),
+    ".hotspot--contact-2": (-9, -7, 208, 211),
+    ".hotspot--contact-3": (-23, -21, 208, 211),
+    ".hotspot--contact-4": (-9, -7, 208, 212),
+    ".hotspot--contact-5": (-26, -24, 203, 205),
+}
+
+MENU_TARGETS = {
+    ".hotspot--menu-dogs": "#dogs",
+    ".hotspot--menu-activities": "#activities",
+    ".hotspot--menu-market": "#market",
+    ".hotspot--menu-shelter": "#shelter",
+    ".hotspot--menu-djs": "#djs",
+    ".hotspot--menu-faq": "#faq",
 }
 
 DJ_LINKS = {
@@ -60,7 +95,7 @@ BRAND_RECTS = {
     "hug-me-dog": (960, 1010, 6390, 6445),
     "sobakin": (440, 480, 6535, 6590),
     "sobakamama": (820, 860, 6535, 6595),
-    "petvkus": (610, 660, 6685, 6750),
+    "plushki": (610, 660, 6685, 6750),
 }
 
 PARTNER_RECTS = {
@@ -131,6 +166,8 @@ def pseudo_after(page, selector):
                 left: style.left,
                 right: style.right,
                 bottom: style.bottom,
+                display: style.display,
+                height: style.height,
                 width: style.width
             };
         }"""
@@ -153,14 +190,14 @@ def dog_frame_rects(page):
 def test_page_uses_new_full_artwork_without_flattening_live_layers(browser):
     page, errors = new_page(browser)
 
-    assert page.locator(".festival-page__image").get_attribute("src") == "assets/images/figma-2026/site-full.png"
+    assert page.locator(".festival-page__image").get_attribute("src").split("?")[0] == "assets/images/figma-2026/site-full.png"
     assert page.locator(".festival-page__image").get_attribute("height") == "9556"
     assert page.locator(".festival-page__hotspots").count() == 1
     assert page.locator(".faq-section").count() == 1
     assert page.locator(".faq-item__button").count() == 6
     assert page.locator(".dog-carousel").count() == 1
-    assert page.locator(".dog-frame-button").count() == 12
-    assert page.locator(".dog-carousel__page").count() == 3
+    assert page.locator(".dog-frame-button").count() == 22
+    assert page.locator(".dog-carousel__page").count() == 6
 
     assert not errors
     page.close()
@@ -199,7 +236,14 @@ def test_dog_carousel_arrows_move_track_and_each_dog_opens_matching_card(browser
     assert shelter_contact.get_attribute("href") == DOGS_CONTACT_LINK
     shelter_contact.hover()
     page.wait_for_timeout(220)
-    assert pseudo_after(page, ".hotspot--dogs-contact-shelter")["opacity"] >= 0.9
+    shelter_underline = pseudo_after(page, ".hotspot--dogs-contact-shelter")
+    shelter_rect = normalized_rect(page, ".hotspot--dogs-contact-shelter")
+    assert shelter_underline["display"] != "none"
+    assert shelter_underline["opacity"] >= 0.9
+    assert shelter_underline["height"] == "3px"
+    assert_range(float(shelter_underline["bottom"].replace("px", "")), -27, -23, "shelter contact underline bottom")
+    assert_range(float(shelter_underline["left"].replace("px", "")), 2, 4, "shelter contact underline left")
+    assert_range(float(shelter_underline["width"].replace("px", "")), shelter_rect["width"] - 19, shelter_rect["width"] - 17, "shelter contact underline width")
 
     before = page.locator(".dog-carousel__track").evaluate("el => getComputedStyle(el).transform")
     page.locator(".hotspot--cards-next").click()
@@ -261,9 +305,32 @@ def test_dog_carousel_arrows_move_track_and_each_dog_opens_matching_card(browser
             button = page.locator(f"[data-dog='{dog}']")
             button.click()
             page.wait_for_selector(".dog-modal[open]")
-            assert f"dog-cards/" in page.locator(".dog-modal__image").get_attribute("src")
+            assert "dog-cards" in page.locator(".dog-modal__image").get_attribute("src")
             assert dog in page.locator(".dog-modal__image").get_attribute("alt").lower()
             close_modal(page)
+
+    assert not errors
+    page.close()
+
+
+def test_dog_carousel_desktop_arrows_use_css_icons_without_raster_assets(browser):
+    page, errors = new_page(browser, width=1440, height=1000)
+
+    prev_bg = page.locator(".hotspot--cards-prev").evaluate("el => getComputedStyle(el).backgroundImage")
+    next_bg = page.locator(".hotspot--cards-next").evaluate("el => getComputedStyle(el).backgroundImage")
+    prev_before = page.locator(".hotspot--cards-prev").evaluate("el => getComputedStyle(el, '::before').content")
+    next_before = page.locator(".hotspot--cards-next").evaluate("el => getComputedStyle(el, '::before').content")
+    prev_after = page.locator(".hotspot--cards-prev").evaluate("el => getComputedStyle(el, '::after').content")
+    next_after = page.locator(".hotspot--cards-next").evaluate("el => getComputedStyle(el, '::after').content")
+
+    assert prev_bg == "none"
+    assert next_bg == "none"
+    assert "carousel-arrow-left.png" not in prev_bg
+    assert "carousel-arrow-right.png" not in next_bg
+    assert prev_before == '""'
+    assert next_before == '""'
+    assert prev_after == "none"
+    assert next_after == "none"
 
     assert not errors
     page.close()
@@ -291,7 +358,9 @@ def test_brand_cards_use_six_updated_partners_and_preserve_hover_motion(browser)
 
         page.locator(selector).click()
         page.wait_for_selector(".dog-modal[open]")
-        assert "brand-cards/" in page.locator(".dog-modal__image").get_attribute("src")
+        src = page.locator(".dog-modal__image").get_attribute("src")
+        assert "brand-cards/" in src
+        assert BRAND_DESKTOP_FILES[brand] in src
         assert page.locator(".dog-modal").evaluate("el => el.classList.contains('dog-modal--brand')")
         assert page.locator(".dog-modal__image").evaluate("el => getComputedStyle(el).borderRadius") in (
             "48px",
@@ -318,6 +387,206 @@ def test_partner_logo_hotspots_are_aligned_and_do_not_duplicate_logos(browser):
         hover = pseudo_after(page, selector)
         assert hover["opacity"] >= 0.9
         assert "url(" not in hover["backgroundImage"]
+
+    assert not errors
+    page.close()
+
+
+def test_second_menu_hotspots_align_to_visible_items_and_scroll_to_sections(browser):
+    page, errors = new_page(browser, width=1440, height=1000)
+
+    expected_tops = {
+        ".hotspot--menu-dogs": (970, 1030),
+        ".hotspot--menu-activities": (1040, 1105),
+        ".hotspot--menu-market": (1125, 1185),
+        ".hotspot--menu-shelter": (1195, 1260),
+        ".hotspot--menu-djs": (1275, 1345),
+        ".hotspot--menu-faq": (1350, 1425),
+    }
+
+    for selector, target in MENU_TARGETS.items():
+        rect = normalized_rect(page, selector)
+        min_top, max_top = expected_tops[selector]
+        assert_range(rect["top"], min_top, max_top, f"{selector} desktop top")
+
+        page.evaluate("window.scrollTo({ top: 0, behavior: 'instant' })")
+        page.locator(selector).click()
+        page.wait_for_function(
+            """targetSelector => {
+                const target = document.querySelector(targetSelector);
+                if (!target) return false;
+                const rect = target.getBoundingClientRect();
+                return rect.top >= -20 && rect.top <= 280;
+            }""",
+            arg=target,
+            timeout=2400,
+        )
+
+    assert not errors
+    page.close()
+
+
+def test_desktop_second_menu_uses_green_pill_hover_from_original_design(browser):
+    page, errors = new_page(browser, width=1440, height=1000)
+
+    selector = ".hotspot--menu-dogs"
+    mask = page.locator(".festival-page__artboard").evaluate(
+        """el => {
+            const before = getComputedStyle(el, '::before');
+            return {
+                background: before.backgroundColor,
+                height: before.height,
+                width: before.width
+            };
+        }"""
+    )
+    assert mask["background"] == "rgb(255, 255, 255)"
+    assert mask["height"] != "auto"
+    assert mask["width"] != "auto"
+
+    idle = page.locator(selector).evaluate(
+        """el => {
+            const after = getComputedStyle(el, '::after');
+            return {
+                color: getComputedStyle(el).color,
+                fontSize: getComputedStyle(el).fontSize,
+                background: after.backgroundColor,
+                opacity: Number(after.opacity)
+            };
+        }"""
+    )
+    assert idle["color"] == "rgb(0, 139, 21)"
+    assert idle["fontSize"] != "0px"
+    assert idle["opacity"] == 0
+
+    page.locator(selector).hover()
+    page.wait_for_timeout(360)
+    hover = page.locator(selector).evaluate(
+        """el => {
+            const after = getComputedStyle(el, '::after');
+            return {
+                color: getComputedStyle(el).color,
+                fontSize: getComputedStyle(el).fontSize,
+                background: after.backgroundColor,
+                height: after.height,
+                opacity: Number(after.opacity),
+                transform: after.transform,
+                borderRadius: after.borderRadius
+            };
+        }"""
+    )
+
+    assert hover["color"] == "rgb(255, 255, 255)"
+    assert hover["fontSize"] != "0px"
+    assert hover["background"] == "rgb(0, 139, 21)"
+    assert hover["height"] != "4px"
+    assert hover["opacity"] >= 0.95
+    assert hover["borderRadius"] == "999px"
+
+    assert not errors
+    page.close()
+
+
+def test_mobile_second_menu_items_are_clickable_and_scroll_to_sections(browser):
+    page, errors = new_page(browser, width=390, height=844)
+
+    for selector, target in MENU_TARGETS.items():
+        page.evaluate("window.scrollTo({ top: 0, behavior: 'instant' })")
+        page.locator(selector).click()
+        page.wait_for_function(
+            """targetSelector => {
+                const target = document.querySelector(targetSelector);
+                if (!target) return false;
+                const rect = target.getBoundingClientRect();
+                return rect.top >= -20 && rect.top <= 360;
+            }""",
+            arg=target,
+            timeout=2400,
+        )
+
+    assert not errors
+    page.close()
+
+
+def test_page_accepts_user_scroll_immediately_after_domcontentloaded(browser):
+    page = browser.new_page(viewport={"width": 390, "height": 844})
+    errors = []
+    page.on("console", lambda msg: errors.append(msg.text) if msg.type == "error" else None)
+    page.goto(BASE_URL, wait_until="domcontentloaded")
+
+    assert page.evaluate("document.documentElement.scrollHeight > window.innerHeight * 4")
+    assert page.evaluate("getComputedStyle(document.body).overflowY") != "hidden"
+
+    page.mouse.move(200, 400)
+    for _ in range(8):
+        page.mouse.wheel(0, 700)
+        page.wait_for_timeout(60)
+        if page.evaluate("window.scrollY") > 100:
+            break
+
+    assert page.evaluate("window.scrollY") > 100
+
+    assert not errors
+    page.close()
+
+
+def test_mobile_dog_carousel_does_not_paint_a_visible_live_frame(browser):
+    page, errors = new_page(browser, width=390, height=844)
+
+    state = page.locator(".dog-carousel").evaluate(
+        """el => ({
+            background: getComputedStyle(el).backgroundColor,
+            overflow: getComputedStyle(el).overflow,
+            borderRadius: getComputedStyle(el).borderRadius
+        })"""
+    )
+
+    assert state["background"] == "rgba(0, 0, 0, 0)"
+    assert state["overflow"] == "hidden"
+    assert state["borderRadius"] == "0px"
+
+    assert not errors
+    page.close()
+
+
+def test_mobile_dog_carousel_shows_only_active_frame_during_transition(browser):
+    page, errors = new_page(browser, width=390, height=844)
+
+    page.locator(".dog-carousel").scroll_into_view_if_needed()
+    page.locator(".hotspot--cards-next").click()
+    page.wait_for_timeout(80)
+
+    visible_frames = page.locator(".dog-frame-button").evaluate_all(
+        """buttons => buttons
+            .filter((button) => {
+                const style = getComputedStyle(button);
+                const rect = button.getBoundingClientRect();
+                return style.visibility !== 'hidden' && Number(style.opacity) > 0.05 && rect.width > 0 && rect.height > 0;
+            })
+            .map((button) => button.dataset.dog)"""
+    )
+
+    assert visible_frames == ["belka"]
+
+    assert not errors
+    page.close()
+
+
+def test_mobile_all_brand_logos_open_their_own_cards(browser):
+    page, errors = new_page(browser, width=390, height=844)
+
+    for brand, href in BRAND_LINKS.items():
+        selector = f"[data-brand='{brand}']"
+        page.locator(selector).scroll_into_view_if_needed()
+        page.locator(selector).click()
+        page.wait_for_selector(".dog-modal[open]")
+        src = page.locator(".dog-modal__image").get_attribute("src")
+        assert "brand-cards-mobile" in src
+        assert BRAND_MOBILE_FILES[brand] in src
+        if brand == "plushki":
+            assert "Плюшки" in page.locator(".dog-modal__image").get_attribute("alt")
+        assert page.locator(".dog-modal__brand-link").get_attribute("href") == href
+        close_modal(page)
 
     assert not errors
     page.close()
@@ -366,16 +635,29 @@ def test_faq_stays_live_after_dj_section_and_contacts_include_all_questions_link
         page.locator(selector).scroll_into_view_if_needed()
         page.locator(selector).hover()
         page.wait_for_timeout(280)
-        assert pseudo_after(page, selector)["opacity"] >= 0.9
+        underline = pseudo_after(page, selector)
+        left_min, left_max, width_min, width_max = CONTACT_UNDERLINES[selector]
+        assert underline["opacity"] >= 0.9
+        assert_range(float(underline["bottom"].replace("px", "")), -19, -17, f"{selector} underline bottom")
+        assert_range(float(underline["left"].replace("px", "")), left_min, left_max, f"{selector} underline left")
+        assert_range(float(underline["width"].replace("px", "")), width_min, width_max, f"{selector} underline width")
 
     contact_shelter = page.locator(".hotspot--contact-2").evaluate(
         """el => ({
             text: el.textContent,
-            borderRadius: getComputedStyle(el).borderRadius
+            borderWidth: getComputedStyle(el).borderWidth,
+            background: getComputedStyle(el).backgroundColor,
+            backgroundImage: getComputedStyle(el).backgroundImage,
+            color: getComputedStyle(el).color,
+            fontSize: getComputedStyle(el).fontSize
         })"""
     )
     assert contact_shelter["text"] == "Сайт приюта"
-    assert contact_shelter["borderRadius"] in {"999px", "9999px"}
+    assert contact_shelter["borderWidth"] == "0px"
+    assert contact_shelter["background"] == "rgba(0, 0, 0, 0)"
+    assert contact_shelter["backgroundImage"] == "none"
+    assert contact_shelter["color"] == "rgba(0, 0, 0, 0)"
+    assert contact_shelter["fontSize"] == "0px"
 
     assert not errors
     page.close()
@@ -421,6 +703,13 @@ def test_layout_has_no_horizontal_scroll_and_live_targets_are_clickable(browser,
         ".faq-item__button",
         *CONTACT_LINKS.keys(),
     ]
+
+    if width <= 700:
+        live_targets = [
+            selector for selector in live_targets
+            if selector not in {".hotspot--dogs", ".hotspot--partners", ".hotspot--market", ".hotspot--shelter", ".hotspot--faq"}
+        ]
+        live_targets.extend(MENU_TARGETS.keys())
 
     for selector in live_targets:
         try:

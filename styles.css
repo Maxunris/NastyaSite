@@ -60,6 +60,18 @@ a {
   pointer-events: none;
 }
 
+.festival-page__artboard::before {
+  position: absolute;
+  z-index: 1;
+  top: 9.72%;
+  left: 17%;
+  width: 66%;
+  height: 6.55%;
+  background: #fff;
+  content: "";
+  pointer-events: none;
+}
+
 .festival-page__image {
   display: block;
   width: 100%;
@@ -696,7 +708,19 @@ a {
 }
 
 .hotspot--dogs-contact-shelter::after {
-  display: none;
+  top: auto;
+  bottom: -25px;
+  left: 3px;
+  width: calc(100% - 18px);
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), #ffe07a 52%, var(--accent-strong));
+  box-shadow: 0 6px 14px rgb(255 178 41 / 0.34);
+}
+
+.hotspot--dogs-contact-shelter:hover::after,
+.hotspot--dogs-contact-shelter:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .partner-link {
@@ -863,7 +887,7 @@ a {
   transform: scaleX(1);
 }
 
-.hotspot--brand-petvkus {
+.hotspot--brand-plushki {
   --brand-logo: url("assets/images/figma-2026/brand-logos/IMG_5482 1.png");
   left: 43.4%;
   top: 70.05%;
@@ -1077,17 +1101,6 @@ a {
 .hotspot--contact-2 {
   left: 31.15%;
   width: 16.7%;
-  height: auto;
-  aspect-ratio: 6 / 1;
-  border: 2px solid #fff;
-  background: linear-gradient(105deg, #0e9b0b 0%, #008c14 100%);
-  color: #fff;
-  font: 900 clamp(11px, 1.05vw, 16px) / 1 Arial, sans-serif;
-  text-decoration: none;
-  text-transform: lowercase;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .hotspot--contact-3 {
@@ -1127,33 +1140,22 @@ a {
 .hotspot--contact-4::after,
 .hotspot--contact-5::after {
   top: auto;
-  bottom: -10px;
-  left: 12%;
-  width: 76%;
+  bottom: -18px;
+  left: var(--contact-underline-left, -8px);
+  width: var(--contact-underline-width, 209px);
   height: 3px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--accent), #ffe07a 52%, var(--accent-strong));
   box-shadow: 0 6px 14px rgb(255 178 41 / 0.34);
 }
 
-.hotspot--contact-1::after {
-  left: 0;
-  width: 100%;
-}
-
-.hotspot--contact-2::after {
-  left: 0;
-  width: 100%;
-}
-
 .hotspot--contact-3::after {
-  left: 0;
-  width: 100%;
+  --contact-underline-left: -22px;
 }
 
-.hotspot--contact-4::after {
-  left: 0;
-  width: 100%;
+.hotspot--contact-5::after {
+  --contact-underline-left: -25px;
+  --contact-underline-width: 204px;
 }
 
 .hotspot--contact-1:hover::after,
@@ -1622,57 +1624,60 @@ a {
   .hotspot--menu-shelter,
   .hotspot--menu-djs,
   .hotspot--menu-faq {
-    --feedback-transform: scaleX(0.24);
+    z-index: 8;
+    --feedback-transform: scaleX(0.92);
     --feedback-hover-transform: scaleX(1);
-    border-radius: 0;
+    --hover-transform: translateZ(0);
+    border-radius: 999px;
     background: transparent;
-    color: transparent;
-    font: 0/0 a;
-    text-indent: -9999px;
+    color: var(--green);
+    font: 900 clamp(15px, 3vw, 43px) / 1 Arial, sans-serif;
+    pointer-events: auto;
+    text-indent: 0;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .hotspot--menu-dogs {
-    left: 25.7%;
-    top: 11.02%;
-    width: 48.6%;
-    height: 0.62%;
+    left: 25.83%;
+    top: 10.2972%;
+    width: 48.4%;
+    height: 0.64%;
   }
 
   .hotspot--menu-activities {
-    left: 22%;
-    top: 12.03%;
-    width: 56%;
-    height: 0.62%;
+    left: 24.58%;
+    top: 11.0297%;
+    width: 51.12%;
+    height: 0.64%;
   }
 
   .hotspot--menu-market {
-    left: 33%;
-    top: 15.18%;
-    width: 34%;
-    height: 0.62%;
+    left: 36.88%;
+    top: 11.8459%;
+    width: 26.4%;
+    height: 0.64%;
   }
 
   .hotspot--menu-shelter {
-    left: 31%;
-    top: 16.5%;
-    width: 38%;
-    height: 0.62%;
+    left: 33.89%;
+    top: 12.5994%;
+    width: 32.1%;
+    height: 0.64%;
   }
 
   .hotspot--menu-djs {
-    left: 41.5%;
-    top: 17.9%;
-    width: 17%;
-    height: 0.6%;
+    left: 43.4%;
+    top: 13.4261%;
+    width: 13.13%;
+    height: 0.62%;
   }
 
   .hotspot--menu-faq {
-    left: 34.2%;
-    top: 19.26%;
-    width: 31.6%;
-    height: 0.6%;
+    left: 36.25%;
+    top: 14.1691%;
+    width: 27.3%;
+    height: 0.62%;
   }
 
   .hotspot--menu-dogs::before,
@@ -1690,16 +1695,31 @@ a {
   .hotspot--menu-shelter::after,
   .hotspot--menu-djs::after,
   .hotspot--menu-faq::after {
-    top: auto;
-    bottom: 10%;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, var(--accent), #ffe07a 52%, var(--accent-strong));
-    box-shadow: 0 6px 14px rgb(255 178 41 / 0.34);
+    z-index: -1;
+    inset: var(--menu-mask-top, 0) calc(-1 * var(--menu-pill-x)) 0;
+    width: auto;
+    height: auto;
+    border: 0;
+    border-radius: inherit;
+    background: var(--green);
+    box-shadow: none;
     opacity: 0;
-    transform: scaleX(0.24);
+    transform: scaleX(0.92);
+  }
+
+  .hotspot--menu-dogs:hover,
+  .hotspot--menu-activities:hover,
+  .hotspot--menu-market:hover,
+  .hotspot--menu-shelter:hover,
+  .hotspot--menu-djs:hover,
+  .hotspot--menu-faq:hover,
+  .hotspot--menu-dogs:focus-visible,
+  .hotspot--menu-activities:focus-visible,
+  .hotspot--menu-market:focus-visible,
+  .hotspot--menu-shelter:focus-visible,
+  .hotspot--menu-djs:focus-visible,
+  .hotspot--menu-faq:focus-visible {
+    color: #fff;
   }
 }
 
@@ -1800,6 +1820,41 @@ a {
     height: 0.8%;
   }
 
+  .hotspot--menu-dogs {
+    left: 12.58%;
+    top: 10.3%;
+    width: 74.77%;
+    height: 0.37%;
+  }
+
+  .hotspot--menu-activities {
+    left: 9.09%;
+    top: 10.79%;
+    width: 81.06%;
+    height: 0.37%;
+  }
+
+  .hotspot--menu-market {
+    left: 27.25%;
+    top: 11.32%;
+    width: 45.42%;
+    height: 0.31%;
+  }
+
+  .hotspot--menu-shelter {
+    left: 23.76%;
+    top: 11.81%;
+    width: 53.81%;
+    height: 0.31%;
+  }
+
+  .hotspot--menu-faq {
+    left: 27.95%;
+    top: 12.76%;
+    width: 45.42%;
+    height: 0.28%;
+  }
+
   .hotspot--dogs,
   .hotspot--partners,
   .hotspot--market,
@@ -1809,19 +1864,24 @@ a {
     z-index: 6;
   }
 
+  .hotspot--dogs,
+  .hotspot--partners,
+  .hotspot--market,
+  .hotspot--shelter,
+  .hotspot--faq {
+    pointer-events: none;
+  }
+
   .hotspot--menu-dogs,
   .hotspot--menu-activities,
   .hotspot--menu-market,
   .hotspot--menu-shelter,
+  .hotspot--menu-djs,
   .hotspot--menu-faq {
+    z-index: 7;
     color: transparent;
     font: 0/0 a;
-    pointer-events: none;
-  }
-
-  .hotspot--menu-djs {
-    color: transparent;
-    font: 0/0 a;
+    pointer-events: auto;
   }
 
   .hotspot--menu-dogs::before,
@@ -1863,6 +1923,7 @@ a {
     height: 4.36%;
     overflow: hidden;
     background: transparent;
+    border-radius: 0;
     box-shadow: none;
     pointer-events: none;
   }
@@ -1873,16 +1934,38 @@ a {
   }
 
   .dog-carousel__track {
+    position: relative;
+    display: block;
     gap: 0;
     padding-top: 0;
     height: 100%;
+    transform: none !important;
+    transition: none;
   }
 
   .dog-frame-button {
-    flex: 0 0 100%;
+    position: absolute;
+    inset: 0;
+    flex: none;
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 30px;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity var(--motion-fast) ease;
+  }
+
+  .dog-frame-button.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .dog-frame-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   .dog-frame-button::after {
@@ -1945,7 +2028,7 @@ a {
   }
 
   .brand-card-hotspot {
-    z-index: 8;
+    z-index: 12;
     touch-action: manipulation;
   }
 
@@ -2028,7 +2111,7 @@ a {
     height: 0.79%;
   }
 
-  .hotspot--brand-petvkus {
+  .hotspot--brand-plushki {
     left: 14%;
     top: 71.95%;
     width: 72%;
