@@ -644,6 +644,28 @@ def test_mobile_partner_photo_arrows_cycle_live_image(browser):
     page.close()
 
 
+def test_mobile_faq_contacts_transition_reveals_green_wave(browser):
+    page, errors = new_page(browser, width=390, height=844)
+
+    transition = page.evaluate(
+        """() => {
+            const faq = document.querySelector('.faq-section');
+            const contacts = document.querySelector('#contacts');
+            return {
+                faqBackground: getComputedStyle(faq).backgroundColor,
+                faqBottom: faq.offsetTop + faq.offsetHeight,
+                contactsTop: contacts.offsetTop
+            };
+        }"""
+    )
+
+    assert transition["faqBackground"] == "rgb(255, 255, 255)"
+    assert transition["faqBottom"] < transition["contactsTop"] - 55
+
+    assert not errors
+    page.close()
+
+
 def test_mobile_all_brand_logos_open_their_own_cards(browser):
     page, errors = new_page(browser, width=390, height=844)
 

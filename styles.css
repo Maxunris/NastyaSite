@@ -2272,7 +2272,7 @@ a {
 
   .anchor--faq,
   .faq-section {
-    top: 88.9%;
+    top: 88%;
   }
 
   .anchor--contacts {
@@ -2283,10 +2283,10 @@ a {
     left: 0;
     z-index: 4;
     width: 100%;
-    min-height: 6.35%;
+    min-height: 0;
     border-radius: 0;
     padding: 4.2% 8% 3.5%;
-    background: #ececec;
+    background: #fff;
     box-shadow: none;
   }
 
