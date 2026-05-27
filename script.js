@@ -271,7 +271,10 @@ function renderDogCarousel() {
     image.loading = index === 0 ? 'eager' : 'lazy';
     image.decoding = 'async';
     image.fetchPriority = index === 0 ? 'high' : 'low';
-    image.src = dog.frame;
+    image.dataset.src = dog.frame;
+    if (index === 0) {
+      image.src = dog.frame;
+    }
     image.alt = dog.name;
     button.append(image);
 
@@ -376,10 +379,31 @@ function updateDogPager() {
   });
 }
 
+function loadDogFrame(button, priority = 'low') {
+  const image = button?.querySelector('img');
+
+  if (!image || image.getAttribute('src') || !image.dataset.src) {
+    return;
+  }
+
+  image.fetchPriority = priority;
+  image.src = image.dataset.src;
+}
+
+function loadVisibleDogFrames(priority = 'low') {
+  const pageSize = dogPageSize();
+  const pageStart = activeDogPage * pageSize;
+  const visibleButtons = dogButtons.slice(pageStart, pageStart + pageSize);
+
+  visibleButtons.forEach((button) => loadDogFrame(button, priority));
+}
+
 function setActiveDog(index, shouldAnnounce = true) {
   activeDogIndex = (index + dogOrder.length) % dogOrder.length;
   activeDogPage = Math.floor(activeDogIndex / dogPageSize());
   const activeDog = dogOrder[activeDogIndex];
+
+  loadVisibleDogFrames('high');
 
   dogButtons.forEach((button) => {
     button.classList.toggle('is-active', button.dataset.dog === activeDog);

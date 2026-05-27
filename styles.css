@@ -80,6 +80,22 @@ a {
   border: 0;
 }
 
+.festival-page__mobile-artwork {
+  display: none;
+}
+
+.festival-page__mobile-artwork picture {
+  display: block;
+}
+
+.festival-page__mobile-slice {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border: 0;
+}
+
 .festival-page__hotspots,
 .hotspot,
 .dog-carousel,
@@ -1735,6 +1751,15 @@ a {
 
   .festival-page__artboard {
     width: min(100%, var(--page-width));
+  }
+
+  .festival-page__desktop-artwork {
+    display: none;
+  }
+
+  .festival-page__mobile-artwork {
+    display: block;
+    width: 100%;
   }
 
   .festival-page__artboard::before {
