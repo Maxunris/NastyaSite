@@ -147,6 +147,50 @@ def test_mobile_artwork_leaves_faq_area_blank_for_live_html():
     assert dark_pixels == 0
 
 
+def test_mobile_artwork_contacts_wave_starts_close_to_live_faq():
+    image = Image.open(MOBILE_ARTWORK_PATH).convert("RGB")
+
+    green_wave_start = None
+    full_green_start = None
+    for y in range(19000, 19600):
+        green_pixels = 0
+        for x in range(image.width):
+            r, g, b = image.getpixel((x, y))
+            if g > 90 and r < 80 and b < 90:
+                green_pixels += 1
+        if green_pixels > 10:
+            green_wave_start = green_wave_start or y
+        if green_pixels == image.width:
+            full_green_start = full_green_start or y
+        if green_wave_start and full_green_start:
+            break
+
+    assert green_wave_start is not None
+    assert full_green_start is not None
+    assert 19310 <= green_wave_start <= 19340
+    assert full_green_start - green_wave_start >= 90
+
+    top_green_pixels = 0
+    for x in range(image.width):
+        r, g, b = image.getpixel((x, green_wave_start))
+        if g > 90 and r < 80 and b < 90:
+            top_green_pixels += 1
+    assert top_green_pixels <= 30
+
+
+def test_mobile_artwork_contacts_bottom_has_no_stray_white_stroke():
+    image = Image.open(MOBILE_ARTWORK_PATH).convert("RGB")
+
+    for y in range(20255, 20340):
+        white_pixels = 0
+        for x in range(120, 660):
+            r, g, b = image.getpixel((x, y))
+            if r > 210 and g > 210 and b > 210:
+                white_pixels += 1
+
+        assert white_pixels < 40
+
+
 def normalized_rect(page, selector):
     return page.locator(selector).evaluate(
         """el => {
@@ -734,15 +778,23 @@ def test_mobile_faq_contacts_transition_reveals_green_wave(browser):
         """() => {
             const faq = document.querySelector('.faq-section');
             const contacts = document.querySelector('#contacts');
+            const board = document.querySelector('.festival-page__artboard').getBoundingClientRect();
+            const scale = board.width / 786;
+            const lastFaqItem = [...document.querySelectorAll('.faq-item')].at(-1);
+            const lastItem = lastFaqItem.getBoundingClientRect();
             return {
                 faqBackground: getComputedStyle(faq).backgroundColor,
                 faqBottom: faq.offsetTop + faq.offsetHeight,
-                contactsTop: contacts.offsetTop
+                contactsTop: contacts.offsetTop,
+                lastFaqItemBorder: getComputedStyle(lastFaqItem).borderBottomColor,
+                lastFaqItemBottomNatural: (lastItem.bottom - board.top) / scale
             };
         }"""
     )
 
-    assert transition["faqBackground"] == "rgb(255, 255, 255)"
+    assert transition["faqBackground"] == "rgba(0, 0, 0, 0)"
+    assert transition["lastFaqItemBorder"] == "rgba(0, 0, 0, 0)"
+    assert transition["lastFaqItemBottomNatural"] < 19360
     assert transition["faqBottom"] < transition["contactsTop"] - 55
 
     assert not errors
