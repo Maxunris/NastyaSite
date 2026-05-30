@@ -223,15 +223,15 @@ const brandCards = {
 
 const eventSlides = [
   {
-    src: 'assets/images/figma-2026/events/rbTVTeycB2U8paixWNAPHVwCGOsGAzZ0FAYRZ1dPS46CNMb_u1CqoSNGbIfHcfZBBo 1.png',
+    src: 'assets/images/figma-2026/events/rbTVTeycB2U8paixWNAPHVwCGOsGAzZ0FAYRZ1dPS46CNMb_u1CqoSNGbIfHcfZBBo 1.png?v=20260530-hires',
     alt: 'Стенд Mr.Kranch с игрушками и товарами для собак.',
   },
   {
-    src: 'assets/images/figma-2026/events/unnamed (1) (1) 1.png',
+    src: 'assets/images/figma-2026/events/unnamed (1) (1) 1.png?v=20260530-hires',
     alt: 'Бокс Хвост Ньюс на фестивале.',
   },
   {
-    src: 'assets/images/figma-2026/events/unnamed (2) (1) 1.png',
+    src: 'assets/images/figma-2026/events/unnamed (2) (1) 1.png?v=20260530-hires',
     alt: 'Товары и лакомства для собак на стенде партнеров.',
   },
 ];

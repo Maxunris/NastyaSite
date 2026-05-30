@@ -11,6 +11,7 @@ BASE_URL = os.environ.get("QA_BASE_URL", "http://localhost:8092/")
 CHROME_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 MOBILE_ARTWORK_PATH = Path("assets/images/figma-2026/mobile/site-full-mobile.png")
 INDEX_PATH = Path("index.html")
+EVENT_ASSET_DIR = Path("assets/images/figma-2026/events")
 
 DOGS = [
     "klepa",
@@ -64,9 +65,9 @@ MOBILE_BRAND_VISUAL_POINTS = {
 }
 
 EVENT_SLIDE_FILES = [
-    "rbTVTeycB2U8paixWNAPHVwCGOsGAzZ0FAYRZ1dPS46CNMb_u1CqoSNGbIfHcfZBBo 1.png",
-    "unnamed (1) (1) 1.png",
-    "unnamed (2) (1) 1.png",
+    "rbTVTeycB2U8paixWNAPHVwCGOsGAzZ0FAYRZ1dPS46CNMb_u1CqoSNGbIfHcfZBBo 1.png?v=20260530-hires",
+    "unnamed (1) (1) 1.png?v=20260530-hires",
+    "unnamed (2) (1) 1.png?v=20260530-hires",
 ]
 
 CONTACT_LINKS = {
@@ -195,7 +196,17 @@ def test_mobile_artwork_contacts_bottom_has_no_stray_white_stroke():
 def test_index_busts_mobile_faq_css_cache():
     html = INDEX_PATH.read_text(encoding="utf-8")
 
-    assert 'href="styles.css?v=figma-2026-52"' in html
+    assert 'href="styles.css?v=figma-2026-53"' in html
+
+
+def test_partner_event_assets_are_high_resolution():
+    for filename in [
+        "rbTVTeycB2U8paixWNAPHVwCGOsGAzZ0FAYRZ1dPS46CNMb_u1CqoSNGbIfHcfZBBo 1.png",
+        "unnamed (1) (1) 1.png",
+        "unnamed (2) (1) 1.png",
+    ]:
+        image = Image.open(EVENT_ASSET_DIR / filename)
+        assert image.size == (960, 810)
 
 
 def normalized_rect(page, selector):
@@ -803,6 +814,26 @@ def test_mobile_faq_contacts_transition_reveals_green_wave(browser):
     assert transition["lastFaqItemBorder"] == "rgba(0, 0, 0, 0)"
     assert transition["lastFaqItemBottomNatural"] < 19360
     assert transition["faqBottom"] < transition["contactsTop"] - 55
+
+    assert not errors
+    page.close()
+
+
+def test_wide_mobile_faq_does_not_leave_large_gap_before_contacts(browser):
+    page, errors = new_page(browser, width=430, height=852)
+
+    transition = page.evaluate(
+        """() => {
+            const board = document.querySelector('.festival-page__artboard').getBoundingClientRect();
+            const scale = board.width / 786;
+            const lastFaqItem = [...document.querySelectorAll('.faq-item')].at(-1).getBoundingClientRect();
+            return {
+                lastFaqItemBottomNatural: (lastFaqItem.bottom - board.top) / scale
+            };
+        }"""
+    )
+
+    assert transition["lastFaqItemBottomNatural"] >= 19255
 
     assert not errors
     page.close()

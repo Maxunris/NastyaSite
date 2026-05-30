@@ -2348,6 +2348,13 @@ a {
     padding: 1.2% 0 2.1%;
   }
 
+  @media (min-width: 410px) {
+    .anchor--faq,
+    .faq-section {
+      top: 90.2%;
+    }
+  }
+
   .dog-modal {
     width: 96vw;
   }
