@@ -52,12 +52,12 @@ BRAND_DESKTOP_FILES = {
 }
 
 MOBILE_BRAND_VISUAL_POINTS = {
-    "hug-me-dog": (715, 21680),
-    "shaggy-dog": (715, 22125),
-    "derzhis-menya": (715, 22720),
-    "sobakamama": (715, 23305),
-    "sobakin": (715, 23816),
-    "plushki": (715, 24345),
+    "hug-me-dog": (393, 14265),
+    "shaggy-dog": (393, 14505),
+    "derzhis-menya": (393, 14760),
+    "sobakamama": (393, 15140),
+    "sobakin": (393, 15415),
+    "plushki": (393, 15700),
 }
 
 EVENT_SLIDE_FILES = [
@@ -91,6 +91,15 @@ MENU_TARGETS = {
     ".hotspot--menu-faq": "#faq",
 }
 
+MOBILE_MENU_VISUAL_POINTS = {
+    "#dogs": (389, 1830),
+    "#activities": (388, 1910),
+    "#market": (389, 1992),
+    "#shelter": (389, 2072),
+    "#djs": (387, 2152),
+    "#faq": (388, 2230),
+}
+
 DJ_LINKS = {
     "maksim": "https://t.me/tochnodj",
     "stepan": "https://t.me/nepal_prod",
@@ -105,20 +114,20 @@ HEADER_LOGO_LINKS = {
 }
 
 BRAND_RECTS = {
-    "shaggy-dog": (270, 310, 6415, 6465),
-    "derzhis-menya": (630, 690, 6350, 6405),
-    "hug-me-dog": (960, 1010, 6390, 6445),
-    "sobakin": (440, 480, 6535, 6590),
-    "sobakamama": (820, 860, 6535, 6595),
-    "plushki": (610, 660, 6685, 6750),
+    "shaggy-dog": (270, 285, 7190, 7205),
+    "derzhis-menya": (660, 675, 7118, 7132),
+    "hug-me-dog": (965, 980, 7152, 7168),
+    "sobakin": (452, 468, 7320, 7336),
+    "sobakamama": (836, 852, 7328, 7344),
+    "plushki": (620, 635, 7446, 7462),
 }
 
 PARTNER_RECTS = {
-    ".hotspot--partner-award": (110, 140, 4625, 4705),
-    ".hotspot--partner-mrkranch": (360, 405, 4625, 4705),
-    ".hotspot--partner-mnyams": (620, 655, 4618, 4725),
-    ".hotspot--partner-ivsanbernard": (840, 875, 4635, 4710),
-    ".hotspot--partner-craftia": (1100, 1130, 4625, 4710),
+    ".hotspot--partner-award": (135, 150, 4740, 4755),
+    ".hotspot--partner-mrkranch": (402, 418, 4716, 4732),
+    ".hotspot--partner-mnyams": (640, 655, 4698, 4713),
+    ".hotspot--partner-ivsanbernard": (858, 875, 4742, 4757),
+    ".hotspot--partner-craftia": (1124, 1140, 4712, 4728),
 }
 
 
@@ -172,7 +181,7 @@ def click_mobile_artwork_point(page, natural_x, natural_y):
     page.evaluate(
         """([, y]) => {
             const board = document.querySelector('.festival-page__artboard');
-            const scale = board.getBoundingClientRect().width / 1431;
+            const scale = board.getBoundingClientRect().width / 786;
             window.scrollTo({ top: Math.max(0, y * scale - window.innerHeight / 2), behavior: 'instant' });
         }""",
         [natural_x, natural_y],
@@ -181,7 +190,7 @@ def click_mobile_artwork_point(page, natural_x, natural_y):
     point = page.evaluate(
         """([x, y]) => {
             const board = document.querySelector('.festival-page__artboard').getBoundingClientRect();
-            const scale = board.width / 1431;
+            const scale = board.width / 786;
             return { x: board.left + x * scale, y: board.top + y * scale };
         }""",
         [natural_x, natural_y],
@@ -227,13 +236,27 @@ def test_page_uses_new_full_artwork_without_flattening_live_layers(browser):
     page, errors = new_page(browser)
 
     assert page.locator(".festival-page__image").get_attribute("src").split("?")[0] == "assets/images/figma-2026/site-full.png"
-    assert page.locator(".festival-page__image").get_attribute("height") == "9556"
+    assert page.locator(".festival-page__image").get_attribute("height") == "10264"
     assert page.locator(".festival-page__hotspots").count() == 1
     assert page.locator(".faq-section").count() == 1
     assert page.locator(".faq-item__button").count() == 6
     assert page.locator(".dog-carousel").count() == 1
     assert page.locator(".dog-frame-button").count() == 22
     assert page.locator(".dog-carousel__page").count() == 6
+
+    assert not errors
+    page.close()
+
+
+def test_mobile_uses_updated_full_artwork_dimensions(browser):
+    page, errors = new_page(browser, width=390, height=844)
+
+    image = page.locator(".festival-page__image")
+    assert image.evaluate("img => img.currentSrc").split("?")[0].endswith(
+        "assets/images/figma-2026/mobile/site-full-mobile.png"
+    )
+    assert image.evaluate("img => img.naturalWidth") == 786
+    assert image.evaluate("img => img.naturalHeight") == 20402
 
     assert not errors
     page.close()
@@ -391,6 +414,10 @@ def test_brand_cards_use_six_updated_partners_and_preserve_hover_motion(browser)
         assert hover["opacity"] >= 0.9
         assert "transform" in hover["transitionProperty"]
         assert "url(" not in hover["backgroundImage"]
+        assert_range(float(hover["bottom"].replace("px", "")), -18, -12, f"{brand} underline bottom")
+        if brand == "derzhis-menya":
+            assert_range(float(hover["left"].replace("px", "")), 8, 10, "derzhis underline left")
+            assert_range(float(hover["width"].replace("px", "")), 109, 112, "derzhis underline width")
 
         page.locator(selector).click()
         page.wait_for_selector(".dog-modal[open]")
@@ -423,6 +450,25 @@ def test_partner_logo_hotspots_are_aligned_and_do_not_duplicate_logos(browser):
         hover = pseudo_after(page, selector)
         assert hover["opacity"] >= 0.9
         assert "url(" not in hover["backgroundImage"]
+        assert_range(float(hover["bottom"].replace("px", "")), -18, -14, f"{selector} underline bottom")
+
+    page.locator(".hotspot--hvost-logo").scroll_into_view_if_needed()
+    page.locator(".hotspot--hvost-logo").hover()
+    page.wait_for_timeout(360)
+    hvost_hover = pseudo_after(page, ".hotspot--hvost-logo")
+    assert hvost_hover["opacity"] >= 0.9
+    assert_range(float(hvost_hover["bottom"].replace("px", "")), 3, 5, "hvost logo underline bottom")
+
+    assert not errors
+    page.close()
+
+
+def test_desktop_uses_single_photozone_card_from_full_artwork(browser):
+    page, errors = new_page(browser, width=1440, height=1000)
+
+    photozone_patch = page.locator(".schedule-photozone-fix")
+    assert photozone_patch.evaluate("el => getComputedStyle(el).display") == "none"
+    assert page.locator(".event-carousel").evaluate("el => getComputedStyle(el).display") == "none"
 
     assert not errors
     page.close()
@@ -529,6 +575,27 @@ def test_mobile_second_menu_items_are_clickable_and_scroll_to_sections(browser):
     for selector, target in MENU_TARGETS.items():
         page.evaluate("window.scrollTo({ top: 0, behavior: 'instant' })")
         page.locator(selector).click()
+        page.wait_for_function(
+            """targetSelector => {
+                const target = document.querySelector(targetSelector);
+                if (!target) return false;
+                const rect = target.getBoundingClientRect();
+                return rect.top >= -20 && rect.top <= 360;
+            }""",
+            arg=target,
+            timeout=2400,
+        )
+
+    assert not errors
+    page.close()
+
+
+def test_mobile_second_menu_visible_text_points_scroll_to_correct_sections(browser):
+    page, errors = new_page(browser, width=390, height=844)
+
+    for target, point in MOBILE_MENU_VISUAL_POINTS.items():
+        page.evaluate("window.scrollTo({ top: 0, behavior: 'instant' })")
+        click_mobile_artwork_point(page, *point)
         page.wait_for_function(
             """targetSelector => {
                 const target = document.querySelector(targetSelector);
@@ -743,7 +810,7 @@ def test_artist_and_shelter_buttons_match_new_figma_positions(browser):
     assert shelter.get_attribute("href") == "https://dogport.ru/"
     shelter_rect = normalized_rect(page, ".hotspot--shelter-site")
     assert_range(shelter_rect["left"], 560, 600, "shelter button left")
-    assert_range(shelter_rect["top"], 7315, 7360, "shelter button top")
+    assert_range(shelter_rect["top"], 8092, 8106, "shelter button top")
 
     assert not errors
     page.close()
@@ -758,6 +825,23 @@ def test_faq_stays_live_after_dj_section_and_contacts_include_all_questions_link
     contacts_top = page.locator("#contacts").evaluate("el => el.offsetTop")
     assert shelter_top < djs_top < faq_top < contacts_top
     assert faq_top - djs_top > 800
+    faq_mask = page.locator(".faq-section").evaluate(
+        """el => {
+            const before = getComputedStyle(el, '::before');
+            return {
+                background: before.backgroundColor,
+                display: before.display,
+                height: before.height,
+                top: before.top,
+                width: before.width
+            };
+        }"""
+    )
+    assert faq_mask["display"] == "block"
+    assert faq_mask["background"] == "rgb(255, 255, 255)"
+    assert_range(float(faq_mask["top"].replace("px", "")), -181, -179, "faq top mask")
+    assert_range(float(faq_mask["height"].replace("px", "")), 179, 181, "faq mask height")
+    assert_range(float(faq_mask["width"].replace("px", "")), 1439, 1441, "faq mask width")
 
     first_faq = page.locator(".faq-item__button").first
     assert first_faq.get_attribute("aria-expanded") == "false"
@@ -774,7 +858,7 @@ def test_faq_stays_live_after_dj_section_and_contacts_include_all_questions_link
         underline = pseudo_after(page, selector)
         left_min, left_max, width_min, width_max = CONTACT_UNDERLINES[selector]
         assert underline["opacity"] >= 0.9
-        assert_range(float(underline["bottom"].replace("px", "")), -19, -17, f"{selector} underline bottom")
+        assert_range(float(underline["bottom"].replace("px", "")), -11, -9, f"{selector} underline bottom")
         assert_range(float(underline["left"].replace("px", "")), left_min, left_max, f"{selector} underline left")
         assert_range(float(underline["width"].replace("px", "")), width_min, width_max, f"{selector} underline width")
 
@@ -806,7 +890,18 @@ def test_dj_hotspots_open_new_cards_and_tg_links(browser):
     assert page.locator(".dj-card-hotspot").count() == 2
 
     for dj, href in DJ_LINKS.items():
-        page.locator(f"[data-dj='{dj}']").click()
+        selector = f"[data-dj='{dj}']"
+        rect = normalized_rect(page, selector)
+        assert_range(rect["top"], 8715, 8730, f"{dj} dj top")
+        if dj == "maksim":
+            assert_range(rect["left"], 486, 502, "maksim dj left")
+        else:
+            assert_range(rect["left"], 752, 768, "stepan dj left")
+        page.locator(selector).hover()
+        page.wait_for_timeout(240)
+        underline = pseudo_after(page, selector)
+        assert_range(float(underline["bottom"].replace("px", "")), -11, -9, f"{dj} dj underline bottom")
+        page.locator(selector).click()
         page.wait_for_selector(".dog-modal[open]")
         assert "/djs/" in page.locator(".dog-modal__image").get_attribute("src")
         assert page.locator(".dog-modal").evaluate("el => el.classList.contains('dog-modal--dj')")
@@ -843,7 +938,16 @@ def test_layout_has_no_horizontal_scroll_and_live_targets_are_clickable(browser,
     if width <= 700:
         live_targets = [
             selector for selector in live_targets
-            if selector not in {".hotspot--dogs", ".hotspot--partners", ".hotspot--market", ".hotspot--shelter", ".hotspot--faq"}
+            if selector
+            not in {
+                ".hotspot--dogs",
+                ".hotspot--partners",
+                ".hotspot--market",
+                ".hotspot--shelter",
+                ".hotspot--faq",
+                ".hotspot--contacts",
+                ".hotspot--artist-channel",
+            }
         ]
         live_targets.extend(MENU_TARGETS.keys())
 
