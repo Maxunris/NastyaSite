@@ -10,6 +10,7 @@ from playwright.sync_api import sync_playwright
 BASE_URL = os.environ.get("QA_BASE_URL", "http://localhost:8092/")
 CHROME_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 MOBILE_ARTWORK_PATH = Path("assets/images/figma-2026/mobile/site-full-mobile.png")
+INDEX_PATH = Path("index.html")
 
 DOGS = [
     "klepa",
@@ -189,6 +190,12 @@ def test_mobile_artwork_contacts_bottom_has_no_stray_white_stroke():
                 white_pixels += 1
 
         assert white_pixels < 40
+
+
+def test_index_busts_mobile_faq_css_cache():
+    html = INDEX_PATH.read_text(encoding="utf-8")
+
+    assert 'href="styles.css?v=figma-2026-52"' in html
 
 
 def normalized_rect(page, selector):
