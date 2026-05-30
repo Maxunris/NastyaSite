@@ -912,6 +912,34 @@ def test_dj_hotspots_open_new_cards_and_tg_links(browser):
     page.close()
 
 
+def test_desktop_dj_art_uses_clean_artwork_without_extra_patch(browser):
+    page, errors = new_page(browser, width=1440, height=1000)
+
+    assert page.locator(".djs-section-art").evaluate("el => getComputedStyle(el).display") != "none"
+    assert page.locator(".djs-hole-fix").evaluate("el => getComputedStyle(el).display") == "none"
+
+    assert not errors
+    page.close()
+
+
+def test_page_exposes_site_favicon_assets(browser):
+    page, errors = new_page(browser, width=1440, height=1000)
+
+    icons = page.locator("link[rel~='icon']").evaluate_all(
+        """links => links.map(link => ({
+            href: link.getAttribute('href'),
+            type: link.getAttribute('type') || '',
+            sizes: link.getAttribute('sizes') || ''
+        }))"""
+    )
+    assert any(icon["href"] == "assets/images/favicon.svg" and icon["type"] == "image/svg+xml" for icon in icons)
+    assert any(icon["href"] == "assets/images/favicon.png" and icon["type"] == "image/png" and icon["sizes"] == "any" for icon in icons)
+    assert page.locator("link[rel='apple-touch-icon']").get_attribute("href") == "assets/images/favicon.png"
+
+    assert not errors
+    page.close()
+
+
 @pytest.mark.parametrize("width,height", [(1440, 1000), (390, 844)])
 def test_layout_has_no_horizontal_scroll_and_live_targets_are_clickable(browser, width, height):
     page, errors = new_page(browser, width=width, height=height)

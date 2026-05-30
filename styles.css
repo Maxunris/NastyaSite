@@ -1035,6 +1035,7 @@ a {
 }
 
 .djs-hole-fix {
+  display: none;
   position: absolute;
   z-index: 3;
   left: 18.28%;
