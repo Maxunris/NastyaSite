@@ -2,12 +2,14 @@ import os
 from pathlib import Path
 
 import pytest
+from PIL import Image
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 from playwright.sync_api import sync_playwright
 
 
 BASE_URL = os.environ.get("QA_BASE_URL", "http://localhost:8092/")
 CHROME_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+MOBILE_ARTWORK_PATH = Path("assets/images/figma-2026/mobile/site-full-mobile.png")
 
 DOGS = [
     "klepa",
@@ -129,6 +131,20 @@ PARTNER_RECTS = {
     ".hotspot--partner-ivsanbernard": (858, 875, 4742, 4757),
     ".hotspot--partner-craftia": (1124, 1140, 4712, 4728),
 }
+
+
+def test_mobile_artwork_leaves_faq_area_blank_for_live_html():
+    image = Image.open(MOBILE_ARTWORK_PATH).convert("RGB")
+    assert image.size == (786, 20402)
+
+    dark_pixels = 0
+    for y in range(18450, 19320):
+        for x in range(40, 735):
+            r, g, b = image.getpixel((x, y))
+            if r < 55 and g < 55 and b < 55:
+                dark_pixels += 1
+
+    assert dark_pixels == 0
 
 
 def normalized_rect(page, selector):
