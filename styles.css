@@ -481,6 +481,7 @@ a {
 
 .hotspot--menu-dogs,
 .hotspot--menu-activities,
+.hotspot--menu-portrait,
 .hotspot--menu-market,
 .hotspot--menu-shelter,
 .hotspot--menu-djs,
@@ -522,33 +523,41 @@ a {
 .hotspot--menu-market {
   --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 36.88%;
-  top: 11.0288%;
+  top: 11.71%;
   width: 26.4%;
+}
+
+.hotspot--menu-portrait {
+  --menu-pill-x: clamp(24px, 2.8vw, 42px);
+  left: 26.9%;
+  top: 10.91%;
+  width: 46.2%;
 }
 
 .hotspot--menu-shelter {
   --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 33.89%;
-  top: 11.7303%;
+  top: 12.44%;
   width: 32.1%;
 }
 
 .hotspot--menu-djs {
   --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 43.4%;
-  top: 12.5%;
+  top: 13.2%;
   width: 13.13%;
 }
 
 .hotspot--menu-faq {
   --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 36.25%;
-  top: 13.1917%;
+  top: 13.89%;
   width: 27.3%;
 }
 
 .hotspot--menu-dogs::after,
 .hotspot--menu-activities::after,
+.hotspot--menu-portrait::after,
 .hotspot--menu-market::after,
 .hotspot--menu-shelter::after,
 .hotspot--menu-djs::after,
@@ -566,12 +575,14 @@ a {
 
 .hotspot--menu-dogs:hover,
 .hotspot--menu-activities:hover,
+.hotspot--menu-portrait:hover,
 .hotspot--menu-market:hover,
 .hotspot--menu-shelter:hover,
 .hotspot--menu-djs:hover,
 .hotspot--menu-faq:hover,
 .hotspot--menu-dogs:focus-visible,
 .hotspot--menu-activities:focus-visible,
+.hotspot--menu-portrait:focus-visible,
 .hotspot--menu-market:focus-visible,
 .hotspot--menu-shelter:focus-visible,
 .hotspot--menu-djs:focus-visible,
@@ -894,71 +905,60 @@ a {
 
 .hotspot--brand-plushki {
   --brand-logo: url("assets/images/figma-2026/brand-logos/IMG_5482 1.png");
-  left: 43.5417%;
-  top: 72.6228%;
-  width: 12.9167%;
-  height: 0.7892%;
-  --line-left: 22%;
-  --line-right: 22%;
-  --line-bottom: -14px;
-}
-
-.hotspot--brand-sobakamama {
-  --brand-logo: url("assets/images/figma-2026/brand-logos/123.png");
-  left: 58.6111%;
-  top: 71.4634%;
-  width: 11.0417%;
-  height: 0.6723%;
-  --line-left: 9%;
-  --line-right: 9%;
-  --line-bottom: -14px;
+  left: 55.2%;
+  top: 71.42%;
+  width: 13.6%;
+  height: 0.45%;
+  --line-left: 0;
+  --line-right: 0;
+  --line-bottom: -22px;
 }
 
 .hotspot--brand-sobakin {
   --brand-logo: url("assets/images/figma-2026/brand-logos/logo_black 1.png");
   --brand-logo-scale: 1.12;
-  left: 31.9444%;
-  top: 71.3952%;
-  width: 15.4167%;
-  height: 0.5943%;
-  --line-left: 10%;
-  --line-right: 10%;
-  --line-bottom: -14px;
+  left: 30.95%;
+  top: 71.78%;
+  width: 16.6%;
+  height: 0.36%;
+  --line-left: 0;
+  --line-right: 0;
+  --line-bottom: -8px;
 }
 
 .hotspot--brand-shaggy-dog {
   --brand-logo: url("assets/images/figma-2026/brand-logos/shaggy dog 2.png");
   --brand-logo-scale: 1.12;
-  left: 19.2361%;
-  top: 70.1189%;
-  width: 14.7917%;
-  height: 0.3995%;
-  --line-left: 8%;
-  --line-right: 8%;
-  --line-bottom: -14px;
+  left: 19%;
+  top: 70.04%;
+  width: 14.7%;
+  height: 0.48%;
+  --line-left: 0;
+  --line-right: 0;
+  --line-bottom: -2px;
 }
 
 .hotspot--brand-derzhis-menya {
   --brand-logo: url("assets/images/figma-2026/brand-logos/Group 47.png");
-  left: 46.25%;
-  top: 69.4174%;
-  width: 12.0139%;
-  height: 1.6855%;
-  --line-left: 5%;
-  --line-right: 31%;
-  --line-bottom: -14px;
+  left: 44.55%;
+  top: 69.55%;
+  width: 13.1%;
+  height: 1.72%;
+  --line-left: 4%;
+  --line-right: 4%;
+  --line-bottom: 20px;
 }
 
 .hotspot--brand-hug-me-dog {
   --brand-logo: url("assets/images/figma-2026/brand-logos/Hug me 1.png");
   --brand-logo-scale: 1.12;
-  left: 67.5694%;
-  top: 69.7486%;
-  width: 17.5%;
-  height: 1.023%;
-  --line-left: 12%;
-  --line-right: 12%;
-  --line-bottom: -14px;
+  left: 68.5%;
+  top: 69.45%;
+  width: 15.3%;
+  height: 0.78%;
+  --line-left: 0;
+  --line-right: 0;
+  --line-bottom: -44px;
 }
 
 .hotspot--shelter-site {
@@ -968,7 +968,7 @@ a {
   --active-transform: translateZ(0) scale(0.99);
   --feedback-hover-transform: scale(1);
   left: 40.2%;
-  top: 78.9069%;
+  top: 78.35%;
   width: 17.4%;
   height: 0.3995%;
   border-radius: 999px;
@@ -1192,6 +1192,10 @@ a {
 
 .anchor--activities {
   top: 30.2116%;
+}
+
+.anchor--portrait {
+  top: 50.95%;
 }
 
 .anchor--partners {
@@ -1630,6 +1634,7 @@ a {
 @media (min-width: 701px) {
   .hotspot--menu-dogs,
   .hotspot--menu-activities,
+  .hotspot--menu-portrait,
   .hotspot--menu-market,
   .hotspot--menu-shelter,
   .hotspot--menu-djs,
@@ -1662,36 +1667,44 @@ a {
     height: 0.5959%;
   }
 
+  .hotspot--menu-portrait {
+    left: 26.9%;
+    top: 10.91%;
+    width: 46.2%;
+    height: 0.5959%;
+  }
+
   .hotspot--menu-market {
     left: 36.88%;
-    top: 11.0288%;
+    top: 11.71%;
     width: 26.4%;
     height: 0.5959%;
   }
 
   .hotspot--menu-shelter {
     left: 33.89%;
-    top: 11.7303%;
+    top: 12.44%;
     width: 32.1%;
     height: 0.5959%;
   }
 
   .hotspot--menu-djs {
     left: 43.4%;
-    top: 12.5%;
+    top: 13.2%;
     width: 13.13%;
     height: 0.5772%;
   }
 
   .hotspot--menu-faq {
     left: 36.25%;
-    top: 13.1917%;
+    top: 13.89%;
     width: 27.3%;
     height: 0.5772%;
   }
 
   .hotspot--menu-dogs::before,
   .hotspot--menu-activities::before,
+  .hotspot--menu-portrait::before,
   .hotspot--menu-market::before,
   .hotspot--menu-shelter::before,
   .hotspot--menu-djs::before,
@@ -1701,6 +1714,7 @@ a {
 
   .hotspot--menu-dogs::after,
   .hotspot--menu-activities::after,
+  .hotspot--menu-portrait::after,
   .hotspot--menu-market::after,
   .hotspot--menu-shelter::after,
   .hotspot--menu-djs::after,
@@ -1719,12 +1733,14 @@ a {
 
   .hotspot--menu-dogs:hover,
   .hotspot--menu-activities:hover,
+  .hotspot--menu-portrait:hover,
   .hotspot--menu-market:hover,
   .hotspot--menu-shelter:hover,
   .hotspot--menu-djs:hover,
   .hotspot--menu-faq:hover,
   .hotspot--menu-dogs:focus-visible,
   .hotspot--menu-activities:focus-visible,
+  .hotspot--menu-portrait:focus-visible,
   .hotspot--menu-market:focus-visible,
   .hotspot--menu-shelter:focus-visible,
   .hotspot--menu-djs:focus-visible,
@@ -1797,28 +1813,28 @@ a {
 
   .hotspot--market {
     left: 27.25%;
-    top: 9.6265%;
+    top: 10.0186%;
     width: 45.42%;
     height: 0.2745%;
   }
 
   .hotspot--shelter {
     left: 23.76%;
-    top: 10.0186%;
+    top: 10.4156%;
     width: 53.81%;
     height: 0.2745%;
   }
 
   .hotspot--menu-djs {
     left: 36.34%;
-    top: 10.4156%;
+    top: 10.8078%;
     width: 27.25%;
     height: 0.2647%;
   }
 
   .hotspot--faq {
     left: 27.95%;
-    top: 10.8078%;
+    top: 11.2001%;
     width: 45.42%;
     height: 0.2451%;
   }
@@ -1832,35 +1848,46 @@ a {
 
   .hotspot--menu-dogs {
     left: 12.58%;
-    top: 8.8129%;
+    top: 8.42%;
     width: 74.77%;
     height: 0.3235%;
   }
 
   .hotspot--menu-activities {
     left: 9.09%;
-    top: 9.2344%;
+    top: 8.84%;
     width: 81.06%;
     height: 0.2696%;
   }
 
+  .hotspot--menu-portrait {
+    left: 13.05%;
+    top: 9.23%;
+    width: 74.42%;
+    height: 0.2745%;
+  }
+
   .hotspot--menu-market {
     left: 27.25%;
-    top: 9.6265%;
+    top: 9.63%;
     width: 45.42%;
     height: 0.2745%;
   }
 
   .hotspot--menu-shelter {
     left: 23.76%;
-    top: 10.0186%;
+    top: 10.02%;
     width: 53.81%;
     height: 0.2745%;
   }
 
+  .hotspot--menu-djs {
+    top: 10.42%;
+  }
+
   .hotspot--menu-faq {
     left: 27.95%;
-    top: 10.8078%;
+    top: 10.81%;
     width: 45.42%;
     height: 0.2451%;
   }
@@ -1884,6 +1911,7 @@ a {
 
   .hotspot--menu-dogs,
   .hotspot--menu-activities,
+  .hotspot--menu-portrait,
   .hotspot--menu-market,
   .hotspot--menu-shelter,
   .hotspot--menu-djs,
@@ -1898,6 +1926,8 @@ a {
   .hotspot--menu-dogs::after,
   .hotspot--menu-activities::before,
   .hotspot--menu-activities::after,
+  .hotspot--menu-portrait::before,
+  .hotspot--menu-portrait::after,
   .hotspot--menu-market::before,
   .hotspot--menu-market::after,
   .hotspot--menu-shelter::before,
@@ -1917,6 +1947,7 @@ a {
   .hotspot--contacts::after,
   .hotspot--menu-dogs::after,
   .hotspot--menu-activities::after,
+  .hotspot--menu-portrait::after,
   .hotspot--menu-market::after,
   .hotspot--menu-shelter::after,
   .hotspot--menu-djs::after,
@@ -2125,9 +2156,9 @@ a {
   .event-carousel__button {
     all: unset;
     position: absolute;
-    top: 91%;
+    top: 94%;
     width: 24%;
-    height: 9%;
+    height: 10%;
     border-radius: 999px;
     color: transparent;
     font: 0/0 a;
@@ -2151,51 +2182,50 @@ a {
 
   .hotspot--brand-hug-me-dog {
     left: 10%;
-    top: 69.503%;
+    top: 69.42%;
     width: 80%;
-    height: 0.8333%;
+    height: 0.9%;
   }
 
   .hotspot--brand-shaggy-dog {
     left: 10%;
-    top: 70.6793%;
+    top: 70.69%;
     width: 80%;
     height: 0.8823%;
   }
 
   .hotspot--brand-derzhis-menya {
     left: 10%;
-    top: 71.6596%;
+    top: 71.56%;
     width: 80%;
     height: 1.6175%;
   }
 
-  .hotspot--brand-sobakamama {
-    left: 10%;
-    top: 73.6202%;
-    width: 80%;
-    height: 1.2254%;
-  }
-
   .hotspot--brand-sobakin {
     left: 10%;
-    top: 74.9681%;
+    top: 73.65%;
     width: 80%;
     height: 1.1273%;
   }
 
   .hotspot--brand-plushki {
     left: 10%;
-    top: 76.6592%;
+    top: 75.11%;
     width: 80%;
     height: 0.8823%;
   }
 
   .hotspot--shelter-site {
     left: 31.5522%;
-    top: 81.8743%;
+    top: 81.14%;
     width: 40.7125%;
-    height: 0.3333%;
+    height: 0.38%;
+    z-index: 12;
+  }
+
+  .hotspot--shelter-site::before,
+  .hotspot--shelter-site::after {
+    display: none;
   }
 
   .djs-section-art,
@@ -2205,9 +2235,9 @@ a {
 
   .dj-card-hotspot--maksim {
     left: 27.2265%;
-    top: 86.4915%;
+    top: 85.83%;
     width: 45.8015%;
-    height: 0.6862%;
+    height: 0.78%;
     z-index: 7;
     background: transparent;
     pointer-events: auto;
@@ -2215,9 +2245,9 @@ a {
 
   .dj-card-hotspot--stepan {
     left: 27.2265%;
-    top: 87.315%;
+    top: 86.67%;
     width: 45.8015%;
-    height: 0.6862%;
+    height: 0.78%;
     z-index: 7;
     background: transparent;
     pointer-events: auto;
@@ -2228,33 +2258,33 @@ a {
   .hotspot--contact-3,
   .hotspot--contact-4,
   .hotspot--contact-5 {
-    left: 18.8295%;
-    width: 61.0687%;
-    height: 0.3921%;
+    left: 13.2%;
+    width: 72%;
+    height: 0.46%;
   }
 
   .hotspot--contact-1 {
-    top: 96.1377%;
+    top: 96.32%;
   }
 
   .hotspot--contact-2 {
-    top: 96.667%;
+    top: 96.85%;
   }
 
   .hotspot--contact-3 {
-    top: 97.1964%;
+    top: 97.38%;
   }
 
   .hotspot--contact-4 {
-    top: 97.7258%;
+    top: 97.91%;
   }
 
   .hotspot--contact-5 {
-    top: 98.6963%;
+    top: 98.68%;
   }
 
   .anchor--dogs {
-    top: 14.3796%;
+    top: 15.25%;
   }
 
   .anchor--activities,
@@ -2262,25 +2292,32 @@ a {
     top: 23.819%;
   }
 
+  .anchor--portrait {
+    top: 47%;
+  }
+
   .anchor--market {
-    top: 66.072%;
+    top: 66.46%;
   }
 
   .anchor--shelter {
-    top: 79.4451%;
+    top: 77.85%;
   }
 
   .anchor--djs {
-    top: 85.5322%;
+    top: 83.3%;
   }
 
-  .anchor--faq,
+  .anchor--faq {
+    top: 87.95%;
+  }
+
   .faq-section {
     top: 89.8059%;
   }
 
   .anchor--contacts {
-    top: 96.02%;
+    top: 91.9%;
   }
 
   .faq-section {
@@ -2349,7 +2386,10 @@ a {
   }
 
   @media (min-width: 410px) {
-    .anchor--faq,
+    .anchor--faq {
+      top: 88.35%;
+    }
+
     .faq-section {
       top: 90.2%;
     }

@@ -189,12 +189,6 @@ const brandCards = {
     alt: 'Карточка бренда Плюшки.',
     href: 'https://petvkus.ru',
   },
-  sobakamama: {
-    cardDesktop: 'assets/images/figma-2026/brand-cards/Group 96.png',
-    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-124-sobakamama.png?v=20260527-brand-frames',
-    alt: 'Карточка бренда Собака Мама.',
-    href: 'https://sobakamama.shop',
-  },
   sobakin: {
     cardDesktop: 'assets/images/figma-2026/brand-cards/Group 83.png',
     cardMobile: 'assets/images/figma-2026/brand-cards-mobile/Group-125-sobakin.png?v=20260527-brand-frames',
