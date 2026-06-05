@@ -3,9 +3,9 @@ document.querySelectorAll('.dogs-section-clean').forEach((node) => node.remove()
 const dogCards = {
   klepa: {
     name: 'Клёпа',
-    frame: 'assets/images/figma-2026/dog-frames/Frame 6.png',
-    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 70.png',
-    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 108.png',
+    frame: 'assets/images/figma-2026/dog-frames/Frame 6.png?v=20260605-klepa',
+    cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 70.png?v=20260605-klepa',
+    cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 108.png?v=20260605-klepa-mobile',
     alt: 'klepa, карточка Клёпы.',
   },
   belka: {

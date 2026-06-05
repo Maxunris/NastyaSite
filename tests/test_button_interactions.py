@@ -1,3 +1,4 @@
+import hashlib
 import os
 from pathlib import Path
 
@@ -12,6 +13,12 @@ CHROME_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 MOBILE_ARTWORK_PATH = Path("assets/images/figma-2026/mobile/site-full-mobile.png")
 INDEX_PATH = Path("index.html")
 EVENT_ASSET_DIR = Path("assets/images/figma-2026/events")
+
+KLEPA_ASSET_HASHES = {
+    Path("assets/images/figma-2026/dog-frames/Frame 6.png"): "d8f2674c35783a9531e78a25078e383f8d57ad3a58e3b1c3ae58c1ca35353f9e",
+    Path("assets/images/figma-2026/dog-cards-desktop/Group 70.png"): "ab2cdd2bfe161318e3c7c6ee352ca8113af93623f100bcdbf4185ed06e472ac6",
+    Path("assets/images/figma-2026/dog-cards-mobile/Group 108.png"): "4b00a5f5c9b345bd8521ab6f57d8ccd7e4a4577bf1873b6a3733e8cb5e7445ec",
+}
 
 DOGS = [
     "klepa",
@@ -338,6 +345,12 @@ def test_mobile_uses_updated_full_artwork_dimensions(browser):
 
     assert not errors
     page.close()
+
+
+def test_klepa_uses_corrected_frame_and_cards():
+    for path, expected_hash in KLEPA_ASSET_HASHES.items():
+        assert path.exists()
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == expected_hash
 
 
 def test_header_logos_are_plain_links_without_hover_animation(browser):
