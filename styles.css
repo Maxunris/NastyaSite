@@ -51,10 +51,10 @@ a {
 .festival-page__artboard::after {
   position: absolute;
   z-index: 2;
-  top: 88.7533%;
+  top: 89.7334%;
   right: 6.4%;
   width: 25%;
-  height: 1.35%;
+  height: 1.2175%;
   background: #fff;
   content: "";
   pointer-events: none;
@@ -63,10 +63,10 @@ a {
 .festival-page__artboard::before {
   position: absolute;
   z-index: 1;
-  top: 9.0495%;
+  top: 8.1613%;
   left: 17%;
   width: 66%;
-  height: 6.0982%;
+  height: 5.4997%;
   background: #fff;
   content: "";
   pointer-events: none;
@@ -225,9 +225,9 @@ a {
 
 .hotspot--dogs {
   left: 29.79%;
-  top: 0.5847%;
+  top: 0.5273%;
   width: 4.1%;
-  height: 0.419%;
+  height: 0.3779%;
 }
 
 .hotspot--dogs::after,
@@ -263,37 +263,37 @@ a {
 
 .hotspot--partners {
   left: 38.61%;
-  top: 0.5847%;
+  top: 0.5273%;
   width: 5.35%;
-  height: 0.419%;
+  height: 0.3779%;
 }
 
 .hotspot--market {
   left: 48.68%;
-  top: 0.5847%;
+  top: 0.5273%;
   width: 3.96%;
-  height: 0.419%;
+  height: 0.3779%;
 }
 
 .hotspot--shelter {
   left: 57.22%;
-  top: 0.5847%;
+  top: 0.5273%;
   width: 5.28%;
-  height: 0.419%;
+  height: 0.3779%;
 }
 
 .hotspot--faq {
   left: 67.15%;
-  top: 0.5847%;
+  top: 0.5273%;
   width: 5%;
-  height: 0.419%;
+  height: 0.3779%;
 }
 
 .hotspot--contacts {
   left: 76.88%;
-  top: 0.5847%;
+  top: 0.5273%;
   width: 5.35%;
-  height: 0.419%;
+  height: 0.3779%;
 }
 
 .header-logo-link {
@@ -310,32 +310,32 @@ a {
 
 .header-logo-link--danilovsky {
   left: 3.3%;
-  top: 0.5028%;
+  top: 0.4535%;
   width: 6.6%;
-  height: 0.9776%;
+  height: 0.8817%;
 }
 
 .header-logo-link--dogport {
   left: 13.7%;
-  top: 0.6145%;
+  top: 0.5542%;
   width: 11.5%;
-  height: 0.4376%;
+  height: 0.3947%;
 }
 
 .header-logo-link--hvost-news {
   left: 87.1%;
-  top: 0.5214%;
+  top: 0.4702%;
   width: 9.7%;
-  height: 0.8845%;
+  height: 0.7977%;
 }
 
 
 .dog-carousel {
   position: absolute;
   left: 9.55%;
-  top: 24.0762%;
+  top: 21.7132%;
   width: 81%;
-  height: 4.2734%;
+  height: 3.854%;
   overflow: hidden;
   background: #fff;
   box-shadow:
@@ -472,9 +472,9 @@ a {
   position: absolute;
   z-index: 1;
   left: 20%;
-  top: 9.82%;
+  top: 8.8562%;
   width: 60%;
-  height: 6.25%;
+  height: 5.6366%;
   background: #fff;
   pointer-events: none;
 }
@@ -495,7 +495,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 0.94%;
+  height: 0.8477%;
   border-radius: 999px;
   color: var(--green);
   font: 900 clamp(15px, 3vw, 43px) / 1 Arial, sans-serif;
@@ -509,49 +509,49 @@ a {
 .hotspot--menu-dogs {
   --menu-pill-x: clamp(28px, 3.1vw, 46px);
   left: 25.83%;
-  top: 9.5869%;
+  top: 8.646%;
   width: 48.4%;
 }
 
 .hotspot--menu-activities {
   --menu-pill-x: clamp(28px, 3.1vw, 46px);
   left: 24.58%;
-  top: 10.2689%;
+  top: 9.261%;
   width: 51.12%;
 }
 
 .hotspot--menu-market {
   --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 36.88%;
-  top: 11.71%;
+  top: 10.5607%;
   width: 26.4%;
 }
 
 .hotspot--menu-portrait {
   --menu-pill-x: clamp(24px, 2.8vw, 42px);
   left: 26.9%;
-  top: 10.91%;
+  top: 9.8392%;
   width: 46.2%;
 }
 
 .hotspot--menu-shelter {
   --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 33.89%;
-  top: 12.44%;
+  top: 11.2191%;
   width: 32.1%;
 }
 
 .hotspot--menu-djs {
   --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 43.4%;
-  top: 13.2%;
+  top: 11.9045%;
   width: 13.13%;
 }
 
 .hotspot--menu-faq {
   --menu-pill-x: clamp(18px, 2vw, 30px);
   left: 36.25%;
-  top: 13.89%;
+  top: 12.5268%;
   width: 27.3%;
 }
 
@@ -599,7 +599,7 @@ a {
   --arrow-size: clamp(44px, 3.9vw, 58px);
   --arrow-shaft: clamp(13px, 1.1vw, 16px);
   --arrow-stroke: clamp(2.5px, 0.2vw, 3.2px);
-  top: 26.0313%;
+  top: 23.4764%;
   position: absolute;
   z-index: 12;
   width: var(--arrow-size);
@@ -706,10 +706,10 @@ a {
   --active-transform: translate3d(0, 0, 0) scale(0.985);
   --feedback-hover-transform: scaleX(1);
   left: 29.15%;
-  top: 28.7313%;
+  top: 25.9114%;
   z-index: 6;
   width: 41.7%;
-  height: 0.5865%;
+  height: 0.5289%;
   border-radius: 999px;
   background: transparent;
   color: transparent;
@@ -789,9 +789,9 @@ a {
   --partner-logo: url("assets/images/figma-final/partner-overlays/award.png");
   --ambient-inset: -18px -18px -18px -18px;
   left: 9.9306%;
-  top: 46.249%;
+  top: 41.7098%;
   width: 11.3889%;
-  height: 0.3897%;
+  height: 0.3515%;
   --line-left: 8%;
   --line-right: 8%;
   --line-bottom: -16px;
@@ -801,9 +801,9 @@ a {
   --partner-logo: url("assets/images/figma-final/partner-overlays/mrkranch.png");
   --ambient-inset: -18px -20px -20px -20px;
   left: 28.4722%;
-  top: 46.0249%;
+  top: 41.5077%;
   width: 10.4167%;
-  height: 0.7892%;
+  height: 0.7117%;
   --line-left: 14%;
   --line-right: 14%;
   --line-bottom: -16px;
@@ -813,9 +813,9 @@ a {
   --partner-logo: url("assets/images/figma-final/partner-overlays/mnyams.png");
   --ambient-inset: -22px -22px -38px -22px;
   left: 44.9306%;
-  top: 45.8398%;
+  top: 41.3408%;
   width: 9.9306%;
-  height: 1.1399%;
+  height: 1.028%;
   border-radius: 34px;
   --line-left: 20%;
   --line-right: 20%;
@@ -826,9 +826,9 @@ a {
   --partner-logo: url("assets/images/figma-final/partner-overlays/iv-san-bernard.png");
   --ambient-inset: -18px -20px -18px -20px;
   left: 60.1389%;
-  top: 46.2685%;
+  top: 41.7274%;
   width: 14.7917%;
-  height: 0.2631%;
+  height: 0.2373%;
   --line-left: 10%;
   --line-right: 10%;
   --line-bottom: -16px;
@@ -838,9 +838,9 @@ a {
   --partner-logo: url("assets/images/figma-final/partner-overlays/craftia.png");
   --ambient-inset: -18px -18px -24px -20px;
   left: 78.6111%;
-  top: 45.986%;
+  top: 41.4727%;
   width: 14.0278%;
-  height: 0.7307%;
+  height: 0.659%;
   --line-left: 12%;
   --line-right: 12%;
   --line-bottom: -16px;
@@ -850,9 +850,9 @@ a {
   --partner-logo: url("assets/images/figma-final/partner-overlays/hvost-news.png");
   --ambient-inset: -18px;
   left: 36.6667%;
-  top: 32.8527%;
+  top: 29.6283%;
   width: 24.3%;
-  height: 2.085%;
+  height: 1.8804%;
   --line-bottom: 4px;
 }
 
@@ -905,60 +905,92 @@ a {
 
 .hotspot--brand-plushki {
   --brand-logo: url("assets/images/figma-2026/brand-logos/IMG_5482 1.png");
-  left: 55.2%;
-  top: 71.42%;
-  width: 13.6%;
-  height: 0.45%;
+  left: 56.8%;
+  top: 65.12%;
+  width: 12.1%;
+  height: 0.57%;
   --line-left: 0;
   --line-right: 0;
-  --line-bottom: -22px;
+  --line-bottom: -10px;
 }
 
 .hotspot--brand-sobakin {
   --brand-logo: url("assets/images/figma-2026/brand-logos/logo_black 1.png");
   --brand-logo-scale: 1.12;
-  left: 30.95%;
-  top: 71.78%;
-  width: 16.6%;
-  height: 0.36%;
+  left: 31.7%;
+  top: 65.05%;
+  width: 16.1%;
+  height: 0.66%;
   --line-left: 0;
   --line-right: 0;
-  --line-bottom: -8px;
+  --line-bottom: -10px;
 }
 
 .hotspot--brand-shaggy-dog {
   --brand-logo: url("assets/images/figma-2026/brand-logos/shaggy dog 2.png");
   --brand-logo-scale: 1.12;
-  left: 19%;
-  top: 70.04%;
-  width: 14.7%;
-  height: 0.48%;
+  left: 19.4%;
+  top: 63.88%;
+  width: 14.5%;
+  height: 0.46%;
   --line-left: 0;
   --line-right: 0;
-  --line-bottom: -2px;
+  --line-bottom: -10px;
 }
 
 .hotspot--brand-derzhis-menya {
   --brand-logo: url("assets/images/figma-2026/brand-logos/Group 47.png");
-  left: 44.55%;
-  top: 69.55%;
-  width: 13.1%;
-  height: 1.72%;
-  --line-left: 4%;
-  --line-right: 4%;
-  --line-bottom: 20px;
+  left: 45.7%;
+  top: 63.36%;
+  width: 10.7%;
+  height: 1.15%;
+  --line-left: -4%;
+  --line-right: 12%;
+  --line-bottom: -32px;
 }
 
 .hotspot--brand-hug-me-dog {
   --brand-logo: url("assets/images/figma-2026/brand-logos/Hug me 1.png");
   --brand-logo-scale: 1.12;
-  left: 68.5%;
-  top: 69.45%;
-  width: 15.3%;
-  height: 0.78%;
+  left: 67.2%;
+  top: 63.86%;
+  width: 16.6%;
+  height: 0.62%;
   --line-left: 0;
   --line-right: 0;
-  --line-bottom: -44px;
+  --line-bottom: -10px;
+}
+
+.hotspot--newvettech-site {
+  --ambient-opacity: 0.3;
+  --ambient-inset: -8px;
+  --hover-transform: translate3d(0, -2px, 0);
+  --active-transform: translateZ(0) scale(0.99);
+  --feedback-hover-transform: scaleX(1);
+  left: 20.84%;
+  top: 74.54%;
+  width: 17.25%;
+  height: 0.3632%;
+  z-index: 12;
+  border-radius: 999px;
+}
+
+.hotspot--newvettech-site::after {
+  top: auto;
+  bottom: -10px;
+  left: 12%;
+  width: 76%;
+  height: 3px;
+  border: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), #ffe07a 52%, var(--accent-strong));
+  box-shadow: 0 6px 14px rgb(255 178 41 / 0.34);
+  transform: scaleX(0.22);
+}
+
+.hotspot--newvettech-site:hover::after,
+.hotspot--newvettech-site:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .hotspot--shelter-site {
@@ -968,9 +1000,9 @@ a {
   --active-transform: translateZ(0) scale(0.99);
   --feedback-hover-transform: scale(1);
   left: 40.2%;
-  top: 78.35%;
+  top: 80.3343%;
   width: 17.4%;
-  height: 0.3995%;
+  height: 0.3603%;
   border-radius: 999px;
 }
 
@@ -981,9 +1013,9 @@ a {
   --active-transform: translateZ(0) scale(0.99);
   --feedback-hover-transform: scaleX(1);
   left: 21.4%;
-  top: 55.9078%;
+  top: 50.4207%;
   width: 19%;
-  height: 0.42%;
+  height: 0.3788%;
   border-radius: 999px;
 }
 
@@ -1018,7 +1050,7 @@ a {
   position: absolute;
   z-index: 2;
   left: 13.61%;
-  top: 42.948%;
+  top: 38.7328%;
   width: 73.19%;
   height: auto;
   pointer-events: none;
@@ -1028,7 +1060,7 @@ a {
   position: absolute;
   z-index: 2;
   left: 3.03%;
-  top: 81.333%;
+  top: 83.0245%;
   width: 93.96%;
   height: auto;
   pointer-events: none;
@@ -1039,9 +1071,9 @@ a {
   position: absolute;
   z-index: 3;
   left: 18.28%;
-  top: 86.0161%;
+  top: 87.248%;
   width: 1.02%;
-  height: 0.16%;
+  height: 0.1443%;
   border-radius: 2px;
   background: #ff9853;
   pointer-events: none;
@@ -1054,7 +1086,7 @@ a {
   --active-transform: translate3d(0, 0, 0) scale(0.985);
   --feedback-hover-transform: scaleX(1);
   z-index: 31;
-  height: 0.9353%;
+  height: 0.8435%;
   border-radius: 999px;
 }
 
@@ -1076,13 +1108,13 @@ a {
 
 .dj-card-hotspot--maksim {
   left: 34.3056%;
-  top: 84.9766%;
+  top: 86.3105%;
   width: 14.8611%;
 }
 
 .dj-card-hotspot--stepan {
   left: 52.7778%;
-  top: 84.9766%;
+  top: 86.3105%;
   width: 14.8611%;
 }
 
@@ -1095,9 +1127,9 @@ a {
   --ambient-inset: -4px;
   --hover-transform: translate3d(0, -2px, 0);
   --active-transform: translate3d(0, 0, 0) scale(0.985);
-  top: 98.0262%;
+  top: 98.0793%;
   z-index: 4;
-  height: 0.419%;
+  height: 0.3779%;
   border-radius: 999px;
 }
 
@@ -1122,7 +1154,7 @@ a {
 }
 
 .hotspot--contact-5 {
-  top: 98.9088%;
+  top: 98.8753%;
   left: 74.9%;
   width: 14.9%;
 }
@@ -1139,7 +1171,7 @@ a {
 .hotspot--contact-2,
 .hotspot--contact-3,
 .hotspot--contact-4 {
-  top: 98.1781%;
+  top: 98.2163%;
 }
 
 .hotspot--contact-1::after,
@@ -1187,39 +1219,39 @@ a {
 }
 
 .anchor--dogs {
-  top: 18.2201%;
+  top: 16.4319%;
 }
 
 .anchor--activities {
-  top: 30.2116%;
+  top: 27.2465%;
 }
 
 .anchor--portrait {
-  top: 50.95%;
+  top: 45.9495%;
 }
 
 .anchor--partners {
-  top: 29.2341%;
+  top: 26.3649%;
 }
 
 .anchor--market {
-  top: 65.7384%;
+  top: 59.2864%;
 }
 
 .anchor--shelter {
-  top: 73.7452%;
+  top: 76.1814%;
 }
 
 .anchor--faq {
-  top: 89.7122%;
+  top: 90.5813%;
 }
 
 .anchor--djs {
-  top: 81.752%;
+  top: 83.4024%;
 }
 
 .anchor--contacts {
-  top: 97.4676%;
+  top: 97.5756%;
 }
 
 .dog-status {
@@ -1238,10 +1270,10 @@ a {
 .faq-section {
   position: absolute;
   left: 0;
-  top: 89.7122%;
+  top: 90.5813%;
   z-index: 3;
   width: 100%;
-  min-height: 6.1456%;
+  min-height: 5.5424%;
   padding: 1.1639% 9.5% 0.931%;
   background: #fff;
   color: #111;
@@ -1655,51 +1687,51 @@ a {
 
   .hotspot--menu-dogs {
     left: 25.83%;
-    top: 9.5869%;
+    top: 8.646%;
     width: 48.4%;
-    height: 0.5959%;
+    height: 0.5374%;
   }
 
   .hotspot--menu-activities {
     left: 24.58%;
-    top: 10.2689%;
+    top: 9.261%;
     width: 51.12%;
-    height: 0.5959%;
+    height: 0.5374%;
   }
 
   .hotspot--menu-portrait {
     left: 26.9%;
-    top: 10.91%;
+    top: 9.8392%;
     width: 46.2%;
-    height: 0.5959%;
+    height: 0.5374%;
   }
 
   .hotspot--menu-market {
     left: 36.88%;
-    top: 11.71%;
+    top: 10.5607%;
     width: 26.4%;
-    height: 0.5959%;
+    height: 0.5374%;
   }
 
   .hotspot--menu-shelter {
     left: 33.89%;
-    top: 12.44%;
+    top: 11.2191%;
     width: 32.1%;
-    height: 0.5959%;
+    height: 0.5374%;
   }
 
   .hotspot--menu-djs {
     left: 43.4%;
-    top: 13.2%;
+    top: 11.9045%;
     width: 13.13%;
-    height: 0.5772%;
+    height: 0.5206%;
   }
 
   .hotspot--menu-faq {
     left: 36.25%;
-    top: 13.89%;
+    top: 12.5268%;
     width: 27.3%;
-    height: 0.5772%;
+    height: 0.5206%;
   }
 
   .hotspot--menu-dogs::before,
@@ -1777,66 +1809,66 @@ a {
 
   .header-logo-link--danilovsky {
     left: 34%;
-    top: 0.9263%;
+    top: 0.832%;
     width: 11.8%;
-    height: 0.4852%;
+    height: 0.4358%;
   }
 
   .header-logo-link--dogport {
     left: 51.2%;
-    top: 1.0233%;
+    top: 0.9192%;
     width: 23.8%;
-    height: 0.4058%;
+    height: 0.3645%;
   }
 
   .header-logo-link--hvost-news {
     left: 28.65%;
-    top: 25.7686%;
+    top: 23.1462%;
     width: 43.33%;
-    height: 0.891%;
+    height: 0.8003%;
   }
 
   .hotspot--dogs {
     left: 12.58%;
-    top: 8.8129%;
+    top: 7.916%;
     width: 74.77%;
-    height: 0.3235%;
+    height: 0.2906%;
   }
 
   .hotspot--partners,
   .hotspot--menu-activities {
     left: 9.09%;
-    top: 9.2344%;
+    top: 8.2946%;
     width: 81.06%;
-    height: 0.2696%;
+    height: 0.2422%;
   }
 
   .hotspot--market {
     left: 27.25%;
-    top: 10.0186%;
+    top: 8.999%;
     width: 45.42%;
-    height: 0.2745%;
+    height: 0.2466%;
   }
 
   .hotspot--shelter {
     left: 23.76%;
-    top: 10.4156%;
+    top: 9.3556%;
     width: 53.81%;
-    height: 0.2745%;
+    height: 0.2466%;
   }
 
   .hotspot--menu-djs {
     left: 36.34%;
-    top: 10.8078%;
+    top: 9.7079%;
     width: 27.25%;
-    height: 0.2647%;
+    height: 0.2378%;
   }
 
   .hotspot--faq {
     left: 27.95%;
-    top: 11.2001%;
+    top: 10.0603%;
     width: 45.42%;
-    height: 0.2451%;
+    height: 0.2202%;
   }
 
   .hotspot--contacts {
@@ -1848,48 +1880,48 @@ a {
 
   .hotspot--menu-dogs {
     left: 12.58%;
-    top: 8.42%;
+    top: 7.5631%;
     width: 74.77%;
-    height: 0.3235%;
+    height: 0.2906%;
   }
 
   .hotspot--menu-activities {
     left: 9.09%;
-    top: 8.84%;
+    top: 7.9404%;
     width: 81.06%;
-    height: 0.2696%;
+    height: 0.2422%;
   }
 
   .hotspot--menu-portrait {
     left: 13.05%;
-    top: 9.23%;
+    top: 8.2907%;
     width: 74.42%;
-    height: 0.2745%;
+    height: 0.2466%;
   }
 
   .hotspot--menu-market {
     left: 27.25%;
-    top: 9.63%;
+    top: 8.65%;
     width: 45.42%;
-    height: 0.2745%;
+    height: 0.2466%;
   }
 
   .hotspot--menu-shelter {
     left: 23.76%;
-    top: 10.02%;
+    top: 9.0003%;
     width: 53.81%;
-    height: 0.2745%;
+    height: 0.2466%;
   }
 
   .hotspot--menu-djs {
-    top: 10.42%;
+    top: 9.3596%;
   }
 
   .hotspot--menu-faq {
     left: 27.95%;
-    top: 10.81%;
+    top: 9.7099%;
     width: 45.42%;
-    height: 0.2451%;
+    height: 0.2202%;
   }
 
   .hotspot--dogs,
@@ -1959,9 +1991,9 @@ a {
   .dog-carousel {
     z-index: 5;
     left: 13.96%;
-    top: 17.4849%;
+    top: 15.7055%;
     width: 72.08%;
-    height: 3.8463%;
+    height: 3.4549%;
     overflow: hidden;
     background: #fff;
     border-radius: 0;
@@ -2021,7 +2053,7 @@ a {
   .hotspot--cards-next {
     z-index: 7;
     position: absolute;
-    top: 21.2166%;
+    top: 19.0575%;
     --arrow-size: clamp(38px, 8.7vw, 46px);
     --arrow-shaft: clamp(10px, 2.9vw, 13px);
     --arrow-stroke: clamp(2.2px, 0.5vw, 2.8px);
@@ -2040,9 +2072,9 @@ a {
 
   .hotspot--dogs-contact-shelter {
     left: 7.44%;
-    top: 22.6986%;
+    top: 20.3886%;
     width: 85.12%;
-    height: 0.6175%;
+    height: 0.5547%;
     background: transparent;
   }
 
@@ -2091,47 +2123,47 @@ a {
 
   .hotspot--partner-mrkranch {
     left: 9.09%;
-    top: 49.967%;
+    top: 44.882%;
     width: 20.96%;
-    height: 0.644%;
+    height: 0.5785%;
   }
 
   .hotspot--partner-mnyams {
     left: 39.13%;
-    top: 49.8876%;
+    top: 44.8107%;
     width: 23.06%;
-    height: 0.7234%;
+    height: 0.6498%;
   }
 
   .hotspot--partner-ivsanbernard {
     left: 60.8%;
-    top: 50.0464%;
+    top: 44.9533%;
     width: 25.16%;
-    height: 0.5117%;
+    height: 0.4596%;
   }
 
   .hotspot--partner-award {
     left: 24.11%;
-    top: 51.4226%;
+    top: 46.1895%;
     width: 24.46%;
-    height: 0.6175%;
+    height: 0.5547%;
   }
 
   .hotspot--partner-craftia {
     left: 53.11%;
-    top: 51.502%;
+    top: 46.2608%;
     width: 26.56%;
-    height: 0.4852%;
+    height: 0.4358%;
   }
 
   .event-carousel {
     position: absolute;
     z-index: 7;
     left: 6.5%;
-    top: 41.5333%;
+    top: 37.3066%;
     display: block;
     width: 87%;
-    height: 5.15%;
+    height: 4.6259%;
     line-height: 1;
     pointer-events: none;
   }
@@ -2182,44 +2214,73 @@ a {
 
   .hotspot--brand-hug-me-dog {
     left: 10%;
-    top: 69.42%;
+    top: 62.3553%;
     width: 80%;
-    height: 0.9%;
+    height: 0.8084%;
   }
 
   .hotspot--brand-shaggy-dog {
     left: 10%;
-    top: 70.69%;
+    top: 63.4961%;
     width: 80%;
-    height: 0.8823%;
+    height: 0.7925%;
   }
 
   .hotspot--brand-derzhis-menya {
     left: 10%;
-    top: 71.56%;
+    top: 64.2776%;
     width: 80%;
-    height: 1.6175%;
+    height: 1.4529%;
   }
 
   .hotspot--brand-sobakin {
     left: 10%;
-    top: 73.65%;
+    top: 66.1549%;
     width: 80%;
-    height: 1.1273%;
+    height: 1.0126%;
   }
 
   .hotspot--brand-plushki {
     left: 10%;
-    top: 75.11%;
+    top: 67.4663%;
     width: 80%;
-    height: 0.8823%;
+    height: 0.7925%;
+  }
+
+  .hotspot--newvettech-site {
+    left: 29.52%;
+    top: 78.8%;
+    width: 40.59%;
+    height: 0.296%;
+    z-index: 12;
+  }
+
+  .hotspot--newvettech-site::before,
+  .hotspot--newvettech-site::after {
+    display: none;
+  }
+
+  .hotspot--artist-channel {
+    display: block;
+    left: 22.14%;
+    top: 46.31%;
+    width: 55.6%;
+    height: 0.4%;
+    z-index: 12;
+    pointer-events: auto;
+    touch-action: manipulation;
+  }
+
+  .hotspot--artist-channel::before,
+  .hotspot--artist-channel::after {
+    display: none;
   }
 
   .hotspot--shelter-site {
     left: 31.5522%;
-    top: 81.14%;
+    top: 82.9533%;
     width: 40.7125%;
-    height: 0.38%;
+    height: 0.3413%;
     z-index: 12;
   }
 
@@ -2235,9 +2296,9 @@ a {
 
   .dj-card-hotspot--maksim {
     left: 27.2265%;
-    top: 85.83%;
+    top: 87.166%;
     width: 45.8015%;
-    height: 0.78%;
+    height: 0.7006%;
     z-index: 7;
     background: transparent;
     pointer-events: auto;
@@ -2245,9 +2306,9 @@ a {
 
   .dj-card-hotspot--stepan {
     left: 27.2265%;
-    top: 86.67%;
+    top: 87.9205%;
     width: 45.8015%;
-    height: 0.78%;
+    height: 0.7006%;
     z-index: 7;
     background: transparent;
     pointer-events: auto;
@@ -2264,60 +2325,60 @@ a {
   }
 
   .hotspot--contact-1 {
-    top: 96.32%;
+    top: 96.5885%;
   }
 
   .hotspot--contact-2 {
-    top: 96.85%;
+    top: 97.0646%;
   }
 
   .hotspot--contact-3 {
-    top: 97.38%;
+    top: 97.5406%;
   }
 
   .hotspot--contact-4 {
-    top: 97.91%;
+    top: 98.0167%;
   }
 
   .hotspot--contact-5 {
-    top: 98.68%;
+    top: 98.7083%;
   }
 
   .anchor--dogs {
-    top: 15.25%;
+    top: 13.6981%;
   }
 
   .anchor--activities,
   .anchor--partners {
-    top: 23.819%;
+    top: 21.395%;
   }
 
   .anchor--portrait {
-    top: 47%;
+    top: 42.217%;
   }
 
   .anchor--market {
-    top: 66.46%;
+    top: 59.6966%;
   }
 
   .anchor--shelter {
-    top: 77.85%;
+    top: 79.9981%;
   }
 
   .anchor--djs {
-    top: 83.3%;
+    top: 84.8935%;
   }
 
   .anchor--faq {
-    top: 87.95%;
+    top: 89.0703%;
   }
 
   .faq-section {
-    top: 89.8059%;
+    top: 90.7373%;
   }
 
   .anchor--contacts {
-    top: 91.9%;
+    top: 95.2385%;
   }
 
   .faq-section {
@@ -2387,11 +2448,11 @@ a {
 
   @media (min-width: 410px) {
     .anchor--faq {
-      top: 88.35%;
+      top: 89.4296%;
     }
 
     .faq-section {
-      top: 90.2%;
+      top: 91.0913%;
     }
   }
 

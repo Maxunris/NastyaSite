@@ -12,29 +12,31 @@
     <link rel="apple-touch-icon" href="/assets/images/favicon.png" />
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109720624', 'ym');
+      if (["dogportfest.ru", "www.dogportfest.ru"].includes(window.location.hostname)) {
+        (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109720624', 'ym');
 
-      ym(109720624, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+        ym(109720624, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+      }
     </script>
     <!-- /Yandex.Metrika counter -->
-    <link rel="stylesheet" href="styles.css?v=figma-2026-60" />
+    <link rel="stylesheet" href="styles.css?v=figma-2026-62" />
   </head>
   <body>
     <noscript><div><img src="https://mc.yandex.ru/watch/109720624" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <main class="festival-page" aria-label="Дог порт фест">
       <div class="festival-page__artboard">
         <picture>
-          <source media="(max-width: 700px)" srcset="assets/images/figma-2026/mobile/site-full-mobile.png?v=20260602-1" width="786" height="20336" />
+          <source media="(max-width: 700px)" srcset="assets/images/figma-2026/mobile/site-full-mobile.png?v=20260609-artist-channel" width="786" height="22640" />
           <img
             class="festival-page__image"
-            src="assets/images/figma-2026/site-full.png?v=20260602-1"
+            src="assets/images/figma-2026/site-full.png?v=20260609-newvettech"
             width="1440"
-            height="10264"
+            height="11381"
             alt="Дог порт фест. Фестиваль-пристройство собак из приюта Догпорт, 20-21 июня с 12 до 19 на веранде Даниловского рынка."
           />
         </picture>
@@ -89,6 +91,7 @@
         <button class="hotspot brand-card-hotspot hotspot--brand-shaggy-dog" type="button" data-brand="shaggy-dog">Открыть карточку бренда Shaggy Dog</button>
         <button class="hotspot brand-card-hotspot hotspot--brand-derzhis-menya" type="button" data-brand="derzhis-menya">Открыть карточку бренда Держись меня</button>
         <button class="hotspot brand-card-hotspot hotspot--brand-hug-me-dog" type="button" data-brand="hug-me-dog">Открыть карточку бренда Hug Me Dog</button>
+        <a class="hotspot hotspot--newvettech-site" href="https://newvettech.ru/" target="_blank" rel="noopener noreferrer">Сайт клиники НьюВетТех</a>
         <a class="hotspot hotspot--shelter-site" href="https://dogport.ru/" target="_blank" rel="noopener noreferrer">Сайт приюта</a>
         <a class="hotspot hotspot--artist-channel" href="https://t.me/artemisialisa" target="_blank" rel="noopener noreferrer">тг-канал художницы</a>
         <img class="schedule-photozone-fix" src="assets/images/figma-2026/schedule/photozone-card.png" alt="" aria-hidden="true" />
@@ -199,7 +202,7 @@
       <p class="info-modal__text"></p>
     </dialog>
 
-    <script src="script.js?v=figma-2026-44"></script>
+    <script src="script.js?v=figma-2026-45"></script>
     <!-- Cloudflare Web Analytics -->
     <script>
       if (["dogportfest.ru", "www.dogportfest.ru"].includes(window.location.hostname)) {
