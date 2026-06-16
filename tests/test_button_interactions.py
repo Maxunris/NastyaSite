@@ -41,6 +41,7 @@ BRAND_LINKS = {
     "shaggy-dog": "https://shaggydog.ru",
     "derzhis-menya": "https://t.me/derzhismenya",
     "hug-me-dog": "https://hugmedog.ru",
+    "kayria": "https://t.me/kayria_ammunition",
 }
 
 BRAND_MOBILE_FILES = {
@@ -49,6 +50,7 @@ BRAND_MOBILE_FILES = {
     "shaggy-dog": "Group-121-shaggy-dog.png",
     "derzhis-menya": "Group-122-derzhis-menya.png",
     "hug-me-dog": "Group-120-hug-me-dog.png",
+    "kayria": "kayria.png",
 }
 
 BRAND_DESKTOP_FILES = {
@@ -57,14 +59,16 @@ BRAND_DESKTOP_FILES = {
     "shaggy-dog": "Group 64.png",
     "derzhis-menya": "Group 67.png",
     "hug-me-dog": "Group 63.png",
+    "kayria": "kayria.png",
 }
 
 MOBILE_BRAND_VISUAL_POINTS = {
-    "hug-me-dog": (393, 14210),
-    "shaggy-dog": (393, 14465),
-    "derzhis-menya": (393, 14720),
-    "sobakin": (393, 15100),
-    "plushki": (393, 15365),
+    "hug-me-dog": (393, 14220),
+    "shaggy-dog": (393, 14380),
+    "derzhis-menya": (393, 14620),
+    "sobakin": (393, 14880),
+    "kayria": (393, 15100),
+    "plushki": (393, 15445),
 }
 
 MOBILE_ARTIST_CHANNEL_POINT = (393, 10525)
@@ -124,19 +128,21 @@ HEADER_LOGO_LINKS = {
 }
 
 BRAND_RECTS = {
-    "shaggy-dog": (276, 283, 7264, 7274),
-    "derzhis-menya": (655, 662, 7208, 7218),
-    "hug-me-dog": (965, 972, 7262, 7274),
-    "sobakin": (454, 461, 7398, 7410),
-    "plushki": (815, 823, 7408, 7418),
+    "derzhis-menya": (310, 330, 7250, 7285),
+    "shaggy-dog": (645, 670, 7280, 7310),
+    "kayria": (1030, 1050, 7210, 7235),
+    "sobakin": (270, 290, 7390, 7415),
+    "plushki": (660, 680, 7390, 7415),
+    "hug-me-dog": (965, 990, 7395, 7420),
 }
 
 DESKTOP_BRAND_VISUAL_POINTS = {
-    "shaggy-dog": (382, 7294),
-    "derzhis-menya": (735, 7280),
-    "hug-me-dog": (1085, 7304),
-    "sobakin": (565, 7438),
-    "plushki": (900, 7445),
+    "derzhis-menya": (385, 7300),
+    "shaggy-dog": (745, 7295),
+    "kayria": (1085, 7295),
+    "sobakin": (380, 7450),
+    "plushki": (750, 7455),
+    "hug-me-dog": (1080, 7445),
 }
 
 PARTNER_RECTS = {
@@ -209,7 +215,7 @@ def test_mobile_artwork_contacts_bottom_has_no_stray_white_stroke():
 def test_index_busts_mobile_faq_css_cache():
     html = INDEX_PATH.read_text(encoding="utf-8")
 
-    assert 'href="styles.css?v=figma-2026-62"' in html
+    assert 'href="styles.css?v=figma-2026-63"' in html
 
 
 def test_partner_event_assets_are_high_resolution():
@@ -495,7 +501,7 @@ def test_dog_carousel_desktop_arrows_use_css_icons_without_raster_assets(browser
 def test_brand_cards_use_current_partners_and_preserve_hover_motion(browser):
     page, errors = new_page(browser)
 
-    assert page.locator(".brand-card-hotspot").count() == 5
+    assert page.locator(".brand-card-hotspot").count() == 6
 
     for brand, href in BRAND_LINKS.items():
         selector = f"[data-brand='{brand}']"
@@ -511,12 +517,7 @@ def test_brand_cards_use_current_partners_and_preserve_hover_motion(browser):
         assert hover["opacity"] >= 0.9
         assert "transform" in hover["transitionProperty"]
         assert "url(" not in hover["backgroundImage"]
-        if brand == "derzhis-menya":
-            assert_range(float(hover["bottom"].replace("px", "")), -34, -30, "derzhis underline bottom")
-            assert_range(float(hover["left"].replace("px", "")), -7, -5, "derzhis underline left")
-            assert_range(float(hover["width"].replace("px", "")), 141, 145, "derzhis underline width")
-        else:
-            assert_range(float(hover["bottom"].replace("px", "")), -12, -8, f"{brand} underline bottom")
+        assert_range(float(hover["bottom"].replace("px", "")), -12, -8, f"{brand} underline bottom")
 
         page.locator(selector).click()
         page.wait_for_selector(".dog-modal[open]")

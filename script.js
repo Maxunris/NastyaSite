@@ -213,6 +213,12 @@ const brandCards = {
     alt: 'Карточка бренда Hug Me Dog.',
     href: 'https://hugmedog.ru',
   },
+  kayria: {
+    cardDesktop: 'assets/images/figma-2026/brand-cards/kayria.png?v=20260616-kayria',
+    cardMobile: 'assets/images/figma-2026/brand-cards-mobile/kayria.png?v=20260616-kayria',
+    alt: 'Карточка бренда Куария.',
+    href: 'https://t.me/kayria_ammunition',
+  },
 };
 
 const eventSlides = [
