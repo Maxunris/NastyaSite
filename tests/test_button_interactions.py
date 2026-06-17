@@ -20,6 +20,9 @@ KLEPA_ASSET_HASHES = {
     Path("assets/images/figma-2026/dog-cards-mobile/Group 108.png"): "4b00a5f5c9b345bd8521ab6f57d8ccd7e4a4577bf1873b6a3733e8cb5e7445ec",
 }
 
+FIONA_FRAME_HASH = "9800ce44852770fdbd9eeca634780bdd8e6965c2c49a6eabf358b8836fee9c1c"
+FIONA_FRAME_PATH = Path("assets/images/figma-2026/dog-frames/Фиона.png")
+
 DOGS = [
     "klepa",
     "belka",
@@ -120,6 +123,7 @@ DJ_LINKS = {
 
 DOGS_CONTACT_LINK = "https://t.me/marina_dogport"
 NEWVETTECH_LINK = "https://newvettech.ru/"
+MASTERCLASS_TICKET_LINK = "https://danilovsky.timepad.ru/event/4038431/"
 
 HEADER_LOGO_LINKS = {
     ".header-logo-link--danilovsky": "https://t.me/danilovskymarket",
@@ -215,7 +219,7 @@ def test_mobile_artwork_contacts_bottom_has_no_stray_white_stroke():
 def test_index_busts_mobile_faq_css_cache():
     html = INDEX_PATH.read_text(encoding="utf-8")
 
-    assert 'href="styles.css?v=figma-2026-63"' in html
+    assert 'href="styles.css?v=figma-2026-64"' in html
 
 
 def test_partner_event_assets_are_high_resolution():
@@ -363,6 +367,25 @@ def test_klepa_uses_corrected_frame_and_cards():
     for path, expected_hash in KLEPA_ASSET_HASHES.items():
         assert path.exists()
         assert hashlib.sha256(path.read_bytes()).hexdigest() == expected_hash
+
+
+def test_fiona_carousel_frame_uses_corrected_artwork():
+    assert FIONA_FRAME_PATH.exists()
+    assert hashlib.sha256(FIONA_FRAME_PATH.read_bytes()).hexdigest() == FIONA_FRAME_HASH
+
+    image = Image.open(FIONA_FRAME_PATH)
+    assert image.size == (260, 370)
+
+
+def test_fiona_carousel_frame_url_is_cache_busted(browser):
+    page, errors = new_page(browser, width=1440, height=1000)
+
+    fiona_frame = page.locator('.dog-frame-button[data-dog="fiona"] img')
+    assert fiona_frame.count() == 1
+    assert "Фиона.png?v=20260618-fiona-frame" in fiona_frame.get_attribute("src")
+
+    assert not errors
+    page.close()
 
 
 def test_header_logos_are_plain_links_without_hover_animation(browser):
@@ -623,6 +646,36 @@ def test_newvettech_site_button_matches_inserted_partner_block(browser):
     assert underline["opacity"] >= 0.9
     assert "transform" in underline["transitionProperty"]
     assert_range(float(underline["bottom"].replace("px", "")), -11, -9, "newvettech underline bottom")
+
+    assert not errors
+    page.close()
+
+
+def test_masterclass_ticket_button_matches_new_artwork(browser):
+    page, errors = new_page(browser, width=1440, height=1000)
+
+    ticket = page.locator(".hotspot--masterclass-ticket")
+    assert ticket.count() == 1
+    assert ticket.get_attribute("href") == MASTERCLASS_TICKET_LINK
+    assert ticket.get_attribute("target") == "_blank"
+    assert "noopener" in ticket.get_attribute("rel")
+
+    rect = normalized_rect(page, ".hotspot--masterclass-ticket")
+    assert_range(rect["left"], 420, 423, "masterclass ticket left")
+    assert_range(rect["top"], 6726, 6730, "masterclass ticket top")
+    assert_range(rect["width"], 598, 601, "masterclass ticket width")
+    assert_range(rect["height"], 58, 60, "masterclass ticket height")
+
+    ticket.hover()
+    page.wait_for_timeout(260)
+    underline = pseudo_after(page, ".hotspot--masterclass-ticket")
+    assert underline["opacity"] >= 0.9
+    assert "transform" in underline["transitionProperty"]
+    assert_range(float(underline["bottom"].replace("px", "")), -11, -9, "masterclass underline bottom")
+    assert_range(float(underline["height"].replace("px", "")), 2, 4, "masterclass underline height")
+    assert_range(float(underline["left"].replace("px", "")), -1, 1, "masterclass underline left")
+    assert_range(float(underline["width"].replace("px", "")), rect["width"] - 1, rect["width"] + 1, "masterclass underline width")
+    assert "rgb(255, 178, 41)" in underline["backgroundImage"]
 
     assert not errors
     page.close()
@@ -1181,6 +1234,7 @@ def test_layout_has_no_horizontal_scroll_and_live_targets_are_clickable(browser,
         ".hotspot--cards-prev",
         ".hotspot--cards-next",
         ".hotspot--dogs-contact-shelter",
+        ".hotspot--masterclass-ticket",
         ".hotspot--artist-channel",
         ".dog-frame-button",
         ".brand-card-hotspot",

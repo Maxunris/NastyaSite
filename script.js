@@ -115,7 +115,7 @@ const dogCards = {
   },
   fiona: {
     name: 'Фиона',
-    frame: 'assets/images/figma-2026/dog-frames/Фиона.png',
+    frame: 'assets/images/figma-2026/dog-frames/Фиона.png?v=20260618-fiona-frame',
     cardDesktop: 'assets/images/figma-2026/dog-cards-desktop/Group 134.png',
     cardMobile: 'assets/images/figma-2026/dog-cards-mobile/Group 140.png',
     alt: 'fiona, карточка Фионы.',
